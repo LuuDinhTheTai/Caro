@@ -4,6 +4,8 @@ public interface Controller {
 
     void toGameScreen();
     void toLoginScreen();
+    void toMainMenuScreen();
     void toMenuScreen();
     void toRegisterScreen();
+    void popUpDialog(String title, String msg);
 }

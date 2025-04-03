@@ -7,6 +7,7 @@ import com.utc.btl.controller.base.impl.BaseController;
 import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
 
+import static com.utc.btl.constant.Constants.DIALOG_ERROR_TITLE;
 import static com.utc.btl.constant.Constants.INFO;
 
 public class AuthControllerImpl extends BaseController implements AuthController {
@@ -18,12 +19,22 @@ public class AuthControllerImpl extends BaseController implements AuthController
     @Override
     public void login(LoginRequest rq) {
         Gdx.app.log(INFO, "(login) request: " + rq.toString());
-
+        if (rq.validate()) {
+            // TODO: excute login logic
+            toMainMenuScreen();
+        } else {
+            popUpDialog(DIALOG_ERROR_TITLE, "Username or password is invalid");
+        }
     }
 
     @Override
     public void register(RegisterRequest rq) {
         Gdx.app.log(INFO, "(register) request: " + rq.toString());
-
+        if (rq.validate()) {
+            // TODO: excute register logic
+            toLoginScreen();
+        } else {
+            popUpDialog(DIALOG_ERROR_TITLE, "Username or password is invalid");
+        }
     }
 }
