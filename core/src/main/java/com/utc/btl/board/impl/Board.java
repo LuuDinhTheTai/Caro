@@ -4,5 +4,7 @@ import com.utc.btl.board.IBoard;
 
 public class Board implements IBoard {
 
+    private Cell[][] cells;
+
 
 }
