@@ -21,11 +21,11 @@ public class Assets {
     public static void load() {
         Gdx.app.log(INFO, "Assets loading...");
 
-        xCellTexture = new Texture(Gdx.files.internal("lm/lm_X_cell.png"));
-        xCellFocusTexture = new Texture(Gdx.files.internal("lm/lm_X_focus.png"));
-        oCellTexture = new Texture(Gdx.files.internal("lm/lm_O_cell.png"));
-        oCellFocusTexture = new Texture(Gdx.files.internal("lm/lm_O_focus.png"));
-        emptyCellTexture = new Texture(Gdx.files.internal("lm/lm_cell.png"));
-        focusCellTexture = new Texture(Gdx.files.internal("lm/lm_cell_focus.png"));
+        xCellTexture = loadTexture("lm/lm_X_cell.png");
+        xCellFocusTexture = loadTexture("lm/lm_X_focus.png");
+        oCellTexture = loadTexture("lm/lm_O_cell.png");
+        oCellFocusTexture = loadTexture("lm/lm_O_focus.png");
+        emptyCellTexture = loadTexture("lm/lm_cell.png");
+        focusCellTexture = loadTexture("lm/lm_cell_focus.png");
     }
 }
