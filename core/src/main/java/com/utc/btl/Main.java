@@ -37,6 +37,8 @@ public class Main extends Game {
         accountService = new AccountService();
         batch = new SpriteBatch();
 
+        Assets.load();
+
         gameScreen = new GameScreenImpl(this);
         loginScreen = new LoginScreenImpl(this);
         mainMenuScreen = new MainMenuScreenImpl(this);
@@ -46,7 +48,7 @@ public class Main extends Game {
         screenController = new ScreenControllerImpl(this);
         authController = new AuthControllerImpl(this);
 
-        screenController.toMenuScreen();
+        screenController.toLoginScreen();
     }
 
     @Override

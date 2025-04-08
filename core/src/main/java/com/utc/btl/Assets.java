@@ -14,6 +14,16 @@ public class Assets {
     public static Texture emptyCellTexture;
     public static Texture focusCellTexture;
 
+    //game UI
+    public static Texture playBtnTexture;
+    public static Texture settingsBtnTexture;
+    public static Texture exitBtnTexture;
+    public static Texture buttonBackgroundTexture;
+
+    //menu screen
+    public static Texture menuBackgroundTexture;
+    public static Texture menuLogoTexture;
+
     public static Texture loadTexture(String file) {
         return new Texture(Gdx.files.internal(file));
     }
@@ -27,5 +37,10 @@ public class Assets {
         oCellFocusTexture = loadTexture("light_mode/lm_O_cell_focus.png");
         emptyCellTexture = loadTexture("light_mode/lm_cell.png");
         focusCellTexture = loadTexture("light_mode/lm_cell_focus.png");
+
+        menuBackgroundTexture = new Texture("assets/General/menu_background.png");
+        menuLogoTexture = new Texture("assets/General/menu_logo.png");
+        buttonBackgroundTexture = new Texture("assets/UI/btn_background.png");
+        Gdx.app.log(INFO, "Assets loaded successfully");
     }
 }
