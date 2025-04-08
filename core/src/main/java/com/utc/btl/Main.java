@@ -11,10 +11,14 @@ import com.utc.btl.controller.impl.AuthControllerImpl;
 import com.utc.btl.controller.impl.ScreenControllerImpl;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
+import com.utc.btl.service.IAccountService;
+import com.utc.btl.service.impl.AccountService;
 
 import static com.utc.btl.constant.Constants.INFO;
 
 public class Main extends Game {
+
+    public IAccountService accountService;
 
     public SpriteBatch batch;
 
@@ -30,6 +34,7 @@ public class Main extends Game {
     @Override
     public void create() {
         Gdx.app.log(INFO, "Game creating...");
+        accountService = new AccountService();
         batch = new SpriteBatch();
 
         gameScreen = new GameScreenImpl(this);

@@ -19,3 +19,15 @@ public class Account {
     private int loss;
     private int draw;
 }
+/*
+CREATE TABLE `caro`.`account` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `username` VARCHAR(45) NOT NULL,
+    `password` VARCHAR(45) NOT NULL,
+    `elo` INT NULL DEFAULT 500,
+    `win` INT NULL DEFAULT 0,
+    `loss` INT NULL DEFAULT 0,
+    `draw` INT NULL DEFAULT 0,
+PRIMARY KEY (`id`),
+UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+*/

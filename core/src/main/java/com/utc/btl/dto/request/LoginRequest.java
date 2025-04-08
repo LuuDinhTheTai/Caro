@@ -1,11 +1,15 @@
 package com.utc.btl.dto.request;
 
+import com.utc.btl.exception.AppException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
+
+import static com.utc.btl.exception.CustomException.EMPTY_PASSWORD;
+import static com.utc.btl.exception.CustomException.EMPTY_USERNAME;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,11 +20,12 @@ public class LoginRequest {
     private String username;
     private String password;
 
-    public boolean validate() {
-
-        if (Objects.equals(username, "a") && Objects.equals(password, "a")) {
-            return true;
+    public void validate() {
+        if (username.isEmpty()) {
+            throw new AppException(EMPTY_USERNAME);
         }
-        return false;
+        if (password.isEmpty()) {
+            throw new AppException(EMPTY_PASSWORD);
+        }
     }
 }

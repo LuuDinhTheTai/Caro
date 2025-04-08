@@ -6,6 +6,7 @@ import com.utc.btl.controller.AuthController;
 import com.utc.btl.controller.base.impl.BaseController;
 import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
+import com.utc.btl.exception.AppException;
 
 import static com.utc.btl.constant.Constants.DIALOG_ERROR_TITLE;
 import static com.utc.btl.constant.Constants.INFO;
@@ -18,23 +19,37 @@ public class AuthControllerImpl extends BaseController implements AuthController
 
     @Override
     public void login(LoginRequest rq) {
-        Gdx.app.log(INFO, "(login) request: " + rq.toString());
-        if (rq.validate()) {
-            // TODO: excute login logic
+        try {
+            Gdx.app.log(INFO, "(login) request: " + rq.toString());
+
+            rq.validate();
+            main.accountService.login(rq);
             toMainMenuScreen();
-        } else {
-            popUpDialog(DIALOG_ERROR_TITLE, "Username or password is invalid");
+
+        } catch (AppException e) {
+            popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
+
+        } catch (Exception e) {
+            Gdx.app.error(DIALOG_ERROR_TITLE, "(login) request: " + rq.toString(), e);
+            popUpDialog(DIALOG_ERROR_TITLE, "An unexpected error occurred");
         }
     }
 
     @Override
     public void register(RegisterRequest rq) {
-        Gdx.app.log(INFO, "(register) request: " + rq.toString());
-        if (rq.validate()) {
-            // TODO: excute register logic
+        try {
+            Gdx.app.log(INFO, "(register) request: " + rq.toString());
+
+            rq.validate();
+            main.accountService.register(rq);
             toLoginScreen();
-        } else {
-            popUpDialog(DIALOG_ERROR_TITLE, "Username or password is invalid");
+
+        } catch (AppException e) {
+            popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
+
+        } catch (Exception e) {
+            Gdx.app.error(DIALOG_ERROR_TITLE, "(register) request: " + rq.toString(), e);
+            popUpDialog(DIALOG_ERROR_TITLE, "An unexpected error occurred");
         }
     }
 }
