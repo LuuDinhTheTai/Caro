@@ -64,4 +64,16 @@ public abstract class BaseController implements Controller {
 
         dialog.show(stage);
     }
+
+    @Override
+    public void showSettingPopup() {
+        Gdx.app.log(INFO, "Show setting popup");
+        main.settingPopup.show();
+    }
+
+    @Override
+    public void hideSettingPopup() {
+        Gdx.app.log(INFO, "Hide setting popup");
+        main.settingPopup.hide();
+    }
 }

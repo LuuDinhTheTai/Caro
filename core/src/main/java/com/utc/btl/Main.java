@@ -32,6 +32,8 @@ public class Main extends Game {
         Gdx.app.log(INFO, "Game creating...");
         batch = new SpriteBatch();
 
+        Assets.load();
+
         gameScreen = new GameScreenImpl(this);
         loginScreen = new LoginScreenImpl(this);
         mainMenuScreen = new MainMenuScreenImpl(this);
@@ -40,7 +42,6 @@ public class Main extends Game {
 
         screenController = new ScreenControllerImpl(this);
         authController = new AuthControllerImpl(this);
-        Assets.load();
         screenController.toMenuScreen();
     }
 
