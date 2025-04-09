@@ -2,6 +2,9 @@ package com.utc.btl.constant;
 
 public class Constants {
 
+    public static final int ROW_SIZE = 12;
+    public static final int COL_SIZE = 15;
+
     public static final String X_CELL = "X_CELL";
     public static final String X_CELL_FOCUS = "X_CELL_FOCUS";
     public static final String O_CELL = "O_CELL";

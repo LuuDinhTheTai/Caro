@@ -40,7 +40,7 @@ public class Main extends Game {
 
         screenController = new ScreenControllerImpl(this);
         authController = new AuthControllerImpl(this);
-
+        Assets.load();
         screenController.toMenuScreen();
     }
 
