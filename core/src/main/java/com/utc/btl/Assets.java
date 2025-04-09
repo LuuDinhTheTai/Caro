@@ -2,8 +2,8 @@ package com.utc.btl;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.utc.btl.exception.AppException;
-import com.utc.btl.exception.CustomException;
+import com.utc.btl.exception.GameException;
+import com.utc.btl.exception.ExceptionType;
 
 import static com.utc.btl.constant.Constants.INFO;
 
@@ -56,7 +56,7 @@ public class Assets {
             buttonBackgroundTexture = new Texture("assets/UI/btn_background.png");
 
         } catch (Exception e) {
-            throw new AppException(CustomException.LOAD_ASSETS_FAILED);
+            throw new GameException(ExceptionType.LOAD_ASSETS_FAILED);
         }
     }
 }

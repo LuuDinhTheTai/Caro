@@ -1,6 +1,6 @@
 package com.utc.btl.controller.base;
 
-public interface Controller {
+public interface IController {
 
     void toGameScreen();
     void toLoginScreen();

@@ -6,10 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.utc.btl.Main;
 import com.utc.btl.dto.request.RegisterRequest;
-import com.utc.btl.screen.RegisterScreen;
+import com.utc.btl.screen.IRegisterScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-public class RegisterScreenImpl extends BaseScreen implements RegisterScreen {
+public class RegisterScreenImpl extends BaseScreen implements IRegisterScreen {
 
     protected Table table;
     protected Label titleLabel;

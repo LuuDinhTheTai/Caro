@@ -7,13 +7,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.Main;
-import com.utc.btl.screen.MenuScreen;
+import com.utc.btl.screen.IMenuScreen;
 import com.utc.btl.screen.impl.MenuScreenImpl;
 
 import static com.utc.btl.Assets.lightDownButtonTexture;
 import static com.utc.btl.Assets.lightUpButtonTexture;
 
-public class LightMenuScreen extends MenuScreenImpl implements MenuScreen {
+public class LightMenuScreen extends MenuScreenImpl implements IMenuScreen {
 
     protected Label.LabelStyle labelStyle;
     protected ImageTextButton.ImageTextButtonStyle imageTextButtonStyle;

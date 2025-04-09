@@ -2,11 +2,13 @@ package com.utc.btl;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.utc.btl.controller.AuthController;
-import com.utc.btl.controller.ScreenController;
+import com.utc.btl.game_play.IGamePlay;
+import com.utc.btl.game_play.validator.IValidator;
+import com.utc.btl.renderer.IBoardRenderer;
+import com.utc.btl.controller.IAuthController;
+import com.utc.btl.controller.IScreenController;
 import com.utc.btl.controller.impl.AuthControllerImpl;
 import com.utc.btl.controller.impl.ScreenControllerImpl;
 import com.utc.btl.screen.*;
@@ -25,33 +27,52 @@ public class Main extends Game {
     public final int DARK_MODE = 2;
     public int uiMode;
 
+    // STATE
+    public final int inGame = 0;
+    public final int notInGame = 1;
+    public final int pause = 2;
+    public int state;
+
     // SERVICE
     public IAccountService accountService;
 
     public SpriteBatch batch;
 
     // SCREEN
-    public GameScreen gameScreen;
-    public LoginScreen loginScreen;
-    public MainMenuScreen mainMenuScreen;
-    public MenuScreen menuScreen;
-    public RegisterScreen registerScreen;
+    public IGameScreen gameScreen;
+    public ILoginScreen loginScreen;
+    public IMainMenuScreen mainMenuScreen;
+    public IMenuScreen menuScreen;
+    public IRegisterScreen registerScreen;
 
-    public MenuScreen lightMenuScreen;
+    public IMenuScreen lightMenuScreen;
+
+    // RENDERER
+    public IBoardRenderer boardRenderer;
 
     // CONTROLLER
-    public ScreenController screenController;
-    public AuthController authController;
+    public IScreenController screenController;
+    public IAuthController authController;
+
+    // GAME PLAY
+    public IGamePlay gamePlay;
+    public IValidator validator;
 
     @Override
     public void create() {
+
         Gdx.app.log(INFO, "Game creating...");
+        Assets.load();
+
+        // UI MODE
         uiMode = LIGHT_MODE;
 
+        // STATE
+        state = notInGame;
+
+        // SERVICE
         accountService = new AccountService();
         batch = new SpriteBatch();
-
-        Assets.load();
 
         // SCREEN
         gameScreen = new GameScreenImpl(this);
@@ -62,6 +83,7 @@ public class Main extends Game {
 
         lightMenuScreen = new LightMenuScreen(this);
 
+        // CONTROLLER
         screenController = new ScreenControllerImpl(this);
         authController = new AuthControllerImpl(this);
 
@@ -73,7 +95,21 @@ public class Main extends Game {
         GL20 gl = Gdx.gl;
         gl.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        super.render();
+        switch (state) {
+            case inGame:
+                // TODO: vẽ board ở đây hay ở controller ???
+//                boardRenderer.draw(batch);
+                super.render();
+                break;
+            case notInGame:
+
+                super.render();
+                break;
+            case pause:
+
+                super.render();
+                break;
+        }
     }
 
     @Override
@@ -86,5 +122,11 @@ public class Main extends Game {
         mainMenuScreen.dispose();
         menuScreen.dispose();
         registerScreen.dispose();
+    }
+
+    @Override
+    public void pause() {
+        super.pause();
+        state = pause;
     }
 }

@@ -6,10 +6,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.utc.btl.Main;
 import com.utc.btl.dto.request.LoginRequest;
-import com.utc.btl.screen.LoginScreen;
+import com.utc.btl.screen.ILoginScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-public class LoginScreenImpl extends BaseScreen implements LoginScreen {
+public class LoginScreenImpl extends BaseScreen implements ILoginScreen {
 
     protected Table table;
     protected Label titleLabel;

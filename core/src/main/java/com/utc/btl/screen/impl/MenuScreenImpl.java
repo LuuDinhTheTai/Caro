@@ -8,10 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.utc.btl.Main;
-import com.utc.btl.screen.MenuScreen;
+import com.utc.btl.screen.IMenuScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-public class MenuScreenImpl extends BaseScreen implements MenuScreen {
+public class MenuScreenImpl extends BaseScreen implements IMenuScreen {
 
     protected Table table;
 

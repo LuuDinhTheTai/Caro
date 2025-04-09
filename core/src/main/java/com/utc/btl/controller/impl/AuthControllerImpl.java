@@ -2,16 +2,16 @@ package com.utc.btl.controller.impl;
 
 import com.badlogic.gdx.Gdx;
 import com.utc.btl.Main;
-import com.utc.btl.controller.AuthController;
+import com.utc.btl.controller.IAuthController;
 import com.utc.btl.controller.base.impl.BaseController;
 import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
-import com.utc.btl.exception.AppException;
+import com.utc.btl.exception.GameException;
 
 import static com.utc.btl.constant.Constants.DIALOG_ERROR_TITLE;
 import static com.utc.btl.constant.Constants.INFO;
 
-public class AuthControllerImpl extends BaseController implements AuthController {
+public class AuthControllerImpl extends BaseController implements IAuthController {
 
     public AuthControllerImpl(Main main) {
         super(main);
@@ -26,7 +26,7 @@ public class AuthControllerImpl extends BaseController implements AuthController
             main.accountService.login(rq);
             toMainMenuScreen();
 
-        } catch (AppException e) {
+        } catch (GameException e) {
             popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
 
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class AuthControllerImpl extends BaseController implements AuthController
             main.accountService.register(rq);
             toLoginScreen();
 
-        } catch (AppException e) {
+        } catch (GameException e) {
             popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
 
         } catch (Exception e) {

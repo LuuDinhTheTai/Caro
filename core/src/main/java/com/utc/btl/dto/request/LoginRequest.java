@@ -1,15 +1,13 @@
 package com.utc.btl.dto.request;
 
-import com.utc.btl.exception.AppException;
+import com.utc.btl.exception.GameException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Objects;
-
-import static com.utc.btl.exception.CustomException.EMPTY_PASSWORD;
-import static com.utc.btl.exception.CustomException.EMPTY_USERNAME;
+import static com.utc.btl.exception.ExceptionType.EMPTY_PASSWORD;
+import static com.utc.btl.exception.ExceptionType.EMPTY_USERNAME;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,10 +20,10 @@ public class LoginRequest {
 
     public void validate() {
         if (username.isEmpty()) {
-            throw new AppException(EMPTY_USERNAME);
+            throw new GameException(EMPTY_USERNAME);
         }
         if (password.isEmpty()) {
-            throw new AppException(EMPTY_PASSWORD);
+            throw new GameException(EMPTY_PASSWORD);
         }
     }
 }

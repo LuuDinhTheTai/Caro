@@ -1,7 +1,7 @@
 package com.utc.btl.dto.request;
 
-import com.utc.btl.exception.AppException;
-import com.utc.btl.exception.CustomException;
+import com.utc.btl.exception.GameException;
+import com.utc.btl.exception.ExceptionType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,16 +19,16 @@ public class RegisterRequest {
 
     public void validate() {
         if (username.isEmpty()) {
-            throw new AppException(CustomException.EMPTY_USERNAME);
+            throw new GameException(ExceptionType.EMPTY_USERNAME);
         }
         if (password.isEmpty()) {
-            throw new AppException(CustomException.EMPTY_PASSWORD);
+            throw new GameException(ExceptionType.EMPTY_PASSWORD);
         }
         if (confirmPassword.isEmpty()) {
-            throw new AppException(CustomException.EMPTY_CONFIRM_PASSWORD);
+            throw new GameException(ExceptionType.EMPTY_CONFIRM_PASSWORD);
         }
         if (!password.equals(confirmPassword)) {
-            throw new AppException(CustomException.CONFIRM_PASSWORD_NOT_MATCH);
+            throw new GameException(ExceptionType.CONFIRM_PASSWORD_NOT_MATCH);
         }
     }
 }

@@ -1,15 +1,18 @@
-package com.utc.btl.board;
+package com.utc.btl.renderer.impl;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.utc.btl.board.Piece;
 import com.utc.btl.board.impl.Board;
 import com.utc.btl.board.impl.Cell;
 import com.utc.btl.constant.Constants;
+import com.utc.btl.renderer.IBoardRenderer;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardRenderer {
+public class BoardRenderer implements IBoardRenderer {
+
     private Board board;
     private float cellSize;
     private float startX, startY;
@@ -21,7 +24,8 @@ public class BoardRenderer {
         this.startY = boardY;
     }
 
-    public void render(SpriteBatch batch) {
+    @Override
+    public void draw(SpriteBatch batch) {
         for (int row = 0; row < Constants.ROW_SIZE; row++) {
             for (int col = 0; col < Constants.COL_SIZE; col++) {
                 Cell cell = board.getCell(row, col);

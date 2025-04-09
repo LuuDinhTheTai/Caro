@@ -5,8 +5,8 @@ import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
 import com.utc.btl.dto.response.AccountResponse;
 import com.utc.btl.entity.Account;
-import com.utc.btl.exception.AppException;
-import com.utc.btl.exception.CustomException;
+import com.utc.btl.exception.GameException;
+import com.utc.btl.exception.ExceptionType;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.base.impl.BaseService;
 import com.utc.btl.util.DatabaseUtil;
@@ -108,7 +108,7 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
 
         Optional<Account> existingAccount = findByUsername(rq.getUsername());
         if (existingAccount.isPresent()) {
-            throw new AppException(CustomException.USERNAME_EXISTED);
+            throw new GameException(ExceptionType.USERNAME_EXISTED);
         }
 
         Account account = new Account();
@@ -127,7 +127,7 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
 
         Optional<Account> account = findByUsername(rq.getUsername());
         if (account.isEmpty()) {
-            throw new AppException(CustomException.ACCOUNT_NOT_EXISTED);
+            throw new GameException(ExceptionType.ACCOUNT_NOT_EXISTED);
         }
 
         return AccountResponse.from(account.get());

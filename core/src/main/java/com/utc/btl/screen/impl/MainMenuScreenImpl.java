@@ -1,6 +1,5 @@
 package com.utc.btl.screen.impl;
 
-import com.badlogic.gdx.maps.tiled.renderers.IsometricStaggeredTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -8,12 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.Assets;
 import com.utc.btl.Main;
-import com.utc.btl.screen.MainMenuScreen;
+import com.utc.btl.screen.IMainMenuScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-import javax.management.StandardMBean;
-
-public class MainMenuScreenImpl extends BaseScreen implements MainMenuScreen {
+public class MainMenuScreenImpl extends BaseScreen implements IMainMenuScreen {
 
     protected Table table;
 

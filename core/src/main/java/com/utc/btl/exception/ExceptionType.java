@@ -3,7 +3,7 @@ package com.utc.btl.exception;
 import lombok.Getter;
 
 @Getter
-public enum CustomException {
+public enum ExceptionType {
 
     USERNAME_EXISTED("Username already existed"),
     ACCOUNT_NOT_EXISTED("Account not existed"),
@@ -17,7 +17,7 @@ public enum CustomException {
 
     private String message;
 
-    CustomException(String message) {
+    ExceptionType(String message) {
         this.message = message;
     }
 }

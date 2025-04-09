@@ -2,5 +2,5 @@ package com.utc.btl.screen;
 
 import com.utc.btl.screen.base.IBaseScreen;
 
-public interface RegisterScreen extends IBaseScreen {
+public interface ILoginScreen extends IBaseScreen {
 }

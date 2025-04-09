@@ -1,8 +1,8 @@
 package com.utc.btl.util;
 
 import com.badlogic.gdx.Gdx;
-import com.utc.btl.exception.AppException;
-import com.utc.btl.exception.CustomException;
+import com.utc.btl.exception.GameException;
+import com.utc.btl.exception.ExceptionType;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -41,15 +41,15 @@ public class DatabaseUtil {
         } catch (IOException e) {
             Gdx.app.error(ERROR, "Can not read file database properties");
             e.printStackTrace();
-            throw new AppException(CustomException.SYSTEM_ERROR);
+            throw new GameException(ExceptionType.SYSTEM_ERROR);
         } catch (ClassNotFoundException e) {
             Gdx.app.error(ERROR, "Can not find database driver");
             e.printStackTrace();
-            throw new AppException(CustomException.SYSTEM_ERROR);
+            throw new GameException(ExceptionType.SYSTEM_ERROR);
         } catch (SQLException e) {
             Gdx.app.error(ERROR, "Can not get database connection");
             e.printStackTrace();
-            throw new AppException(CustomException.SYSTEM_ERROR);
+            throw new GameException(ExceptionType.SYSTEM_ERROR);
         }
     }
 }
