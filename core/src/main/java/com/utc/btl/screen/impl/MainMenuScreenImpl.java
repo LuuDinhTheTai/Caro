@@ -68,7 +68,6 @@ public class MainMenuScreenImpl extends BaseScreen implements MainMenuScreen {
 
     @Override
     public void setUI() {
-
         table.setFillParent(true);
         table.center();
         table.setBackground(new TextureRegionDrawable(Assets.menuBackgroundTexture));

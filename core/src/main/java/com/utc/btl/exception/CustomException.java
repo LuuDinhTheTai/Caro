@@ -12,6 +12,7 @@ public enum CustomException {
     EMPTY_CONFIRM_PASSWORD("Confirm password is empty"),
     CONFIRM_PASSWORD_NOT_MATCH("Confirm password does not match"),
     SYSTEM_ERROR("System error"),
+    LOAD_ASSETS_FAILED("Load assets failed"),
     ;
 
     private String message;

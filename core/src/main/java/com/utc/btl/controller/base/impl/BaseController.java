@@ -40,7 +40,11 @@ public abstract class BaseController implements Controller {
     @Override
     public void toMenuScreen() {
         Gdx.app.log(INFO, "Redirect to menu screen");
-        main.setScreen(main.menuScreen);
+        if (main.uiMode == main.DEFAULT_UI) {
+            main.setScreen(main.menuScreen);
+        } else if (main.uiMode == main.LIGHT_MODE) {
+            main.setScreen(main.lightMenuScreen);
+        }
     }
 
     @Override

@@ -12,16 +12,13 @@ public abstract class BaseScreen implements IBaseScreen {
     protected Stage stage;
     protected Skin skin;
 
-    protected Label.LabelStyle labelStyle;
-    protected TextField.TextFieldStyle textFieldStyle;
-    protected Button.ButtonStyle buttonStyle;
-    protected TextButton.TextButtonStyle textButtonStyle;
-    protected ImageTextButton.ImageTextButtonStyle imageTextButtonStyle;
-
     public BaseScreen(Main main) {
         this.main = main;
         this.stage = new Stage();
         this.skin = new Skin(Gdx.files.internal("uiskin.json"));
+        init();
+        setUI();
+        setListeners();
     }
 
     @Override
@@ -38,9 +35,6 @@ public abstract class BaseScreen implements IBaseScreen {
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
-        init();
-        setUI();
-        setListeners();
     }
 
     @Override
