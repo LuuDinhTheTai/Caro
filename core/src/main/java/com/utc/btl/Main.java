@@ -42,8 +42,7 @@ public class Main extends Game {
 
         screenController = new ScreenControllerImpl(this);
         authController = new AuthControllerImpl(this);
-
-        screenController.toLoginScreen();
+        screenController.toMenuScreen();
     }
 
     @Override
