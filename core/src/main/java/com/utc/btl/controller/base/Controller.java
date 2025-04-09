@@ -8,6 +8,4 @@ public interface Controller {
     void toMenuScreen();
     void toRegisterScreen();
     void popUpDialog(String title, String msg);
-    void showSettingPopup();
-    void hideSettingPopup();
 }
