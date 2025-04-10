@@ -22,6 +22,21 @@ public abstract class BaseScreen implements IBaseScreen {
     }
 
     @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
     public void render(float delta) {
         stage.act(delta);
         stage.draw();
