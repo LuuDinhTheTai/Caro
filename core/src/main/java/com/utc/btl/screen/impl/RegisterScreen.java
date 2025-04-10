@@ -5,22 +5,27 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.utc.btl.Main;
-import com.utc.btl.dto.request.LoginRequest;
-import com.utc.btl.screen.ILoginScreen;
+import com.utc.btl.dto.request.RegisterRequest;
+import com.utc.btl.screen.IRegisterScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-public class LoginScreenImpl extends BaseScreen implements ILoginScreen {
+public class RegisterScreen extends BaseScreen implements IRegisterScreen {
 
     protected Table table;
     protected Label titleLabel;
     protected Label usernameLabel;
     protected Label passwordLabel;
+    protected Label confirmPasswordLabel;
     protected TextField usernameField;
     protected TextField passwordField;
-    protected Button loginBtn;
-    protected Button toMenuBtn;
+    protected TextField confirmPasswordField;
 
-    public LoginScreenImpl(Main main) {
+    protected Button registerBtn;
+    protected Button toLoginBtn;
+    protected Button toMenuScreen;
+
+
+    public RegisterScreen(Main main) {
         super(main);
     }
 
@@ -62,8 +67,9 @@ public class LoginScreenImpl extends BaseScreen implements ILoginScreen {
     @Override
     public void init() {
         table = new Table();
+        table.setFillParent(true);
 
-        titleLabel = new Label("LOGIN", skin);
+        titleLabel = new Label("REGISTER", skin);
 
         usernameLabel = new Label("Username:", skin);
         usernameField = new TextField("", skin);
@@ -73,39 +79,54 @@ public class LoginScreenImpl extends BaseScreen implements ILoginScreen {
         passwordField.setPasswordMode(true);
         passwordField.setPasswordCharacter('*');
 
-        loginBtn = new TextButton("Login", skin);
-        toMenuBtn = new TextButton("Menu", skin);
+        confirmPasswordLabel = new Label("Confirm password:", skin);
+        confirmPasswordField = new TextField("", skin);
+        confirmPasswordField.setPasswordMode(true);
+        confirmPasswordField.setPasswordCharacter('*');
+
+        registerBtn = new TextButton("Register", skin);
+        toLoginBtn = new TextButton("Login", skin);
+        toMenuScreen = new TextButton("Menu", skin);
     }
 
     @Override
     public void setUI() {
-        table.setFillParent(true);
         table.setSize(200, 400);
         table.center();
 
-        table.add(titleLabel).colspan(2).padTop(5).row();
+        table.add(titleLabel).padTop(5).row();
         table.add(usernameLabel).padTop(10).align(Align.left).row();
         table.add(usernameField).width(table.getWidth()).align(Align.left).padTop(0).row();
         table.add(passwordLabel).padTop(10).align(Align.left).row();
         table.add(passwordField).width(table.getWidth()).align(Align.left).padTop(0).row();
-        table.add(loginBtn).colspan(2).width(table.getWidth()).padTop(10).row();
-        table.add(toMenuBtn).colspan(2).width(table.getWidth()).padTop(10).row();
+        table.add(confirmPasswordLabel).padTop(10).align(Align.left).row();
+        table.add(confirmPasswordField).width(table.getWidth()).align(Align.left).padTop(0).row();
+        table.add(registerBtn).width(table.getWidth()).padTop(10).row();
+        table.add(toLoginBtn).width(table.getWidth()).padTop(10).row();
+        table.add(toMenuScreen).width(table.getWidth()).padTop(10).row();
 
         stage.addActor(table);
     }
 
     @Override
     public void setListeners() {
-        loginBtn.addListener(new ClickListener() {
+        registerBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 String username = usernameField.getText();
                 String password = passwordField.getText();
-                LoginRequest rq = new LoginRequest(username, password);
-                main.authController.login(rq);
+                String confirmPassword = confirmPasswordField.getText();
+                RegisterRequest rq = new RegisterRequest(username, password, confirmPassword);
+                main.authController.register(rq);
             }
         });
-        toMenuBtn.addListener(new ClickListener() {
+        toLoginBtn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                main.screenController.toLoginScreen();
+            }
+        });
+        toMenuScreen.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toMenuScreen();

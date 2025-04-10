@@ -4,16 +4,16 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.utc.btl.entity.Account;
 import com.utc.btl.game_play.IGamePlay;
 import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.renderer.IBoardRenderer;
 import com.utc.btl.controller.IAuthController;
 import com.utc.btl.controller.IScreenController;
-import com.utc.btl.controller.impl.AuthControllerImpl;
-import com.utc.btl.controller.impl.ScreenControllerImpl;
+import com.utc.btl.controller.impl.AuthController;
+import com.utc.btl.controller.impl.ScreenController;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
-import com.utc.btl.screen.impl.light_mode.LightMenuScreen;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
 
@@ -43,6 +43,7 @@ public class Main extends Game {
     public ILoginScreen loginScreen;
     public IMainMenuScreen mainMenuScreen;
     public IMenuScreen menuScreen;
+    public IProfileScreen profileScreen;
     public IRegisterScreen registerScreen;
 
     public IMenuScreen lightMenuScreen;
@@ -58,6 +59,9 @@ public class Main extends Game {
     public IGamePlay gamePlay;
     public IValidator validator;
 
+    // AUTH
+    public Account loggedInAccount;
+
     @Override
     public void create() {
 
@@ -65,7 +69,7 @@ public class Main extends Game {
         Assets.load();
 
         // UI MODE
-        uiMode = LIGHT_MODE;
+        uiMode = DEFAULT_UI;
 
         // STATE
         state = notInGame;
@@ -75,17 +79,18 @@ public class Main extends Game {
         batch = new SpriteBatch();
 
         // SCREEN
-        gameScreen = new GameScreenImpl(this);
-        loginScreen = new LoginScreenImpl(this);
-        mainMenuScreen = new MainMenuScreenImpl(this);
-        menuScreen = new MenuScreenImpl(this);
-        registerScreen = new RegisterScreenImpl(this);
+        gameScreen = new GameScreen(this);
+        loginScreen = new LoginScreen(this);
+        mainMenuScreen = new MainMenuScreen(this);
+        menuScreen = new MenuScreen(this);
+        profileScreen = new ProfileScreen(this);
+        registerScreen = new RegisterScreen(this);
 
-        lightMenuScreen = new LightMenuScreen(this);
+//        lightMenuScreen = new LightMenuScreen(this);
 
         // CONTROLLER
-        screenController = new ScreenControllerImpl(this);
-        authController = new AuthControllerImpl(this);
+        screenController = new ScreenController(this);
+        authController = new AuthController(this);
 
         screenController.toMenuScreen();
     }

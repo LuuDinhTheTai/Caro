@@ -38,35 +38,8 @@ public abstract class BaseScreen implements IBaseScreen {
     }
 
     @Override
-    public void hide() {
-    }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
     public void dispose() {
         stage.dispose();
         skin.dispose();
-    }
-
-    @Override
-    public void init() {
-
-    }
-
-    @Override
-    public void setUI() {
-
-    }
-
-    @Override
-    public void setListeners() {
-
     }
 }

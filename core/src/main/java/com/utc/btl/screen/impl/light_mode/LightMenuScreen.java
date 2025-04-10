@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.Main;
 import com.utc.btl.screen.IMenuScreen;
-import com.utc.btl.screen.impl.MenuScreenImpl;
+import com.utc.btl.screen.impl.MenuScreen;
 
 import static com.utc.btl.Assets.lightDownButtonTexture;
 import static com.utc.btl.Assets.lightUpButtonTexture;
 
-public class LightMenuScreen extends MenuScreenImpl implements IMenuScreen {
+public class LightMenuScreen extends MenuScreen implements IMenuScreen {
 
     protected Label.LabelStyle labelStyle;
     protected ImageTextButton.ImageTextButtonStyle imageTextButtonStyle;
@@ -30,8 +30,6 @@ public class LightMenuScreen extends MenuScreenImpl implements IMenuScreen {
         table = new Table();
 
         titleLabel = new Label("C-Caro", labelStyle);
-        loginBtn = new ImageTextButton("Login", imageTextButtonStyle);
-        registerBtn = new ImageTextButton("Register", imageTextButtonStyle);
         singlePlayerBtn = new ImageTextButton("Single Player", imageTextButtonStyle);
         multiPlayerBtn = new ImageTextButton("Multi Player", imageTextButtonStyle);
         exitBtn = new ImageTextButton("Exit", imageTextButtonStyle);

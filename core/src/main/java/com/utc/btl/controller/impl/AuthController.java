@@ -11,9 +11,9 @@ import com.utc.btl.exception.GameException;
 import static com.utc.btl.constant.Constants.DIALOG_ERROR_TITLE;
 import static com.utc.btl.constant.Constants.INFO;
 
-public class AuthControllerImpl extends BaseController implements IAuthController {
+public class AuthController extends BaseController implements IAuthController {
 
-    public AuthControllerImpl(Main main) {
+    public AuthController(Main main) {
         super(main);
     }
 
@@ -23,7 +23,7 @@ public class AuthControllerImpl extends BaseController implements IAuthControlle
             Gdx.app.log(INFO, "(login) request: " + rq.toString());
 
             rq.validate();
-            main.accountService.login(rq);
+            main.loggedInAccount = main.accountService.login(rq);
             toMainMenuScreen();
 
         } catch (GameException e) {

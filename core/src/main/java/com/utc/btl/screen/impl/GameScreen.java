@@ -9,13 +9,13 @@ import com.utc.btl.Main;
 import com.utc.btl.screen.IGameScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-public class GameScreenImpl extends BaseScreen implements IGameScreen {
+public class GameScreen extends BaseScreen implements IGameScreen {
 
     private Table hudTable;
 
     protected Button pauseBtn;
 
-    public GameScreenImpl(Main main) {
+    public GameScreen(Main main) {
         super(main);
     }
 

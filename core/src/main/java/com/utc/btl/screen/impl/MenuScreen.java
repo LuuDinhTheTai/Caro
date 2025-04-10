@@ -11,19 +11,18 @@ import com.utc.btl.Main;
 import com.utc.btl.screen.IMenuScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
-public class MenuScreenImpl extends BaseScreen implements IMenuScreen {
+public class MenuScreen extends BaseScreen implements IMenuScreen {
 
     protected Table table;
 
     protected Label titleLabel;
 
-    protected Button loginBtn;
-    protected Button registerBtn;
     protected Button singlePlayerBtn;
     protected Button multiPlayerBtn;
+    protected Button profileBtn;
     protected Button exitBtn;
 
-    public MenuScreenImpl(Main main) {
+    public MenuScreen(Main main) {
         super(main);
     }
 
@@ -67,10 +66,9 @@ public class MenuScreenImpl extends BaseScreen implements IMenuScreen {
         table = new Table();
 
         titleLabel = new Label("C-Caro", skin);
-        loginBtn = new TextButton("Login", skin);
-        registerBtn = new TextButton("Register", skin);
         singlePlayerBtn = new TextButton("Single Player", skin);
         multiPlayerBtn = new TextButton("Multi Player", skin);
+        profileBtn = new TextButton("Profile", skin);
         exitBtn = new TextButton("Exit", skin);
     }
 
@@ -81,10 +79,9 @@ public class MenuScreenImpl extends BaseScreen implements IMenuScreen {
         table.center();
 
         table.add(titleLabel).padTop(5).row();
-        table.add(loginBtn).width(table.getWidth()).padTop(10).row();
-        table.add(registerBtn).width(table.getWidth()).padTop(10).row();
         table.add(singlePlayerBtn).width(table.getWidth()).padTop(10).row();
         table.add(multiPlayerBtn).width(table.getWidth()).padTop(10).row();
+        table.add(profileBtn).width(table.getWidth()).padTop(10).row();
         table.add(exitBtn).width(table.getWidth()).padTop(10).row();
 
         stage.addActor(table);
@@ -92,18 +89,6 @@ public class MenuScreenImpl extends BaseScreen implements IMenuScreen {
 
     @Override
     public void setListeners() {
-        loginBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                main.screenController.toLoginScreen();
-            }
-        });
-        registerBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                main.screenController.toRegisterScreen();
-            }
-        });
         singlePlayerBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -114,6 +99,12 @@ public class MenuScreenImpl extends BaseScreen implements IMenuScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toGameScreen();
+            }
+        });
+        profileBtn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                main.screenController.toProfileScreen();
             }
         });
         exitBtn.addListener(new ClickListener() {

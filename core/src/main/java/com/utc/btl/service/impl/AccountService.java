@@ -1,9 +1,9 @@
 package com.utc.btl.service.impl;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
-import com.utc.btl.dto.response.AccountResponse;
 import com.utc.btl.entity.Account;
 import com.utc.btl.exception.GameException;
 import com.utc.btl.exception.ExceptionType;
@@ -103,7 +103,7 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
     }
 
     @Override
-    public AccountResponse register(RegisterRequest rq) {
+    public Account register(RegisterRequest rq) {
         Gdx.app.log(INFO, "(register) object: " + rq.toString());
 
         Optional<Account> existingAccount = findByUsername(rq.getUsername());
@@ -118,11 +118,12 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
         account.setWin(0);
         account.setLoss(0);
         account.setDraw(0);
-        return AccountResponse.from(create(account));
+
+        return account;
     }
 
     @Override
-    public AccountResponse login(LoginRequest rq) {
+    public Account login(LoginRequest rq) {
         Gdx.app.log(INFO, "(login) object: " + rq.toString());
 
         Optional<Account> account = findByUsername(rq.getUsername());
@@ -130,7 +131,17 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
             throw new GameException(ExceptionType.ACCOUNT_NOT_EXISTED);
         }
 
-        return AccountResponse.from(account.get());
+        if (!account.get().getPassword().equals(rq.getPassword())) {
+            throw new GameException(ExceptionType.WRONG_PASSWORD_EXCEPTION);
+        }
+
+        return account.get();
+    }
+
+    @Override
+    public void logout() {
+        Gdx.app.log(INFO, "(logout) ");
+
     }
 
     private Optional<Account> findByUsername(String username) {

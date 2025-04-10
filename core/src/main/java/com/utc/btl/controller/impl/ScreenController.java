@@ -4,9 +4,9 @@ import com.utc.btl.Main;
 import com.utc.btl.controller.IScreenController;
 import com.utc.btl.controller.base.impl.BaseController;
 
-public class ScreenControllerImpl extends BaseController implements IScreenController {
+public class ScreenController extends BaseController implements IScreenController {
 
-    public ScreenControllerImpl(Main main) {
+    public ScreenController(Main main) {
         super(main);
     }
 }

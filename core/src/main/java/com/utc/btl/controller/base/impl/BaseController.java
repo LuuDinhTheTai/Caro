@@ -99,6 +99,12 @@ public abstract class BaseController implements IController {
     }
 
     @Override
+    public void toProfileScreen() {
+        main.state = main.notInGame;
+        main.setScreen(main.profileScreen);
+    }
+
+    @Override
     public void popUpDialog(String title, String msg) {
         Gdx.app.log(INFO, "Pop up dialog");
         Stage stage = (Stage) Gdx.input.getInputProcessor();

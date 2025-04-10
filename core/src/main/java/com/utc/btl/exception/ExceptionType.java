@@ -13,6 +13,8 @@ public enum ExceptionType {
     CONFIRM_PASSWORD_NOT_MATCH("Confirm password does not match"),
     SYSTEM_ERROR("System error"),
     LOAD_ASSETS_FAILED("Load assets failed"),
+    SET_LOCALSTORAGE_EXCEPTION("Set localstorage failed"),
+    WRONG_PASSWORD_EXCEPTION("Password is incorrect"),
     ;
 
     private String message;
