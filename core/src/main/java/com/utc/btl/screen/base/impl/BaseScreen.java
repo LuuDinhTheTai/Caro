@@ -3,6 +3,7 @@ package com.utc.btl.screen.base.impl;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.utc.btl.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.screen.base.IBaseScreen;
 
@@ -15,7 +16,7 @@ public abstract class BaseScreen implements IBaseScreen {
     public BaseScreen(Main main) {
         this.main = main;
         this.stage = new Stage();
-        this.skin = new Skin(Gdx.files.internal("uiskin.json"));
+        this.skin = Assets.skin;
         init();
         setUI();
         setListeners();

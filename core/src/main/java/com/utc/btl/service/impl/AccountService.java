@@ -135,6 +135,7 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
             throw new GameException(ExceptionType.WRONG_PASSWORD_EXCEPTION);
         }
 
+        int i = 1/0;
         return account.get();
     }
 

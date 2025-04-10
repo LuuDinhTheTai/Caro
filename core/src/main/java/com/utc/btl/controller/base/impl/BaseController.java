@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.utc.btl.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.controller.base.IController;
 
@@ -16,7 +17,7 @@ public abstract class BaseController implements IController {
 
     public BaseController(Main main/*, BoardRenderer boardRenderer*/) {
         this.main = main;
-        this.skin = new Skin(Gdx.files.internal("uiskin.json"));
+        this.skin = Assets.skin;
     }
 
     @Override

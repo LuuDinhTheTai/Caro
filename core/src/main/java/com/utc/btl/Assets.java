@@ -2,12 +2,17 @@ package com.utc.btl;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.utc.btl.exception.GameException;
 import com.utc.btl.exception.ExceptionType;
 
+import static com.utc.btl.constant.Constants.ERROR;
 import static com.utc.btl.constant.Constants.INFO;
 
 public class Assets {
+
+    // SKIN
+    public static Skin skin;
 
     // CELL
     public static Texture xCellTexture;
@@ -39,6 +44,8 @@ public class Assets {
         Gdx.app.log(INFO, "Assets loading...");
 
         try {
+            // SKIN
+            skin = new Skin(Gdx.files.internal("uiskin.json"));
             // CELL
             xCellTexture = loadTexture("light_mode/lm_X_cell.png");
             xCellFocusTexture = loadTexture("light_mode/lm_X_cell_focus.png");
@@ -56,7 +63,7 @@ public class Assets {
             buttonBackgroundTexture = new Texture("assets/UI/btn_background.png");
 
         } catch (Exception e) {
-            throw new GameException(ExceptionType.LOAD_ASSETS_FAILED);
+            Gdx.app.error(ERROR, "Caused by: ", e);
         }
     }
 }

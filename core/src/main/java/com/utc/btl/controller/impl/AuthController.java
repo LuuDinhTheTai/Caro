@@ -8,8 +8,7 @@ import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
 import com.utc.btl.exception.GameException;
 
-import static com.utc.btl.constant.Constants.DIALOG_ERROR_TITLE;
-import static com.utc.btl.constant.Constants.INFO;
+import static com.utc.btl.constant.Constants.*;
 
 public class AuthController extends BaseController implements IAuthController {
 
@@ -27,10 +26,11 @@ public class AuthController extends BaseController implements IAuthController {
             toMainMenuScreen();
 
         } catch (GameException e) {
+            Gdx.app.error(ERROR, "Caused by: ", e);
             popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
 
         } catch (Exception e) {
-            Gdx.app.error(DIALOG_ERROR_TITLE, "(login) request: " + rq.toString(), e);
+            Gdx.app.error(ERROR, "Caused by: ", e);
             popUpDialog(DIALOG_ERROR_TITLE, "An unexpected error occurred");
         }
     }
@@ -45,10 +45,11 @@ public class AuthController extends BaseController implements IAuthController {
             toLoginScreen();
 
         } catch (GameException e) {
+            Gdx.app.error(ERROR, "Caused by: ", e);
             popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
 
         } catch (Exception e) {
-            Gdx.app.error(DIALOG_ERROR_TITLE, "(register) request: " + rq.toString(), e);
+            Gdx.app.error(ERROR, "Caused by: ", e);
             popUpDialog(DIALOG_ERROR_TITLE, "An unexpected error occurred");
         }
     }
