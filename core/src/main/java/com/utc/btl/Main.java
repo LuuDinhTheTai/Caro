@@ -6,13 +6,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.utc.btl.entity.Account;
-import com.utc.btl.game_play.IGamePlay;
 import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.renderer.IBoardRenderer;
 import com.utc.btl.controller.IAuthController;
 import com.utc.btl.controller.IScreenController;
 import com.utc.btl.controller.impl.AuthController;
 import com.utc.btl.controller.impl.ScreenController;
+import com.utc.btl.renderer.impl.BoardRenderer;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.service.IAccountService;
@@ -57,7 +57,6 @@ public class Main extends Game {
     public IAuthController authController;
 
     // GAME PLAY
-    public IGamePlay gamePlay;
     public IValidator validator;
 
     // AUTH
@@ -91,6 +90,9 @@ public class Main extends Game {
 
 //        lightMenuScreen = new LightMenuScreen(this);
 
+        // RENDERER
+        boardRenderer = new BoardRenderer();
+
         // CONTROLLER
         screenController = new ScreenController(this);
         authController = new AuthController(this);
@@ -105,8 +107,9 @@ public class Main extends Game {
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         switch (state) {
             case inGame:
-                // TODO: vẽ board ở đây hay ở controller ???
-//                boardRenderer.draw(batch);
+                batch.begin();
+                boardRenderer.draw(batch);
+                batch.end();
                 super.render();
                 break;
             case notInGame:
