@@ -19,16 +19,23 @@ public class RegisterRequest {
 
     public void validate() {
         if (username.isEmpty()) {
-            throw new GameException(ExceptionType.EMPTY_USERNAME);
+            throw new GameException(ExceptionType.EMPTY_USERNAME_EXCEPTION);
         }
         if (password.isEmpty()) {
-            throw new GameException(ExceptionType.EMPTY_PASSWORD);
+            throw new GameException(ExceptionType.EMPTY_PASSWORD_EXCEPTION);
         }
         if (confirmPassword.isEmpty()) {
-            throw new GameException(ExceptionType.EMPTY_CONFIRM_PASSWORD);
+            throw new GameException(ExceptionType.EMPTY_CONFIRM_PASSWORD_EXCEPTION);
         }
         if (!password.equals(confirmPassword)) {
-            throw new GameException(ExceptionType.CONFIRM_PASSWORD_NOT_MATCH);
+            throw new GameException(ExceptionType.CONFIRM_PASSWORD_NOT_MATCH_EXCEPTION);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "RegisterRequest [username=" + username
+                   + ", password=" + password
+                   + ", confirmPassword=" + confirmPassword + "]";
     }
 }

@@ -8,6 +8,7 @@ import com.utc.btl.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.controller.base.IController;
 
+import static com.utc.btl.constant.Constants.DEBUG;
 import static com.utc.btl.constant.Constants.INFO;
 
 public abstract class BaseController implements IController {
@@ -107,7 +108,7 @@ public abstract class BaseController implements IController {
 
     @Override
     public void popUpDialog(String title, String msg) {
-        Gdx.app.log(INFO, "Pop up dialog");
+        Gdx.app.debug(DEBUG, "Pop up dialog");
         Stage stage = (Stage) Gdx.input.getInputProcessor();
 
         Dialog dialog = new Dialog(title, skin);

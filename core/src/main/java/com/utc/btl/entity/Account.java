@@ -1,9 +1,6 @@
 package com.utc.btl.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,6 +15,17 @@ public class Account {
     private int win;
     private int loss;
     private int draw;
+
+    @Override
+    public String toString() {
+        return "Account [id = " + id
+                   + ", username = " + username
+                   + ", password = " + password
+                   + ", elo = " + elo
+                   + ", win = " + win
+                   + ", loss = " + loss
+                   + ", draw = " + draw + "]";
+    }
 }
 /*
 CREATE TABLE `caro`.`account` (

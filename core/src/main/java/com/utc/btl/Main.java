@@ -1,5 +1,6 @@
 package com.utc.btl;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -64,8 +65,10 @@ public class Main extends Game {
 
     @Override
     public void create() {
-
         Gdx.app.log(INFO, "Game creating...");
+
+        Gdx.app.setLogLevel(Application.LOG_DEBUG);
+
         Assets.load();
 
         // UI MODE

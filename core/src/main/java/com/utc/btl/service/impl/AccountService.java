@@ -1,6 +1,5 @@
 package com.utc.btl.service.impl;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.utc.btl.dto.request.LoginRequest;
 import com.utc.btl.dto.request.RegisterRequest;
@@ -11,30 +10,35 @@ import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.base.impl.BaseService;
 import com.utc.btl.util.DatabaseUtil;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.Optional;
 
+import static com.utc.btl.constant.Constants.DEBUG;
 import static com.utc.btl.constant.Constants.INFO;
 
 public class AccountService extends BaseService<Account, Long> implements IAccountService<Account, Long> {
 
     @Override
-    protected Connection getConnection() throws SQLException, IOException, ClassNotFoundException {
+    protected Connection getConnection() {
         return DatabaseUtil.getConnection();
     }
 
     @Override
-    protected Account from(ResultSet rs) throws SQLException {
-        Account account = new Account();
-        account.setId(rs.getLong("id"));
-        account.setUsername(rs.getString("username"));
-        account.setPassword(rs.getString("password"));
-        account.setElo(rs.getLong("elo"));
-        account.setWin(rs.getInt("win"));
-        account.setLoss(rs.getInt("loss"));
-        account.setDraw(rs.getInt("draw"));
-        return account;
+    protected Account from(ResultSet rs) {
+        try {
+            Account account = new Account();
+            account.setId(rs.getLong("id"));
+            account.setUsername(rs.getString("username"));
+            account.setPassword(rs.getString("password"));
+            account.setElo(rs.getLong("elo"));
+            account.setWin(rs.getInt("win"));
+            account.setLoss(rs.getInt("loss"));
+            account.setDraw(rs.getInt("draw"));
+            return account;
+
+        } catch (SQLException e) {
+            throw new GameException(ExceptionType.COULD_NOT_MAP_FROM_RESULT_EXCEPTION);
+        }
     }
 
     @Override
@@ -49,6 +53,7 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
 
     @Override
     public Account create(Account account) {
+        Gdx.app.debug(DEBUG, "(create) object: " + account.toString());
         String sql = "INSERT INTO account (username, password, elo, win, loss, draw) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -72,14 +77,15 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
                 }
             }
             return account;
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+        } catch (SQLException e) {
             return null;
         }
     }
 
     @Override
     public Account update(Account account) {
+        Gdx.app.debug(DEBUG, "(update) object: " + account.toString());
         String sql = "UPDATE account SET username=?, password=?, elo=?, win=?, loss=?, draw=? WHERE id=?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -95,20 +101,21 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
             if (affectedRows == 0) {
                 throw new SQLException("Updating account failed, no rows affected.");
             }
+
             return account;
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+        } catch (SQLException e) {
             return null;
         }
     }
 
     @Override
     public Account register(RegisterRequest rq) {
-        Gdx.app.log(INFO, "(register) object: " + rq.toString());
+        Gdx.app.debug(DEBUG, "(register) object: " + rq.toString());
 
         Optional<Account> existingAccount = findByUsername(rq.getUsername());
         if (existingAccount.isPresent()) {
-            throw new GameException(ExceptionType.USERNAME_EXISTED);
+            throw new GameException(ExceptionType.USERNAME_EXISTED_EXCEPTION);
         }
 
         Account account = new Account();
@@ -119,16 +126,16 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
         account.setLoss(0);
         account.setDraw(0);
 
-        return account;
+        return create(account);
     }
 
     @Override
     public Account login(LoginRequest rq) {
-        Gdx.app.log(INFO, "(login) object: " + rq.toString());
+        Gdx.app.debug(DEBUG, "(login) object: " + rq.toString());
 
         Optional<Account> account = findByUsername(rq.getUsername());
         if (account.isEmpty()) {
-            throw new GameException(ExceptionType.ACCOUNT_NOT_EXISTED);
+            throw new GameException(ExceptionType.ACCOUNT_NOT_EXISTED_EXCEPTION);
         }
 
         if (!account.get().getPassword().equals(rq.getPassword())) {
@@ -139,13 +146,13 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
     }
 
     @Override
-    public void logout() {
-        Gdx.app.log(INFO, "(logout) ");
-
+    public Account logout() {
+        Gdx.app.debug(DEBUG, "(logout) ");
+        return null;
     }
 
     private Optional<Account> findByUsername(String username) {
-        Gdx.app.log(INFO, "(find) username: " + username);
+        Gdx.app.debug(DEBUG, "(find) username: " + username);
         String sql = "SELECT * FROM account WHERE username = ?";
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -158,8 +165,7 @@ public class AccountService extends BaseService<Account, Long> implements IAccou
                 }
                 return Optional.empty();
             }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
             return Optional.empty();
         }
     }

@@ -1,6 +1,8 @@
 package com.utc.btl.service.base.impl;
 
 import com.badlogic.gdx.Gdx;
+import com.utc.btl.exception.ExceptionType;
+import com.utc.btl.exception.GameException;
 import com.utc.btl.service.base.IService;
 
 import java.io.IOException;
@@ -9,13 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.utc.btl.constant.Constants.DEBUG;
 import static com.utc.btl.constant.Constants.INFO;
 
 public abstract class BaseService<T, ID> implements IService<T, ID> {
 
     @Override
     public Optional<T> find(ID id) {
-        Gdx.app.log(INFO, "(find) id: " + id);
+        Gdx.app.debug(DEBUG, "(find) id: " + id);
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(
                  "SELECT * FROM " + getTableName() + " WHERE " + getIdColumnName() + " = ?")) {
@@ -24,16 +27,17 @@ public abstract class BaseService<T, ID> implements IService<T, ID> {
             if (rs.next()) {
                 return Optional.of(from(rs));
             }
-            return Optional.empty();
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-            return Optional.empty();
+
+        } catch (SQLException e) {
+            throw new GameException(ExceptionType.ENTITY_NOT_FOUND_EXCEPTION);
         }
+
+        return Optional.empty();
     }
 
     @Override
     public List<T> list() {
-        Gdx.app.log(INFO, "(list)");
+        Gdx.app.debug(DEBUG, "(list)");
         List<T> result = new ArrayList<>();
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
@@ -41,27 +45,30 @@ public abstract class BaseService<T, ID> implements IService<T, ID> {
             while (rs.next()) {
                 result.add(from(rs));
             }
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+            return result;
+
+        } catch (SQLException e) {
+            throw new GameException(ExceptionType.COULD_NOT_LIST_DATA_EXCEPTION);
         }
-        return result;
     }
 
     @Override
     public void delete(ID id) {
-        Gdx.app.log(INFO, "(delete) id: " + id);
+        Gdx.app.debug(DEBUG, "(delete) id: " + id);
         try (Connection conn = getConnection();
              PreparedStatement stmt = conn.prepareStatement(
                  "DELETE FROM " + getTableName() + " WHERE " + getIdColumnName() + " = ?")) {
             stmt.setObject(1, id);
             stmt.executeUpdate();
-        } catch (SQLException | IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+
+        } catch (SQLException e) {
+            throw new GameException(ExceptionType.COULD_NOT_DELETE_ENTITY_EXCEPTION);
         }
     }
 
-    protected abstract Connection getConnection() throws SQLException, IOException, ClassNotFoundException;
-    protected abstract T from(ResultSet rs) throws SQLException;
+    protected abstract Connection getConnection();
+    protected abstract T from(ResultSet rs);
     protected abstract String getTableName();
     protected abstract String getIdColumnName();
 }

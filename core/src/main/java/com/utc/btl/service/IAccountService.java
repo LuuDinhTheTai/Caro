@@ -10,5 +10,5 @@ public interface IAccountService<T, ID> extends IService<T, ID> {
     Account register(RegisterRequest rq);
     Account login(LoginRequest rq);
 
-    void logout();
+    Account logout();
 }
