@@ -8,4 +8,5 @@ public interface IAuthController extends IController {
 
     void login(LoginRequest rq);
     void register(RegisterRequest rq);
+    void logout();
 }

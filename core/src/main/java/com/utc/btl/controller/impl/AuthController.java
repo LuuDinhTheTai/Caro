@@ -53,4 +53,10 @@ public class AuthController extends BaseController implements IAuthController {
             popUpDialog(DIALOG_ERROR_TITLE, "An unexpected error occurred");
         }
     }
+
+    @Override
+    public void logout() {
+        main.loggedInAccount = main.accountService.logout();
+        toMenuScreen();
+    }
 }

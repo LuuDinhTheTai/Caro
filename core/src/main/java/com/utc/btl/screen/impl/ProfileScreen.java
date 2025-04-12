@@ -110,7 +110,7 @@ public class ProfileScreen extends BaseScreen implements IProfileScreen {
         logoutBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                main.accountService.logout();
+                main.authController.logout();
             }
         });
     }
