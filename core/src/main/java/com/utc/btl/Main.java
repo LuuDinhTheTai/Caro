@@ -15,6 +15,8 @@ import com.utc.btl.controller.impl.ScreenController;
 import com.utc.btl.renderer.impl.BoardRenderer;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
+import com.utc.btl.dao.IAccountDao;
+import com.utc.btl.dao.impl.AccountDao;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
 
@@ -33,6 +35,9 @@ public class Main extends Game {
     public final int notInGame = 1;
     public final int pause = 2;
     public int state;
+
+    // DAO
+    private IAccountDao accountDao;
 
     // SERVICE
     public IAccountService accountService;
@@ -76,8 +81,11 @@ public class Main extends Game {
         // STATE
         state = notInGame;
 
+        // DAO
+        accountDao = new AccountDao();
+
         // SERVICE
-        accountService = new AccountService();
+        accountService = new AccountService(accountDao);
         batch = new SpriteBatch();
 
         // SCREEN

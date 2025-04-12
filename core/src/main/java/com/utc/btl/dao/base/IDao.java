@@ -1,8 +1,9 @@
-package com.utc.btl.service.base;
+package com.utc.btl.dao.base;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface IService<T, ID> {
+public interface IDao<T, ID> {
 
     T create(T t);
     T find(ID id);
