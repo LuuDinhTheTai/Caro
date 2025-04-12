@@ -118,6 +118,7 @@ public class ProfileScreen extends BaseScreen implements IProfileScreen {
     @Override
     public void setAccount() {
         this.account = main.loggedInAccount;
+        
     }
 
     private void setValues() {
@@ -133,6 +134,7 @@ public class ProfileScreen extends BaseScreen implements IProfileScreen {
             win.setText("???");
             loss.setText("???");
             draw.setText("???");
+            
         }
     }
 

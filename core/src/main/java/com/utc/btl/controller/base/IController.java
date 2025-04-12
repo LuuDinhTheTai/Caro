@@ -8,5 +8,7 @@ public interface IController {
     void toMenuScreen();
     void toRegisterScreen();
     void toProfileScreen();
+    void toSettingScreen();
+    void toLightSettingScreen();
     void popUpDialog(String title, String msg);
 }

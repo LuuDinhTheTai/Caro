@@ -13,7 +13,7 @@ import com.utc.btl.screen.impl.MenuScreen;
 import static com.utc.btl.Assets.lightDownButtonTexture;
 import static com.utc.btl.Assets.lightUpButtonTexture;
 
-public class LightMenuScreen extends MenuScreen implements IMenuScreen {
+public class LightMenuScreen extends MenuScreen{
 
     protected Label.LabelStyle labelStyle;
     protected ImageTextButton.ImageTextButtonStyle imageTextButtonStyle;

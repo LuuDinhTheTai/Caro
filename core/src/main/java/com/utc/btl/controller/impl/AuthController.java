@@ -53,4 +53,10 @@ public class AuthController extends BaseController implements IAuthController {
             popUpDialog(DIALOG_ERROR_TITLE, "An unexpected error occurred");
         }
     }
+
+    @Override
+    public void toSettingScreen() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toSettingScreen'");
+    }
 }

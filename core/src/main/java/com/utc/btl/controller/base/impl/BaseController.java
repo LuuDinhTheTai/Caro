@@ -107,6 +107,20 @@ public abstract class BaseController implements IController {
     }
 
     @Override
+    public void toSettingScreen() {
+        Gdx.app.log(INFO, "Redirect to setting screen");
+        main.state = main.notInGame;
+        main.setScreen(main.settingScreen);
+    }
+
+    @Override 
+    public void toLightSettingScreen(){
+        Gdx.app.log(INFO, "Redirect to setting screen");
+        main.state = main.notInGame;
+        main.setScreen(main.lightSettingScreen);
+    }
+
+    @Override
     public void popUpDialog(String title, String msg) {
         Gdx.app.debug(DEBUG, "Pop up dialog");
         Stage stage = (Stage) Gdx.input.getInputProcessor();

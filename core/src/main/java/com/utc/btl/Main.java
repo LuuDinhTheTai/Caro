@@ -15,6 +15,7 @@ import com.utc.btl.controller.impl.AuthController;
 import com.utc.btl.controller.impl.ScreenController;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
+import com.utc.btl.screen.impl.light_mode.LightSettingScreen;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
 
@@ -44,10 +45,11 @@ public class Main extends Game {
     public ILoginScreen loginScreen;
     public IMainMenuScreen mainMenuScreen;
     public IMenuScreen menuScreen;
-    public IProfileScreen profileScreen;
+    public IProfileScreen profileScreen; 
     public IRegisterScreen registerScreen;
-
+    public ISettingScreen settingScreen;
     public IMenuScreen lightMenuScreen;
+    public ISettingScreen lightSettingScreen;
 
     // RENDERER
     public IBoardRenderer boardRenderer;
@@ -88,8 +90,9 @@ public class Main extends Game {
         menuScreen = new MenuScreen(this);
         profileScreen = new ProfileScreen(this);
         registerScreen = new RegisterScreen(this);
-
+        settingScreen = new SettingScreen(this);
 //        lightMenuScreen = new LightMenuScreen(this);
+        lightSettingScreen = new LightSettingScreen(this);
 
         // CONTROLLER
         screenController = new ScreenController(this);
@@ -130,6 +133,7 @@ public class Main extends Game {
         mainMenuScreen.dispose();
         menuScreen.dispose();
         registerScreen.dispose();
+        settingScreen.dispose();
     }
 
     @Override
