@@ -15,7 +15,7 @@ import java.util.Optional;
 
 import static com.utc.btl.constant.Constants.DEBUG;
 
-public class AccountDao extends BaseDao<Account, Long> implements IAccountDao<Account, Long> {
+public class AccountDao extends BaseDao<Account, Long> implements IAccountDao {
 
     @Override
     protected Connection getConnection() {
