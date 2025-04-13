@@ -149,7 +149,6 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 float value = volumeSlider.getValue();
-                System.out.println("Volume changed to: " + value);
                 // TODO: Add volume adjustment logic here
             }
         });
