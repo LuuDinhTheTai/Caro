@@ -1,4 +1,4 @@
-package com.utc.btl.board;
+package com.utc.btl.view_component;
 
 import com.utc.btl.constant.Constants;
 
