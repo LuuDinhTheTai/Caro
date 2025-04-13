@@ -1,6 +1,7 @@
 package com.utc.btl.screen.base.impl;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.utc.btl.Assets;
@@ -12,6 +13,8 @@ public abstract class BaseScreen implements IBaseScreen {
     protected Main main;
     protected Stage stage;
     protected Skin skin;
+
+    protected TextureRegion background;
 
     public BaseScreen(Main main) {
         this.main = main;

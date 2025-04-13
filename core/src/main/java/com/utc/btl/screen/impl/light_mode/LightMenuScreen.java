@@ -32,6 +32,8 @@ public class LightMenuScreen extends MenuScreen implements IMenuScreen {
         titleLabel = new Label("C-Caro", labelStyle);
         singlePlayerBtn = new ImageTextButton("Single Player", imageTextButtonStyle);
         multiPlayerBtn = new ImageTextButton("Multi Player", imageTextButtonStyle);
+        profileBtn = new ImageTextButton("Profile", imageTextButtonStyle);
+        settingBtn = new ImageTextButton("Settings", imageTextButtonStyle);
         exitBtn = new ImageTextButton("Exit", imageTextButtonStyle);
     }
 
