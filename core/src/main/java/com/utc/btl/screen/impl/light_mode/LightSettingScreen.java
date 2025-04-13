@@ -28,9 +28,9 @@ public class LightSettingScreen extends SettingScreen{
         titleLabel.setColor(Color.BLACK);
         volumeLabel.setColor(Color.BLACK);
         musicLabel.setColor(Color.BLACK);
-        musicCheckBox.setColor(Color.BLACK);
+        musicCheckBox.getLabel().setColor(Color.BLACK);
         soundLabel.setColor(Color.BLACK);
-        soundCheckBox.setColor(Color.BLACK);
+        soundCheckBox.getLabel().setColor(Color.BLACK);
         
         // Set button colors
         backBtn.setColor(Color.BLACK);
@@ -56,7 +56,7 @@ public class LightSettingScreen extends SettingScreen{
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.uiMode = main.DARK_MODE;
-                main.setScreen(main.settingScreen);
+                main.screenController.toSettingScreen();
             }
         });
     }
