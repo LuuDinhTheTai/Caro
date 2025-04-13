@@ -15,6 +15,7 @@ import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.IAccountDao;
 import com.utc.btl.dao.impl.AccountDao;
+import com.utc.btl.screen.impl.light_mode.LightSettingScreen;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
 
@@ -49,8 +50,10 @@ public class Main extends Game {
     public IMenuScreen menuScreen;
     public IProfileScreen profileScreen;
     public IRegisterScreen registerScreen;
+    public ISettingScreen settingScreen;
 
     public IMenuScreen lightMenuScreen;
+    public ISettingScreen lightSettingScreen;
 
     // RENDERER
 
@@ -92,11 +95,10 @@ public class Main extends Game {
         menuScreen = new MenuScreen(this);
         profileScreen = new ProfileScreen(this);
         registerScreen = new RegisterScreen(this);
+        settingScreen = new SettingScreen(this);
 
 //        lightMenuScreen = new LightMenuScreen(this);
-
-        // RENDERER
-//        boardRenderer = new BoardRenderer();
+        lightSettingScreen = new LightSettingScreen(this);
 
         // CONTROLLER
         screenController = new ScreenController(this);
@@ -110,22 +112,20 @@ public class Main extends Game {
         GL20 gl = Gdx.gl;
         gl.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        switch (state) {
-            case inGame:
-//                batch.begin();
-//                boardRenderer.draw(batch);
-//                batch.end();
-                super.render();
-                break;
-            case notInGame:
 
-                super.render();
-                break;
-            case pause:
-
-                super.render();
-                break;
-        }
+//        batch.begin();
+//        switch (state) {
+//            case inGame:
+//                super.render();
+//                break;
+//            case notInGame:
+//                super.render();
+//                break;
+//            case pause:
+//                super.render();
+//                break;
+//        }
+        super.render();
     }
 
     @Override

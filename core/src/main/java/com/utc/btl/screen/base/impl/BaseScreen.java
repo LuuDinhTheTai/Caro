@@ -56,6 +56,5 @@ public abstract class BaseScreen implements IBaseScreen {
     @Override
     public void dispose() {
         stage.dispose();
-        skin.dispose();
     }
 }

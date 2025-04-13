@@ -23,14 +23,20 @@ public abstract class BaseController implements IController {
 
     @Override
     public void toGameScreen() {
+        main.setScreen(main.gameScreen);
         Gdx.app.log(INFO, "Redirect to game screen");
         main.state = main.inGame;
-        main.setScreen(main.gameScreen);
-        // TODO: vẽ board ở đây hay ở Main ???, board tĩnh thì có cần phải vẽ đi vẽ lại trong gameloop không ???
-//        main.batch.begin();
-//        boardRenderer.draw(main.batch);
-//        main.batch.end();
 
+        if (main.uiMode == main.DEFAULT_UI) {
+            main.setScreen(main.gameScreen);
+
+        } else if (main.uiMode == main.LIGHT_MODE) {
+//            main.setScreen(main.lightSettingScreen);
+
+        } else if (main.uiMode == main.DARK_MODE) {
+//            main.setScreen(main.registerScreen);
+
+        }
     }
 
     @Override
@@ -102,8 +108,36 @@ public abstract class BaseController implements IController {
 
     @Override
     public void toProfileScreen() {
+        Gdx.app.log(INFO, "Redirect to profile screen");
         main.state = main.notInGame;
-        main.setScreen(main.profileScreen);
+
+        if (main.uiMode == main.DEFAULT_UI) {
+            main.setScreen(main.profileScreen);
+
+        } else if (main.uiMode == main.LIGHT_MODE) {
+//            main.setScreen(main.lightSettingScreen);
+
+        } else if (main.uiMode == main.DARK_MODE) {
+//            main.setScreen(main.registerScreen);
+
+        }
+    }
+
+    @Override
+    public void toSettingScreen() {
+        Gdx.app.log(INFO, "Redirect to setting screen");
+        main.state = main.notInGame;
+
+        if (main.uiMode == main.DEFAULT_UI) {
+            main.setScreen(main.settingScreen);
+
+        } else if (main.uiMode == main.LIGHT_MODE) {
+            main.setScreen(main.lightSettingScreen);
+
+        } else if (main.uiMode == main.DARK_MODE) {
+//            main.setScreen(main.registerScreen);
+
+        }
     }
 
     @Override

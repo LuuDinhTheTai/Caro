@@ -20,45 +20,11 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
     protected Button singlePlayerBtn;
     protected Button multiPlayerBtn;
     protected Button profileBtn;
+    protected Button settingBtn;
     protected Button exitBtn;
 
     public MenuScreen(Main main) {
         super(main);
-    }
-
-    @Override
-    public void render(float delta) {
-        super.render(delta);
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        super.resize(width, height);
-    }
-
-    @Override
-    public void show() {
-        super.show();
-    }
-
-    @Override
-    public void hide() {
-        super.hide();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-    }
-
-    @Override
-    public void resume() {
-        super.resume();
-    }
-
-    @Override
-    public void dispose() {
-        super.dispose();
     }
 
     @Override
@@ -69,6 +35,7 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
         singlePlayerBtn = new TextButton("Single Player", skin);
         multiPlayerBtn = new TextButton("Multi Player", skin);
         profileBtn = new TextButton("Profile", skin);
+        settingBtn = new TextButton("Setting", skin);
         exitBtn = new TextButton("Exit", skin);
     }
 
@@ -82,6 +49,7 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
         table.add(singlePlayerBtn).width(table.getWidth()).padTop(10).row();
         table.add(multiPlayerBtn).width(table.getWidth()).padTop(10).row();
         table.add(profileBtn).width(table.getWidth()).padTop(10).row();
+        table.add(settingBtn).width(table.getWidth()).padTop(10).row();
         table.add(exitBtn).width(table.getWidth()).padTop(10).row();
 
         stage.addActor(table);
@@ -105,6 +73,12 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toProfileScreen();
+            }
+        });
+        settingBtn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                main.screenController.toSettingScreen();
             }
         });
         exitBtn.addListener(new ClickListener() {
