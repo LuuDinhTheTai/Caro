@@ -15,6 +15,10 @@ import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.IAccountDao;
 import com.utc.btl.dao.impl.AccountDao;
+import com.utc.btl.screen.impl.dark_mode.DarkLoginScreen;
+import com.utc.btl.screen.impl.dark_mode.DarkMainMenuScreen;
+import com.utc.btl.screen.impl.dark_mode.DarkMenuScreen;
+import com.utc.btl.screen.impl.dark_mode.DarkProfileScreen;
 import com.utc.btl.screen.impl.light_mode.*;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
@@ -58,6 +62,11 @@ public class Main extends Game {
     public IProfileScreen lightProfileScreen;
     public ISettingScreen lightSettingScreen;
 
+    public ILoginScreen darkLoginScreen;
+    public IMainMenuScreen darkMainMenuScreen;
+    public IMenuScreen darkMenuScreen;
+    public IProfileScreen darkProfileScreen;
+
     // RENDERER
 
     // CONTROLLER
@@ -79,7 +88,7 @@ public class Main extends Game {
         Assets.load();
 
         // UI MODE
-        uiMode = LIGHT_MODE;
+        uiMode = DARK_MODE;
 
         // STATE
         state = notInGame;
@@ -106,6 +115,11 @@ public class Main extends Game {
         lightProfileScreen = new LightProfileScreen(this);
         lightSettingScreen = new LightSettingScreen(this);
 
+        darkLoginScreen = new DarkLoginScreen(this);
+        darkMainMenuScreen = new DarkMainMenuScreen(this);
+        darkMenuScreen = new DarkMenuScreen(this);
+        darkProfileScreen = new DarkProfileScreen(this);
+
         // CONTROLLER
         screenController = new ScreenController(this);
         authController = new AuthController(this);
@@ -119,18 +133,6 @@ public class Main extends Game {
         gl.glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-//        batch.begin();
-//        switch (state) {
-//            case inGame:
-//                super.render();
-//                break;
-//            case notInGame:
-//                super.render();
-//                break;
-//            case pause:
-//                super.render();
-//                break;
-//        }
         super.render();
     }
 

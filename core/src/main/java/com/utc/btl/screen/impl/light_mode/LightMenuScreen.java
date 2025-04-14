@@ -23,7 +23,6 @@ public class LightMenuScreen extends MenuScreen implements IMenuScreen {
 
     @Override
     public void init() {
-
         background = new TextureRegion(lightBackgroundTexture);
 
         table = new Table();
