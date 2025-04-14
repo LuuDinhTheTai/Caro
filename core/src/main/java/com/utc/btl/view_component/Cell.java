@@ -2,13 +2,13 @@ package com.utc.btl.view_component;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Cursor;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.utc.btl.controller.GameController;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,16 +18,18 @@ public class Cell extends ImageButton {
 
     private Piece piece;
     private final ImageButtonStyle style;
+    private int row;
+    private int col;
+    private GameController controller;
 
-    // FIXME: This is temp rule for multi player mode
-    private static Piece.Status currentPlayer = Piece.Status.X; // Theo dõi lượt hiện tại
-    private static Cell focusedCell = null;    // Cell đang ở trạng thái FOCUS
-    private static Cell lastPlayedCell = null; // Cell được đánh (play) cuối cùng
 
-    public Cell() {
+    public Cell(GameController controller, int row, int col) {
         super(imageButtonStyle());
         this.piece = Piece.EMPTY;
         this.style = new ImageButtonStyle(super.getStyle());
+        this.controller = controller;
+        this.row = row;
+        this.col = col;
         updateStyle();
         setListeners();
     }
@@ -55,37 +57,11 @@ public class Cell extends ImageButton {
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                handleClick();
+                controller.onCellClicked(Cell.this);
             }
         });
     }
 
-    // FIXME: This is temp logic for multi player mode
-    private void handleClick() {
-        // Chỉ cho phép focus nếu cell trống (EMPTY)
-        if (piece == Piece.EMPTY) {
-            // Nếu có cell khác đang ở trạng thái FOCUS (và không phải là cell được đánh cuối cùng) thì xóa focus của cell đó
-            if (focusedCell != null && focusedCell != this && focusedCell != lastPlayedCell) {
-                focusedCell.setPiece(Piece.EMPTY);
-                focusedCell.updateStyle();
-            }
-            setPiece(Piece.FOCUS);
-            updateStyle();
-            focusedCell = this;
-        }
-        // Nếu cell đang ở trạng thái FOCUS, click lần 2 sẽ chuyển sang đánh
-        else if (piece == Piece.FOCUS) {
-            if (focusedCell == this) {
-                Piece newPiece = currentPlayer == Piece.Status.X ? Piece.X_CELL_FOCUS : Piece.O_CELL_FOCUS;
-                setPiece(newPiece);
-                updateStyle();
-                lastPlayedCell = this;
-                focusedCell = null;
-                // Chuyển lượt chơi
-                currentPlayer = currentPlayer == Piece.Status.X ? Piece.Status.O : Piece.Status.X;
-            }
-        }
-    }
 
     public void setPiece(Piece piece) {
         this.piece = piece;
