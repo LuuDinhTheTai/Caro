@@ -65,7 +65,7 @@ public abstract class BaseController implements IController {
             main.setScreen(main.mainMenuScreen);
 
         } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.mainMenuScreen);
+            main.setScreen(main.lightMainMenuScreen);
 
         } else if (main.uiMode == main.DARK_MODE) {
             main.setScreen(main.mainMenuScreen);
@@ -116,7 +116,7 @@ public abstract class BaseController implements IController {
             main.setScreen(main.profileScreen);
 
         } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.profileScreen);
+            main.setScreen(main.lightProfileScreen);
 
         } else if (main.uiMode == main.DARK_MODE) {
             main.setScreen(main.profileScreen);

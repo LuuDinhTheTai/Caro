@@ -1,39 +1,31 @@
 package com.utc.btl.screen.impl.light_mode;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.utc.btl.Assets;
 import com.utc.btl.Main;
-import com.utc.btl.screen.IMenuScreen;
-import com.utc.btl.screen.impl.MenuScreen;
+import com.utc.btl.screen.IMainMenuScreen;
+import com.utc.btl.screen.impl.MainMenuScreen;
 
-import static com.utc.btl.Assets.*;
+public class LightMainMenuScreen extends MainMenuScreen implements IMainMenuScreen {
 
-public class LightMenuScreen extends MenuScreen implements IMenuScreen {
-
-    public LightMenuScreen(Main main) {
+    public LightMainMenuScreen(Main main) {
         super(main);
     }
 
     @Override
     public void init() {
-
-        background = new TextureRegion(lightBackgroundTexture);
-
         table = new Table();
 
-        titleLabel = new Label("C-Caro", lightTitleStyle);
-        singlePlayerBtn = new ImageTextButton("Single Player", lightImageTextButtonStyle);
-        multiPlayerBtn = new ImageTextButton("Multi Player", lightImageTextButtonStyle);
-        profileBtn = new ImageTextButton("Profile", lightImageTextButtonStyle);
-        settingBtn = new ImageTextButton("Settings", lightImageTextButtonStyle);
-        exitBtn = new ImageTextButton("Exit", lightImageTextButtonStyle);
+        titleLabel = new Label("C-Caro", Assets.lightTitleStyle);
+
+        multiPlayerBtn = new TextButton("Multi Player", Assets.lightImageTextButtonStyle);
+        singlePlayerBtn = new TextButton("SinglePlayer", Assets.lightImageTextButtonStyle);
+        profileBtn = new TextButton("Profile", Assets.lightImageTextButtonStyle);
+        settingBtn = new TextButton("Setting", Assets.lightImageTextButtonStyle);
+        exitBtn = new TextButton("Exit", Assets.lightImageTextButtonStyle);
     }
 
     @Override
@@ -62,7 +54,7 @@ public class LightMenuScreen extends MenuScreen implements IMenuScreen {
     @Override
     public void render(float delta) {
         main.batch.begin();
-        main.batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.batch.draw(Assets.lightBackgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         main.batch.end();
         super.render(delta);
     }

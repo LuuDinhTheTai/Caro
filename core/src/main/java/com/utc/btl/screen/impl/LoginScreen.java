@@ -48,7 +48,7 @@ public class LoginScreen extends BaseScreen implements ILoginScreen {
     @Override
     public void setUI() {
         table.setFillParent(true);
-        table.setSize(200, 400);
+        table.setSize(300, 400);
         table.center();
 
         table.add(titleLabel).padTop(5).row();

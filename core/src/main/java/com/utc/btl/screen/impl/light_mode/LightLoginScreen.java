@@ -1,21 +1,18 @@
 package com.utc.btl.screen.impl.light_mode;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.Main;
 import com.utc.btl.screen.ILoginScreen;
 import com.utc.btl.screen.impl.LoginScreen;
 
-import static com.utc.btl.Assets.lightDownButtonTexture;
-import static com.utc.btl.Assets.lightUpButtonTexture;
+import static com.utc.btl.Assets.*;
 
 public class LightLoginScreen extends LoginScreen implements ILoginScreen {
-
-    private Label.LabelStyle labelStyle;
-    private ImageTextButton.ImageTextButtonStyle imageTextButtonStyle;
-    private TextField.TextFieldStyle textFieldStyle;
 
     public LightLoginScreen(Main main) {
         super(main);
@@ -23,45 +20,51 @@ public class LightLoginScreen extends LoginScreen implements ILoginScreen {
 
     @Override
     public void init() {
-        setLabelStyle();
-        setImageTextButtonStyle();
-        setTextFieldStyle();
-
         table = new Table();
 
-        titleLabel = new Label("LOGIN", skin);
-        titleLabel.setFontScale(1.5f);
+        titleLabel = new Label("LOGIN", lightTitleStyle);
 
-        usernameLabel = new Label("Username:", labelStyle);
-        usernameField = new TextField("", textFieldStyle);
+        usernameLabel = new Label("Username:", lightLabelStyle);
+        usernameField = new TextField("", lightTextfieldStyle);
 
-        passwordLabel = new Label("Password:", labelStyle);
-        passwordField = new TextField("", textFieldStyle);
+        passwordLabel = new Label("Password:", lightLabelStyle);
+        passwordField = new TextField("", lightTextfieldStyle);
         passwordField.setPasswordMode(true);
         passwordField.setPasswordCharacter('*');
 
-        loginBtn = new TextButton("Login", imageTextButtonStyle);
-        toRegisterBtn = new TextButton("Register", imageTextButtonStyle);
-        toMenuBtn = new TextButton("Menu", imageTextButtonStyle);
+        loginBtn = new TextButton("Login", lightImageTextButtonStyle);
+        toRegisterBtn = new TextButton("Register", lightImageTextButtonStyle);
+        toMenuBtn = new TextButton("Menu", lightImageTextButtonStyle);
     }
 
-    private void setLabelStyle() {
-        labelStyle = new Label.LabelStyle();
-        labelStyle = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
+    @Override
+    public void setUI() {
+        table = new Table();
+        table.setSize(350, 450);
+
+        table.setPosition((Gdx.graphics.getWidth() - table.getWidth()) / 2,
+            (Gdx.graphics.getHeight() - table.getHeight()) / 2);
+
+
+        table.setBackground(new TextureRegionDrawable(new TextureRegion(tableBackgroundTexture)));
+
+        table.add(titleLabel).padTop(5).row();
+        table.add(usernameLabel).padTop(10).left().row();
+        table.add(usernameField).width(280).padTop(5).row();
+        table.add(passwordLabel).padTop(10).left().row();
+        table.add(passwordField).width(280).padTop(5).row();
+        table.add(loginBtn).width(280).padTop(10).row();
+        table.add(toRegisterBtn).width(280).padTop(10).row();
+        table.add(toMenuBtn).width(280).padTop(10).row();
+
+        stage.addActor(table);
     }
 
-    private void setImageTextButtonStyle() {
-        imageTextButtonStyle = new ImageTextButton.ImageTextButtonStyle();
-        imageTextButtonStyle.up = new TextureRegionDrawable(lightUpButtonTexture);
-        imageTextButtonStyle.down = new TextureRegionDrawable(lightDownButtonTexture);
-        imageTextButtonStyle.font = new BitmapFont();
-        imageTextButtonStyle.fontColor = Color.WHITE;
-    }
-
-    private void setTextFieldStyle() {
-        textFieldStyle = new TextField.TextFieldStyle();
-        textFieldStyle.font = new BitmapFont();
-        textFieldStyle.fontColor = Color.BLACK;
-        textFieldStyle.background = new TextureRegionDrawable(lightUpButtonTexture);
+    @Override
+    public void render(float delta) {
+        main.batch.begin();
+        main.batch.draw(lightBackgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.batch.end();
+        super.render(delta);
     }
 }

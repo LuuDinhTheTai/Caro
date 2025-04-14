@@ -15,9 +15,7 @@ import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.IAccountDao;
 import com.utc.btl.dao.impl.AccountDao;
-import com.utc.btl.screen.impl.light_mode.LightLoginScreen;
-import com.utc.btl.screen.impl.light_mode.LightMenuScreen;
-import com.utc.btl.screen.impl.light_mode.LightSettingScreen;
+import com.utc.btl.screen.impl.light_mode.*;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
 
@@ -55,7 +53,9 @@ public class Main extends Game {
     public ISettingScreen settingScreen;
 
     public ILoginScreen lightLoginScreen;
+    public IMainMenuScreen lightMainMenuScreen;
     public IMenuScreen lightMenuScreen;
+    public IProfileScreen lightProfileScreen;
     public ISettingScreen lightSettingScreen;
 
     // RENDERER
@@ -101,7 +101,9 @@ public class Main extends Game {
         settingScreen = new SettingScreen(this);
 
         lightLoginScreen = new LightLoginScreen(this);
+        lightMainMenuScreen = new LightMainMenuScreen(this);
         lightMenuScreen = new LightMenuScreen(this);
+        lightProfileScreen = new LightProfileScreen(this);
         lightSettingScreen = new LightSettingScreen(this);
 
         // CONTROLLER
