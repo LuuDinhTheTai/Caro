@@ -58,9 +58,9 @@ public class Assets {
             lightUpButtonTexture = loadTexture("button/lm_up_button.png");
             lightDownButtonTexture = loadTexture("button/lm_down_button.png");
 
-            menuBackgroundTexture = new Texture("assets/General/menu_background.png");
-            menuLogoTexture = new Texture("assets/General/menu_logo.png");
-            buttonBackgroundTexture = new Texture("assets/UI/btn_background.png");
+//            menuBackgroundTexture = new Texture("assets/General/menu_background.png");
+//            menuLogoTexture = new Texture("assets/General/menu_logo.png");
+//            buttonBackgroundTexture = new Texture("assets/UI/btn_background.png");
 
         } catch (Exception e) {
             Gdx.app.error(ERROR, "Caused by: ", e);

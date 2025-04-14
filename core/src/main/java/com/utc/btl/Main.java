@@ -6,6 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.utc.btl.entity.Account;
+import com.utc.btl.game_model.GameModel;
 import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.controller.IAuthController;
 import com.utc.btl.controller.IScreenController;
@@ -55,7 +56,6 @@ public class Main extends Game {
 
     // GAME PLAY
     public IValidator validator;
-
     // AUTH
     public Account loggedInAccount;
 
@@ -76,6 +76,8 @@ public class Main extends Game {
         // SERVICE
         accountService = new AccountService();
         batch = new SpriteBatch();
+
+
 
         // SCREEN
         gameScreen = new GameScreen(this);
