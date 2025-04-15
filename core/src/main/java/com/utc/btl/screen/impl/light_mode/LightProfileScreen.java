@@ -10,6 +10,9 @@ import com.utc.btl.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.ProfileScreen;
 
+import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Constants.*;
+
 public class LightProfileScreen extends ProfileScreen {
 
     public LightProfileScreen(Main main) {
@@ -18,64 +21,63 @@ public class LightProfileScreen extends ProfileScreen {
 
     @Override
     public void init() {
+        background = new TextureRegion(lightBackgroundTexture);
         table = new Table();
 
-        titleLabel = new Label("Profile", Assets.lightTitleStyle);
-        usernameLabel = new Label("Username: ", Assets.lightInfLabelStyle);
-        eloLabel = new Label("Elo: ", Assets.lightInfLabelStyle);
-        winLabel = new Label("Win: ", Assets.lightInfLabelStyle);
-        lossLabel = new Label("Loss: ", Assets.lightInfLabelStyle);
-        drawLabel = new Label("Draw: ", Assets.lightInfLabelStyle);
+        titleLabel = new Label("Profile", lightTitleStyle);
+        usernameLabel = new Label("Username: ", lightInfLabelStyle);
+        eloLabel = new Label("Elo: ", lightInfLabelStyle);
+        winLabel = new Label("Win: ", lightInfLabelStyle);
+        lossLabel = new Label("Loss: ", lightInfLabelStyle);
+        drawLabel = new Label("Draw: ", lightInfLabelStyle);
 
-        username = new Label("", Assets.lightInfLabelStyle);
-        elo = new Label("", Assets.lightInfLabelStyle);
-        win = new Label("", Assets.lightInfLabelStyle);
-        loss = new Label("", Assets.lightInfLabelStyle);
-        draw = new Label("", Assets.lightInfLabelStyle);
+        username = new Label("", lightInfLabelStyle);
+        elo = new Label("", lightInfLabelStyle);
+        win = new Label("", lightInfLabelStyle);
+        loss = new Label("", lightInfLabelStyle);
+        draw = new Label("", lightInfLabelStyle);
 
-        menuBtn = new TextButton("Menu", Assets.lightImageTextButtonStyle);
-        loginBtn = new TextButton("Login", Assets.lightImageTextButtonStyle);
-        logoutBtn = new TextButton("Logout", Assets.lightImageTextButtonStyle);
+        menuBtn = new TextButton("Menu", lightImageTextButtonStyle);
+        loginBtn = new TextButton("Login", lightImageTextButtonStyle);
+        logoutBtn = new TextButton("Logout", lightImageTextButtonStyle);
     }
 
     @Override
     public void setUI() {
-        table.setSize(400, 500);
+        table.setSize(TABLE_W, TABLE_H);
+
         table.setPosition((Gdx.graphics.getWidth() - table.getWidth()) / 2,
             (Gdx.graphics.getHeight() - table.getHeight()) / 2);
 
         table.setBackground(new TextureRegionDrawable(new TextureRegion(Assets.tableBackgroundTexture)));
 
-        table.top().pad(20);
-        table.add(titleLabel).colspan(2).padBottom(20);
-        table.row();
+        table.add(titleLabel).padTop(5).row();
 
-        table.add(usernameLabel).left().padBottom(10);
-        table.add(username).left().padBottom(10);
-        table.row();
+        Table subTable = new Table();
 
-        table.add(eloLabel).left().padBottom(10);
-        table.add(elo).left().padBottom(10);
-        table.row();
+        subTable.add(usernameLabel).left();
+        subTable.add(username).right();
+        subTable.row();
+        subTable.add(eloLabel).left();
+        subTable.add(elo).right();
+        subTable.row();
+        subTable.add(winLabel).left();
+        subTable.add(win).right();
+        subTable.row();
+        subTable.add(lossLabel).left();
+        subTable.add(loss).right();
+        subTable.row();
+        subTable.add(drawLabel).left();
+        subTable.add(draw).right();
+        table.add(subTable).padTop(10).padBottom(10).row();
 
-        table.add(winLabel).left().padBottom(10);
-        table.add(win).left().padBottom(10);
-        table.row();
+        table.add(menuBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
 
-        table.add(lossLabel).left().padBottom(10);
-        table.add(loss).left().padBottom(10);
-        table.row();
-
-        table.add(drawLabel).left().padBottom(10);
-        table.add(draw).left().padBottom(10);
-        table.row();
-
-        table.add(menuBtn).width(200).padTop(10).center().row();
         if (account != null) {
-            table.add(logoutBtn).width(200).padTop(10).center().row();
+            table.add(logoutBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
         }
         if (account == null) {
-            table.add(loginBtn).width(200).padTop(10).center().row();
+            table.add(loginBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
         }
         stage.addActor(table);
     }
@@ -84,7 +86,7 @@ public class LightProfileScreen extends ProfileScreen {
     @Override
     public void render(float delta) {
         main.batch.begin();
-        main.batch.draw(Assets.lightBackgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         main.batch.end();
         super.render(delta);
     }

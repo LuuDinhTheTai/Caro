@@ -18,6 +18,7 @@ public class LightLoginScreen extends LoginScreen {
 
     @Override
     public void init() {
+        background = new TextureRegion(lightBackgroundTexture);
         table = new Table();
 
         titleLabel = new Label("LOGIN", lightTitleStyle);
@@ -37,6 +38,8 @@ public class LightLoginScreen extends LoginScreen {
 
     @Override
     public void setUI() {
+//        table.setFillParent(true);
+        table.center();
         table.setSize(TABLE_W, TABLE_H);
 
         table.setPosition((Gdx.graphics.getWidth() - table.getWidth()) / 2,
@@ -45,13 +48,18 @@ public class LightLoginScreen extends LoginScreen {
         table.setBackground(new TextureRegionDrawable(new TextureRegion(tableBackgroundTexture)));
 
         table.add(titleLabel).padTop(5).row();
-        table.add(usernameLabel).padTop(10).left().row();
-        table.add(usernameField).width(280).padTop(5).row();
-        table.add(passwordLabel).padTop(10).left().row();
-        table.add(passwordField).width(280).padTop(5).row();
-        table.add(loginBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
-        table.add(toRegisterBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
-        table.add(toMenuBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
+        table.add(usernameLabel).padLeft(25).padTop(10).left().row();
+        table.add(usernameField).width(TEXTFIELD_W).height(TEXTFIELD_H).padTop(5).row();
+        table.add(passwordLabel).padLeft(25).padTop(10).left().row();
+        table.add(passwordField).width(TEXTFIELD_W).height(TEXTFIELD_H).padTop(5).row();
+        table.add(loginBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(20).row();
+
+        Table subTable = new Table();
+        subTable.add(toMenuBtn).width(BIG_BUTTON_W/2f - 5).height(BIG_BUTTON_H);
+        subTable.add().width(10);
+        subTable.add(toRegisterBtn).width(BIG_BUTTON_W/2f - 5).height(BIG_BUTTON_H);
+
+        table.add(subTable).width(TABLE_W).height(BIG_BUTTON_H).padTop(10).row();
 
         stage.addActor(table);
     }
@@ -59,7 +67,7 @@ public class LightLoginScreen extends LoginScreen {
     @Override
     public void render(float delta) {
         main.batch.begin();
-        main.batch.draw(lightBackgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         main.batch.end();
         super.render(delta);
     }

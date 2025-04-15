@@ -1,12 +1,14 @@
 package com.utc.btl.screen.impl.light_mode;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.utc.btl.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.MainMenuScreen;
+
+import static com.utc.btl.Assets.*;
 
 public class LightMainMenuScreen extends MainMenuScreen {
 
@@ -16,15 +18,16 @@ public class LightMainMenuScreen extends MainMenuScreen {
 
     @Override
     public void init() {
+        background = new TextureRegion(lightBackgroundTexture);
         table = new Table();
 
-        titleLabel = new Label("C-Caro", Assets.lightTitleStyle);
+        titleLabel = new Label("C-Caro", lightTitleStyle);
 
-        multiPlayerBtn = new TextButton("Multi Player", Assets.lightImageTextButtonStyle);
-        singlePlayerBtn = new TextButton("SinglePlayer", Assets.lightImageTextButtonStyle);
-        profileBtn = new TextButton("Profile", Assets.lightImageTextButtonStyle);
-        settingBtn = new TextButton("Setting", Assets.lightImageTextButtonStyle);
-        exitBtn = new TextButton("Exit", Assets.lightImageTextButtonStyle);
+        multiPlayerBtn = new TextButton("Multi Player", lightImageTextButtonStyle);
+        singlePlayerBtn = new TextButton("SinglePlayer", lightImageTextButtonStyle);
+        profileBtn = new TextButton("Profile", lightImageTextButtonStyle);
+        settingBtn = new TextButton("Setting", lightImageTextButtonStyle);
+        exitBtn = new TextButton("Exit", lightImageTextButtonStyle);
     }
 
     @Override
@@ -53,7 +56,7 @@ public class LightMainMenuScreen extends MainMenuScreen {
     @Override
     public void render(float delta) {
         main.batch.begin();
-        main.batch.draw(Assets.lightBackgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         main.batch.end();
         super.render(delta);
     }

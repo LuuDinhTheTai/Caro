@@ -1,5 +1,6 @@
 package com.utc.btl.screen.impl.dark_mode;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -17,6 +18,8 @@ public class DarkLoginScreen extends LightLoginScreen {
 
     @Override
     public void init() {
+        background = new TextureRegion(darkBacgroundTexture);
+
         table = new Table();
 
         titleLabel = new Label("LOGIN", darkTitleStyle);

@@ -1,11 +1,11 @@
 package com.utc.btl.screen.impl.dark_mode;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.light_mode.LightSettingScreen;
 
 import static com.utc.btl.Assets.*;
-import static com.utc.btl.Assets.lightImageTextButtonStyle;
 
 public class DarkSettingScreen extends LightSettingScreen {
 
@@ -15,6 +15,7 @@ public class DarkSettingScreen extends LightSettingScreen {
 
     @Override
     public void init() {
+        background = new TextureRegion(darkBacgroundTexture);
         mainContainer = new Table();
         bottomTable = new Table();
 

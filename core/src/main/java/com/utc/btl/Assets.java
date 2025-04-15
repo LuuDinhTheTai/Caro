@@ -170,14 +170,14 @@ public class Assets {
     private static Label.LabelStyle getLightTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
         style.font = WHITE_64;
-        style.fontColor = Color.valueOf("#0074ff");
+        style.fontColor = Color.BLACK;
         return style;
     }
 
     private static Label.LabelStyle getDarkTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
         style.font = WHITE_64;
-        style.fontColor = Color.valueOf("#45283c");
+        style.fontColor = Color.WHITE;
         return style;
     }
 
@@ -190,7 +190,7 @@ public class Assets {
     private static Label.LabelStyle getDarkLabelStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
         style.font = WHITE_16;
-        style.fontColor = Color.valueOf("#45283c");
+        style.fontColor = Color.WHITE;
         return style;
     }
 
@@ -211,7 +211,7 @@ public class Assets {
     private static TextField.TextFieldStyle getDarkTextFieldStyle() {
         TextField.TextFieldStyle style = new TextField.TextFieldStyle();
         style.font = WHITE_16;
-        style.fontColor = Color.valueOf("#45283c");
+        style.fontColor = Color.WHITE;
         return style;
     }
 
@@ -238,6 +238,7 @@ public class Assets {
 
         style.up = new TextureRegionDrawable(new TextureRegion(darkUpButtonTexture));
         style.down = new TextureRegionDrawable(new TextureRegion(darkDownButtonTexture));
+        style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
         style.font = WHITE_24;
         style.fontColor = Color.WHITE;

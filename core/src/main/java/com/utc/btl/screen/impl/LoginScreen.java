@@ -27,6 +27,13 @@ public class LoginScreen extends BaseScreen implements ILoginScreen {
     }
 
     @Override
+    public void show() {
+        super.show();
+        usernameField.setText("");
+        passwordField.setText("");
+    }
+
+    @Override
     public void init() {
         table = new Table();
 

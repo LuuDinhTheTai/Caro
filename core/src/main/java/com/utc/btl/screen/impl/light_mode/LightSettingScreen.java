@@ -1,5 +1,7 @@
 package com.utc.btl.screen.impl.light_mode;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.SettingScreen;
@@ -13,6 +15,7 @@ public class LightSettingScreen extends SettingScreen {
 
     @Override
     public void init() {
+        background = new TextureRegion(lightBackgroundTexture);
         mainContainer = new Table();
         bottomTable = new Table();
 
@@ -34,5 +37,13 @@ public class LightSettingScreen extends SettingScreen {
 
         backBtn = new TextButton("Back", lightImageTextButtonStyle);
         applyBtn = new TextButton("OK", lightImageTextButtonStyle);
+    }
+
+    @Override
+    public void render(float delta) {
+        main.batch.begin();
+        main.batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.batch.end();
+        super.render(delta);
     }
 }

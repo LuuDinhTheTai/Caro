@@ -22,7 +22,7 @@ public class RegisterScreen extends BaseScreen implements IRegisterScreen {
 
     protected Button registerBtn;
     protected Button toLoginBtn;
-    protected Button toMenuScreen;
+    protected Button toMenuBtn;
 
 
     public RegisterScreen(Main main) {
@@ -50,7 +50,7 @@ public class RegisterScreen extends BaseScreen implements IRegisterScreen {
 
         registerBtn = new TextButton("Register", skin);
         toLoginBtn = new TextButton("Login", skin);
-        toMenuScreen = new TextButton("Menu", skin);
+        toMenuBtn = new TextButton("Menu", skin);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class RegisterScreen extends BaseScreen implements IRegisterScreen {
         table.add(confirmPasswordField).width(table.getWidth()).align(Align.left).padTop(0).row();
         table.add(registerBtn).width(table.getWidth()).padTop(10).row();
         table.add(toLoginBtn).width(table.getWidth()).padTop(10).row();
-        table.add(toMenuScreen).width(table.getWidth()).padTop(10).row();
+        table.add(toMenuBtn).width(table.getWidth()).padTop(10).row();
 
         stage.addActor(table);
     }
@@ -91,7 +91,7 @@ public class RegisterScreen extends BaseScreen implements IRegisterScreen {
                 main.screenController.toLoginScreen();
             }
         });
-        toMenuScreen.addListener(new ClickListener() {
+        toMenuBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toMenuScreen();

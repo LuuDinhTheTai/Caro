@@ -128,11 +128,11 @@ public class ProfileScreen extends BaseScreen implements IProfileScreen {
             loss.setText(account.getLoss() + "");
             draw.setText(account.getDraw() + "");
         } else {
-            username.setText("MEOW !");
-            elo.setText("MEOW MEOW !");
-            win.setText("???");
-            loss.setText("???");
-            draw.setText("???");
+            username.setText("abcdefg");
+            elo.setText("1234");
+            win.setText("123");
+            loss.setText("123");
+            draw.setText("123");
         }
     }
 
