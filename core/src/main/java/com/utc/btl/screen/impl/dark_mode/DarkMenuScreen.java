@@ -5,13 +5,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.utc.btl.Main;
-import com.utc.btl.screen.IMenuScreen;
 import com.utc.btl.screen.impl.light_mode.LightMenuScreen;
 
 import static com.utc.btl.Assets.*;
-import static com.utc.btl.Assets.lightImageTextButtonStyle;
 
-public class DarkMenuScreen extends LightMenuScreen implements IMenuScreen {
+public class DarkMenuScreen extends LightMenuScreen {
 
     public DarkMenuScreen(Main main) {
         super(main);

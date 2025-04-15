@@ -1,53 +1,38 @@
 package com.utc.btl.screen.impl.light_mode;
 
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.SettingScreen;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
-public class LightSettingScreen extends SettingScreen{
+import static com.utc.btl.Assets.*;
+
+public class LightSettingScreen extends SettingScreen {
     public LightSettingScreen(Main main) {
         super(main);
     }
 
     @Override
     public void init() {
-        super.init();
-    }
+        mainContainer = new Table();
+        bottomTable = new Table();
 
-    @Override
-    public void setUI() {
-        super.setUI();
+        titleLabel = new Label("Setting", lightTitleStyle);
 
-        // Set text colors to black
-        titleLabel.setColor(Color.BLACK);
-        volumeLabel.setColor(Color.BLACK);
-        musicLabel.setColor(Color.BLACK);
-        musicCheckBox.getLabel().setColor(Color.BLACK);
-        soundLabel.setColor(Color.BLACK);
-        soundCheckBox.getLabel().setColor(Color.BLACK);
+        volumeLabel = new Label("Volume", skin);
+        volumeSlider = new Slider(0, 100, 1, false, skin);
 
-        // Set button colors
-        backBtn.setColor(Color.BLACK);
-        applyBtn.setColor(Color.BLACK);
-        lightBtn.setColor(Color.BLACK);
+        musicLabel = new Label("Music", lightLabelStyle);
+        musicCheckBox = new CheckBox("Music", skin);
 
-    }
+        soundLabel = new Label("Sound", lightLabelStyle);
+        soundCheckBox = new CheckBox("Sound", skin);
 
-    @Override
-    public void setListeners(){
-        super.setListeners();
-        lightBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                main.uiMode = main.DARK_MODE;
-                main.screenController.toSettingScreen();
-            }
-        });
+        themeLabel = new Label("Theme: ", lightLabelStyle);
+        defaultThemeBtn = new TextButton("Default", lightImageTextButtonStyle);
+        lightThemButton = new TextButton("Light", lightImageTextButtonStyle);
+        darkThemeBtn = new TextButton("Dark", lightImageTextButtonStyle);
+
+        backBtn = new TextButton("Back", lightImageTextButtonStyle);
+        applyBtn = new TextButton("OK", lightImageTextButtonStyle);
     }
 }

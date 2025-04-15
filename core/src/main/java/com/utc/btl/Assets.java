@@ -33,6 +33,7 @@ public class Assets {
     public static Texture lightDownButtonTexture;
     public static Texture darkUpButtonTexture;
     public static Texture darkDownButtonTexture;
+    public static Texture disableButtonTexture;
 
     // CELL
     public static Texture lightXCellTexture;
@@ -87,10 +88,11 @@ public class Assets {
             tableBackgroundTexture = getTableBackgroundTexture();
 
             // BUTTON
-            lightUpButtonTexture = loadTexture("button/lm_up_button.png");
-            lightDownButtonTexture = loadTexture("button/lm_down_button.png");
-            darkUpButtonTexture = loadTexture("button/dm_up_button.png");
-            darkDownButtonTexture = loadTexture("button/dm_down_button.png");
+            lightUpButtonTexture = loadTexture("main/lm_up_button.png");
+            lightDownButtonTexture = loadTexture("main/lm_down_button.png");
+            darkUpButtonTexture = loadTexture("main/dm_up_button.png");
+            darkDownButtonTexture = loadTexture("main/dm_down_button.png");
+            disableButtonTexture = loadTexture("main/disable_button.png");
 
             // CELL
             lightXCellTexture = loadTexture("light_mode/lm_X_cell.png");
@@ -174,7 +176,7 @@ public class Assets {
 
     private static Label.LabelStyle getDarkTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_32;
+        style.font = WHITE_64;
         style.fontColor = Color.valueOf("#45283c");
         return style;
     }
@@ -222,11 +224,9 @@ public class Assets {
     private static ImageTextButton.ImageTextButtonStyle getLightImageTextButtonStyle() {
         ImageTextButton.ImageTextButtonStyle style = new ImageTextButton.ImageTextButtonStyle();
 
-        Texture upTexture = createRoundedRectTexture(100, 50, 15, Color.valueOf("#0074ff"));
-        Texture downTexture = createRoundedRectTexture(100, 50, 15, Color.valueOf("#0c4272"));
-
-        style.up = new TextureRegionDrawable(new TextureRegion(upTexture));
-        style.down = new TextureRegionDrawable(new TextureRegion(downTexture));
+        style.up = new TextureRegionDrawable(new TextureRegion(lightUpButtonTexture));
+        style.down = new TextureRegionDrawable(new TextureRegion(lightDownButtonTexture));
+        style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
         style.font = WHITE_24;
 
@@ -236,39 +236,36 @@ public class Assets {
     private static ImageTextButton.ImageTextButtonStyle getDarkImageTextButtonStyle() {
         ImageTextButton.ImageTextButtonStyle style = new ImageTextButton.ImageTextButtonStyle();
 
-        Texture upTexture = createRoundedRectTexture(100, 50, 15, Color.valueOf("#45283c"));
-        Texture downTexture = createRoundedRectTexture(100, 50, 15, Color.valueOf("#3f3f74"));
-
-        style.up = new TextureRegionDrawable(new TextureRegion(upTexture));
-        style.down = new TextureRegionDrawable(new TextureRegion(downTexture));
+        style.up = new TextureRegionDrawable(new TextureRegion(darkUpButtonTexture));
+        style.down = new TextureRegionDrawable(new TextureRegion(darkDownButtonTexture));
 
         style.font = WHITE_24;
         style.fontColor = Color.WHITE;
 
         return style;
     }
-    private static Texture createRoundedRectTexture(int width, int height, int radius, Color color) {
-        Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
-
-        pixmap.setBlending(Pixmap.Blending.None);
-        pixmap.setColor(0, 0, 0, 0);
-        pixmap.fill();
-
-        pixmap.setBlending(Pixmap.Blending.SourceOver);
-        pixmap.setColor(color);
-
-
-        pixmap.fillRectangle(radius, 0, width - 2 * radius, height);
-        pixmap.fillRectangle(0, radius, width, height - 2 * radius);
-
-
-        pixmap.fillCircle(radius, radius, radius);
-        pixmap.fillCircle(width - radius, radius, radius);
-        pixmap.fillCircle(radius, height - radius, radius);
-        pixmap.fillCircle(width - radius, height - radius, radius);
-
-        Texture texture = new Texture(pixmap);
-        pixmap.dispose();
-        return texture;
-    }
+//    private static Texture createRoundedRectTexture(int width, int height, int radius, Color color) {
+//        Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
+//
+//        pixmap.setBlending(Pixmap.Blending.None);
+//        pixmap.setColor(0, 0, 0, 0);
+//        pixmap.fill();
+//
+//        pixmap.setBlending(Pixmap.Blending.SourceOver);
+//        pixmap.setColor(color);
+//
+//
+//        pixmap.fillRectangle(radius, 0, width - 2 * radius, height);
+//        pixmap.fillRectangle(0, radius, width, height - 2 * radius);
+//
+//
+//        pixmap.fillCircle(radius, radius, radius);
+//        pixmap.fillCircle(width - radius, radius, radius);
+//        pixmap.fillCircle(radius, height - radius, radius);
+//        pixmap.fillCircle(width - radius, height - radius, radius);
+//
+//        Texture texture = new Texture(pixmap);
+//        pixmap.dispose();
+//        return texture;
+//    }
 }

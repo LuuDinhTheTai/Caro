@@ -1,21 +1,16 @@
 package com.utc.btl.screen.impl.light_mode;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.utc.btl.Assets;
 import com.utc.btl.Main;
-import com.utc.btl.screen.IMenuScreen;
 import com.utc.btl.screen.impl.MenuScreen;
 
 import static com.utc.btl.Assets.*;
 
-public class LightMenuScreen extends MenuScreen implements IMenuScreen {
+public class LightMenuScreen extends MenuScreen {
 
     public LightMenuScreen(Main main) {
         super(main);

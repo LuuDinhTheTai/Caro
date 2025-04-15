@@ -8,10 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.Assets;
 import com.utc.btl.Main;
-import com.utc.btl.screen.IProfileScreen;
 import com.utc.btl.screen.impl.ProfileScreen;
 
-public class LightProfileScreen extends ProfileScreen implements IProfileScreen {
+public class LightProfileScreen extends ProfileScreen {
 
     public LightProfileScreen(Main main) {
         super(main);

@@ -5,10 +5,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.utc.btl.Assets;
 import com.utc.btl.Main;
-import com.utc.btl.screen.IProfileScreen;
 import com.utc.btl.screen.impl.light_mode.LightProfileScreen;
 
-public class DarkProfileScreen extends LightProfileScreen implements IProfileScreen {
+public class DarkProfileScreen extends LightProfileScreen {
 
     public DarkProfileScreen(Main main) {
         super(main);

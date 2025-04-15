@@ -32,7 +32,6 @@ public class RegisterScreen extends BaseScreen implements IRegisterScreen {
     @Override
     public void init() {
         table = new Table();
-        table.setFillParent(true);
 
         titleLabel = new Label("REGISTER", skin);
 
@@ -57,6 +56,7 @@ public class RegisterScreen extends BaseScreen implements IRegisterScreen {
     @Override
     public void setUI() {
         table.setSize(200, 400);
+        table.setFillParent(true);
         table.center();
 
         table.add(titleLabel).padTop(5).row();

@@ -6,10 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.utc.btl.Assets;
 import com.utc.btl.Main;
-import com.utc.btl.screen.IMainMenuScreen;
 import com.utc.btl.screen.impl.MainMenuScreen;
 
-public class LightMainMenuScreen extends MainMenuScreen implements IMainMenuScreen {
+public class LightMainMenuScreen extends MainMenuScreen {
 
     public LightMainMenuScreen(Main main) {
         super(main);

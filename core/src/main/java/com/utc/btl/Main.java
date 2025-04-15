@@ -5,6 +5,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.utc.btl.controller.IGameModeController;
+import com.utc.btl.controller.impl.GameModeController;
 import com.utc.btl.entity.Account;
 import com.utc.btl.game_model.GameModel;
 import com.utc.btl.game_play.validator.IValidator;
@@ -16,10 +18,7 @@ import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.IAccountDao;
 import com.utc.btl.dao.impl.AccountDao;
-import com.utc.btl.screen.impl.dark_mode.DarkLoginScreen;
-import com.utc.btl.screen.impl.dark_mode.DarkMainMenuScreen;
-import com.utc.btl.screen.impl.dark_mode.DarkMenuScreen;
-import com.utc.btl.screen.impl.dark_mode.DarkProfileScreen;
+import com.utc.btl.screen.impl.dark_mode.*;
 import com.utc.btl.screen.impl.light_mode.*;
 import com.utc.btl.service.IAccountService;
 import com.utc.btl.service.impl.AccountService;
@@ -33,12 +32,6 @@ public class Main extends Game {
     public final int LIGHT_MODE = 1;
     public final int DARK_MODE = 2;
     public int uiMode;
-
-    // STATE
-    public final int inGame = 0;
-    public final int notInGame = 1;
-    public final int pause = 2;
-    public int state;
 
     // DAO
     private IAccountDao accountDao;
@@ -61,18 +54,20 @@ public class Main extends Game {
     public IMainMenuScreen lightMainMenuScreen;
     public IMenuScreen lightMenuScreen;
     public IProfileScreen lightProfileScreen;
+    public IRegisterScreen lightRegisterScreen;
     public ISettingScreen lightSettingScreen;
 
     public ILoginScreen darkLoginScreen;
     public IMainMenuScreen darkMainMenuScreen;
     public IMenuScreen darkMenuScreen;
     public IProfileScreen darkProfileScreen;
-
-    // RENDERER
+    public IRegisterScreen darkRegisterScreen;
+    public ISettingScreen darkSettingScreen;
 
     // CONTROLLER
     public IScreenController screenController;
     public IAuthController authController;
+    public IGameModeController gameModeController;
 
     // GAME PLAY
     public IValidator validator;
@@ -88,10 +83,7 @@ public class Main extends Game {
         Assets.load();
 
         // UI MODE
-        uiMode = LIGHT_MODE;
-
-        // STATE
-        state = notInGame;
+        uiMode = DARK_MODE;
 
         // DAO
         accountDao = new AccountDao();
@@ -113,16 +105,20 @@ public class Main extends Game {
         lightMainMenuScreen = new LightMainMenuScreen(this);
         lightMenuScreen = new LightMenuScreen(this);
         lightProfileScreen = new LightProfileScreen(this);
+        lightRegisterScreen = new LightRegisterScreen(this);
         lightSettingScreen = new LightSettingScreen(this);
 
         darkLoginScreen = new DarkLoginScreen(this);
         darkMainMenuScreen = new DarkMainMenuScreen(this);
         darkMenuScreen = new DarkMenuScreen(this);
         darkProfileScreen = new DarkProfileScreen(this);
+        darkRegisterScreen = new DarkRegisterScreen(this);
+        darkSettingScreen = new DarkSettingScreen(this);
 
         // CONTROLLER
         screenController = new ScreenController(this);
         authController = new AuthController(this);
+        gameModeController = new GameModeController(this);
 
         screenController.toMenuScreen();
     }
@@ -140,17 +136,24 @@ public class Main extends Game {
     public void dispose() {
         Gdx.app.log(INFO, "Game disposing...");
         batch.dispose();
-
         gameScreen.dispose();
         loginScreen.dispose();
         mainMenuScreen.dispose();
         menuScreen.dispose();
+        profileScreen.dispose();
         registerScreen.dispose();
-    }
-
-    @Override
-    public void pause() {
-        super.pause();
-        state = pause;
+        settingScreen.dispose();
+        lightLoginScreen.dispose();
+        lightMainMenuScreen.dispose();
+        lightMenuScreen.dispose();
+        lightProfileScreen.dispose();
+        lightRegisterScreen.dispose();
+        lightSettingScreen.dispose();
+        darkLoginScreen.dispose();
+        darkMainMenuScreen.dispose();
+        darkMenuScreen.dispose();
+        darkProfileScreen.dispose();
+        darkRegisterScreen.dispose();
+        darkSettingScreen.dispose();
     }
 }
