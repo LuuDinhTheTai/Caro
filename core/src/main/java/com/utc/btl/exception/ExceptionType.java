@@ -20,6 +20,7 @@ public enum ExceptionType {
     COULD_NOT_LIST_DATA_EXCEPTION("Couldn't list data."),
     COULD_NOT_DELETE_ENTITY_EXCEPTION("Couldn't delete entity."),
     COULD_NOT_FIND_ENTITY_EXCEPTION("Couldn't find entity."),
+    ASSETS_LOAD_FAILED_EXCEPTION("Assets load failed."),
     ;
 
     private String message;

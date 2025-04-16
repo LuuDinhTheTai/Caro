@@ -2,8 +2,8 @@ package com.utc.btl.constant;
 
 public class Constants {
 
-    public static final int ROW_SIZE = 12;
-    public static final int COL_SIZE = 15;
+    public static final int ROW_SIZE = 20;
+    public static final int COL_SIZE = 20;
 
     public static final String X_CELL = "X_CELL";
     public static final String X_CELL_FOCUS = "X_CELL_FOCUS";
@@ -35,8 +35,8 @@ public class Constants {
     public static final int BASE_BUTTON_HEIGHT = 1;
     public static final int TINY_BUTTON_W = BASE_BUTTON_WIDTH * 280;
     public static final int TINY_BUTTON_H = BASE_BUTTON_HEIGHT * 64;
-    public static final int SMALL_BUTTON_W = BASE_BUTTON_WIDTH * 2;
-    public static final int SMALL_BUTTON_H = BASE_BUTTON_HEIGHT * 2;
+    public static final int SMALL_BUTTON_W = BASE_BUTTON_WIDTH * 145;
+    public static final int SMALL_BUTTON_H = BASE_BUTTON_HEIGHT * 64;
     public static final int BIG_BUTTON_W = BASE_BUTTON_WIDTH * 300;
     public static final int BIG_BUTTON_H = BASE_BUTTON_HEIGHT * 64;
 }

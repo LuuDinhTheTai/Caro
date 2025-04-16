@@ -182,7 +182,7 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
         });
     }
 
-    private void clearScreen() {
+    protected void clearScreen() {
         stage.clear();
         mainContainer.clear();
         bottomTable.clear();

@@ -16,7 +16,7 @@ public abstract class BaseController implements IController {
     protected Main main;
     protected Skin skin;
 
-    public BaseController(Main main/*, BoardRenderer boardRenderer*/) {
+    public BaseController(Main main) {
         this.main = main;
         this.skin = Assets.skin;
     }
@@ -38,38 +38,6 @@ public abstract class BaseController implements IController {
     }
 
     @Override
-    public void toLoginScreen() {
-        Gdx.app.log(INFO, "Redirect to login screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.loginScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.lightLoginScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.darkLoginScreen);
-
-        }
-    }
-
-    @Override
-    public void toMainMenuScreen() {
-        Gdx.app.log(INFO, "Redirect to main menu screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.mainMenuScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.lightMainMenuScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.darkMainMenuScreen);
-
-        }
-    }
-
-    @Override
     public void toMenuScreen() {
         Gdx.app.log(INFO, "Redirect to menu screen");
 
@@ -81,22 +49,6 @@ public abstract class BaseController implements IController {
 
         } else if (main.uiMode == main.DARK_MODE) {
             main.setScreen(main.darkMenuScreen);
-
-        }
-    }
-
-    @Override
-    public void toRegisterScreen() {
-        Gdx.app.log(INFO, "Redirect to register screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.registerScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.lightRegisterScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.darkRegisterScreen);
 
         }
     }

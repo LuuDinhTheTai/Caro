@@ -21,16 +21,16 @@ public class DarkSettingScreen extends LightSettingScreen {
 
         titleLabel = new Label("Setting", darkTitleStyle);
 
-        volumeLabel = new Label("Volume", skin);
+        volumeLabel = new Label("Volume", darkSettingLabelStyle);
         volumeSlider = new Slider(0, 100, 1, false, skin);
 
-        musicLabel = new Label("Music", darkLabelStyle);
+        musicLabel = new Label("Music", darkSettingLabelStyle);
         musicCheckBox = new CheckBox("Music", skin);
 
-        soundLabel = new Label("Sound", darkLabelStyle);
+        soundLabel = new Label("Sound", darkSettingLabelStyle);
         soundCheckBox = new CheckBox("Sound", skin);
 
-        themeLabel = new Label("Theme: ", darkLabelStyle);
+        themeLabel = new Label("Theme: ", darkSettingLabelStyle);
         defaultThemeBtn = new TextButton("Default", darkImageTextButtonStyle);
         lightThemButton = new TextButton("Light", darkImageTextButtonStyle);
         darkThemeBtn = new TextButton("Dark", darkImageTextButtonStyle);

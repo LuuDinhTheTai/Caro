@@ -22,8 +22,7 @@ public class DarkMenuScreen extends LightMenuScreen {
         table = new Table();
 
         titleLabel = new Label("C-Caro", darkTitleStyle);
-        singlePlayerBtn = new ImageTextButton("Single Player", darkImageTextButtonStyle);
-        multiPlayerBtn = new ImageTextButton("Multi Player", darkImageTextButtonStyle);
+        playBtn = new ImageTextButton("Play", darkImageTextButtonStyle);
         profileBtn = new ImageTextButton("Profile", darkImageTextButtonStyle);
         settingBtn = new ImageTextButton("Settings", darkImageTextButtonStyle);
         exitBtn = new ImageTextButton("Exit", darkImageTextButtonStyle);

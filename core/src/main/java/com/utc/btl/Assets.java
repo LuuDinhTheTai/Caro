@@ -1,5 +1,6 @@
 package com.utc.btl;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -12,6 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.utc.btl.exception.ExceptionType;
+import com.utc.btl.exception.GameException;
 
 import static com.utc.btl.constant.Constants.ERROR;
 import static com.utc.btl.constant.Constants.INFO;
@@ -24,8 +27,6 @@ public class Assets {
     // BACKGROUND
     public static Texture lightBackgroundTexture;
     public static Texture darkBacgroundTexture;
-    public static Texture lightTextfieldBackgroundTexture;
-    public static Texture darkTextfieldBackgroundTexture;
     public static Texture tableBackgroundTexture;
 
     // BUTTON
@@ -70,9 +71,9 @@ public class Assets {
     public static Label.LabelStyle darkTitleStyle;
     public static Label.LabelStyle lightLabelStyle;
     public static Label.LabelStyle darkLabelStyle;
+    public static Label.LabelStyle lightSettingLabelStyle;
+    public static Label.LabelStyle darkSettingLabelStyle;
     public static Label.LabelStyle lightInfLabelStyle;
-    public static TextField.TextFieldStyle lightTextfieldStyle;
-    public static TextField.TextFieldStyle darkTextfieldStyle;
     public static ImageTextButton.ImageTextButtonStyle lightImageTextButtonStyle;
     public static ImageTextButton.ImageTextButtonStyle darkImageTextButtonStyle;
 
@@ -132,13 +133,13 @@ public class Assets {
             lightLabelStyle = getLightLabelStyle();
             darkLabelStyle = getDarkLabelStyle();
             lightInfLabelStyle = getLightInfLabelStyle();
-            lightTextfieldStyle = getLightTextFieldStyle();
-            darkTextfieldStyle = getDarkTextFieldStyle();
+            lightSettingLabelStyle = getLightSettingLabelStyle();
+            darkSettingLabelStyle = getDarkSettingLabelStyle();
             lightImageTextButtonStyle = getLightImageTextButtonStyle();
             darkImageTextButtonStyle = getDarkImageTextButtonStyle();
 
         } catch (Exception e) {
-            Gdx.app.error(ERROR, "Caused by: ", e);
+            throw new GameException(ExceptionType.ASSETS_LOAD_FAILED_EXCEPTION);
         }
     }
 
@@ -196,23 +197,16 @@ public class Assets {
         return style;
     }
 
-    private static TextField.TextFieldStyle getLightTextFieldStyle() {
-        TextField.TextFieldStyle style = new TextField.TextFieldStyle();
-        style.font = BLACK_32;
+    private static Label.LabelStyle getLightSettingLabelStyle() {
+        Label.LabelStyle style = new Label.LabelStyle();
+        style.font = BLACK_24;
         style.fontColor = Color.BLACK;
-
-        Pixmap pixmap = new Pixmap(1, 1, Pixmap.Format.RGBA8888);
-        pixmap.setColor(Color.LIGHT_GRAY);
-        pixmap.fill();
-        style.background = new TextureRegionDrawable(new TextureRegion(new Texture(pixmap)));
-        pixmap.dispose();
-
         return style;
     }
 
-    private static TextField.TextFieldStyle getDarkTextFieldStyle() {
-        TextField.TextFieldStyle style = new TextField.TextFieldStyle();
-        style.font = WHITE_16;
+    private static Label.LabelStyle getDarkSettingLabelStyle() {
+        Label.LabelStyle style = new Label.LabelStyle();
+        style.font = WHITE_24;
         style.fontColor = Color.WHITE;
         return style;
     }
@@ -231,7 +225,7 @@ public class Assets {
         style.down = new TextureRegionDrawable(new TextureRegion(lightDownButtonTexture));
         style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
-        style.font = BLACK_24;
+        style.font = BLACK_32;
 
         return style;
     }
@@ -243,33 +237,9 @@ public class Assets {
         style.down = new TextureRegionDrawable(new TextureRegion(darkDownButtonTexture));
         style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
-        style.font = WHITE_24;
+        style.font = BLACK_32;
 //        style.fontColor = Color.WHITE;
 
         return style;
     }
-//    private static Texture createRoundedRectTexture(int width, int height, int radius, Color color) {
-//        Pixmap pixmap = new Pixmap(width, height, Pixmap.Format.RGBA8888);
-//
-//        pixmap.setBlending(Pixmap.Blending.None);
-//        pixmap.setColor(0, 0, 0, 0);
-//        pixmap.fill();
-//
-//        pixmap.setBlending(Pixmap.Blending.SourceOver);
-//        pixmap.setColor(color);
-//
-//
-//        pixmap.fillRectangle(radius, 0, width - 2 * radius, height);
-//        pixmap.fillRectangle(0, radius, width, height - 2 * radius);
-//
-//
-//        pixmap.fillCircle(radius, radius, radius);
-//        pixmap.fillCircle(width - radius, radius, radius);
-//        pixmap.fillCircle(radius, height - radius, radius);
-//        pixmap.fillCircle(width - radius, height - radius, radius);
-//
-//        Texture texture = new Texture(pixmap);
-//        pixmap.dispose();
-//        return texture;
-//    }
 }

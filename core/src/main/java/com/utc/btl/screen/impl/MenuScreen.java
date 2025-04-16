@@ -17,8 +17,7 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
 
     protected Label titleLabel;
 
-    protected Button singlePlayerBtn;
-    protected Button multiPlayerBtn;
+    protected Button playBtn;
     protected Button profileBtn;
     protected Button settingBtn;
     protected Button exitBtn;
@@ -32,8 +31,7 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
         table = new Table();
 
         titleLabel = new Label("C-Caro", skin);
-        singlePlayerBtn = new TextButton("Single Player", skin);
-        multiPlayerBtn = new TextButton("Multi Player", skin);
+        playBtn = new TextButton("Play", skin);
         profileBtn = new TextButton("Profile", skin);
         settingBtn = new TextButton("Setting", skin);
         exitBtn = new TextButton("Exit", skin);
@@ -46,8 +44,7 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
         table.center();
 
         table.add(titleLabel).padTop(5).row();
-        table.add(singlePlayerBtn).width(table.getWidth()).padTop(10).row();
-        table.add(multiPlayerBtn).width(table.getWidth()).padTop(10).row();
+        table.add(playBtn).width(table.getWidth()).padTop(10).row();
         table.add(profileBtn).width(table.getWidth()).padTop(10).row();
         table.add(settingBtn).width(table.getWidth()).padTop(10).row();
         table.add(exitBtn).width(table.getWidth()).padTop(10).row();
@@ -57,13 +54,7 @@ public class MenuScreen extends BaseScreen implements IMenuScreen {
 
     @Override
     public void setListeners() {
-        singlePlayerBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                main.screenController.toGameScreen();
-            }
-        });
-        multiPlayerBtn.addListener(new ClickListener() {
+        playBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toGameScreen();

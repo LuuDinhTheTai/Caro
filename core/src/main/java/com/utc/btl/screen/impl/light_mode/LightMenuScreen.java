@@ -9,6 +9,7 @@ import com.utc.btl.Main;
 import com.utc.btl.screen.impl.MenuScreen;
 
 import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Constants.*;
 
 public class LightMenuScreen extends MenuScreen {
 
@@ -23,8 +24,7 @@ public class LightMenuScreen extends MenuScreen {
         table = new Table();
 
         titleLabel = new Label("C-Caro", lightTitleStyle);
-        singlePlayerBtn = new ImageTextButton("Single Player", lightImageTextButtonStyle);
-        multiPlayerBtn = new ImageTextButton("Multi Player", lightImageTextButtonStyle);
+        playBtn = new ImageTextButton("Play", lightImageTextButtonStyle);
         profileBtn = new ImageTextButton("Profile", lightImageTextButtonStyle);
         settingBtn = new ImageTextButton("Settings", lightImageTextButtonStyle);
         exitBtn = new ImageTextButton("Exit", lightImageTextButtonStyle);
@@ -37,18 +37,16 @@ public class LightMenuScreen extends MenuScreen {
 
         table.add(titleLabel).padTop(5).row();
 
-        table.add(singlePlayerBtn).width(300).height(64).padTop(10).center().row();
-
-        table.add(multiPlayerBtn).width(300).height(64).padTop(10).center().row();
+        table.add(playBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).center().row();
 
         Table subTable = new Table();
-        subTable.add(profileBtn).width(145).height(64);
+        subTable.add(profileBtn).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H);
         subTable.add().width(10);
-        subTable.add(settingBtn).width(145).height(64);
+        subTable.add(settingBtn).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H);
 
-        table.add(subTable).width(300).height(64).padTop(10).center().row();
+        table.add(subTable).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).center().row();
 
-        table.add(exitBtn).width(300).height(64).padTop(10).center().row();
+        table.add(exitBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).center().row();
 
         stage.addActor(table);
     }
