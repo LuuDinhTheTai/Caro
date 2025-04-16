@@ -1,28 +1,40 @@
-package com.utc.btl.game_model;
+package com.utc.btl.game_play;
 
+import com.utc.btl.Main;
 import com.utc.btl.view_component.Board;
 import com.utc.btl.view_component.Cell;
 import com.utc.btl.view_component.Piece;
-import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-public class GameModel {
+public class GamePlay {
+
+    private Main main;
     private Board board;
     private Cell focusedCell;
     private Cell lastPlayedCell;
     private Piece currentPlayer;
-    private int gameStatus;
 
-    public GameModel() {
-        board = new Board();
-        currentPlayer = Piece.X_CELL;
+    public GamePlay(Main main) {
+        this.main = main;
+        currentPlayer = Piece.X;
         focusedCell = null;
         lastPlayedCell = null;
-        gameStatus = 0;
     }
-    public void focusCell(Cell cell) {
+
+    public void move(Cell cell) {
+        if (cell.getPiece() == Piece.EMPTY) {
+            toFocus(cell);
+
+        } else if (cell.getPiece() == Piece.FOCUS) {
+            if (focusedCell == cell) {
+                commit(cell);
+            }
+            switchPlayer();
+        }
+    }
+
+    private void toFocus(Cell cell) {
         if (focusedCell != null && focusedCell != cell && focusedCell != lastPlayedCell) {
             focusedCell.setPiece(Piece.EMPTY);
         }
@@ -30,24 +42,24 @@ public class GameModel {
         focusedCell = cell;
     }
 
-    public void commitCell(Cell cell) {
+    private void commit(Cell cell) {
         // Nếu có cell vừa đánh trước đó thì cập nhật lại trạng thái của cell đó
         if (lastPlayedCell != null) {
             Piece lastPiece = lastPlayedCell.getPiece();
-            if (lastPiece == Piece.X_CELL_FOCUS) {
-                lastPlayedCell.setPiece(Piece.X_CELL);
-            } else if (lastPiece == Piece.O_CELL_FOCUS) {
-                lastPlayedCell.setPiece(Piece.O_CELL);
+            if (lastPiece == Piece.X_FOCUS) {
+                lastPlayedCell.setPiece(Piece.X);
+            } else if (lastPiece == Piece.O_FOCUS) {
+                lastPlayedCell.setPiece(Piece.O);
             }
         }
         // Xác định trạng thái mới của cell dựa trên người chơi hiện tại
-        Piece newPiece = (currentPlayer == Piece.X_CELL) ? Piece.X_CELL_FOCUS : Piece.O_CELL_FOCUS;
+        Piece newPiece = (currentPlayer == Piece.X) ? Piece.X_FOCUS : Piece.O_FOCUS;
         cell.setPiece(newPiece);
         lastPlayedCell = cell;
         focusedCell = null;
-        switchPlayer();
     }
-    public void switchPlayer() {
-        currentPlayer = (currentPlayer == Piece.X_CELL) ? Piece.O_CELL : Piece.X_CELL;
+
+    private void switchPlayer() {
+        currentPlayer = (currentPlayer == Piece.X) ? Piece.O : Piece.X;
     }
 }

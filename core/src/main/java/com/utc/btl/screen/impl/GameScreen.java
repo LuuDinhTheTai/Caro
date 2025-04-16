@@ -8,9 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.utc.btl.Main;
-import com.utc.btl.controller.GameController;
-import com.utc.btl.game_model.GameModel;
-import com.utc.btl.game_play.validator.Validator;
 import com.utc.btl.view_component.Board;
 import com.utc.btl.screen.IGameScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
@@ -25,19 +22,9 @@ public class GameScreen extends BaseScreen implements IGameScreen {
     private float dragOffsetX, dragOffsetY;
 
     protected Board board;
-    protected GameController gameController;
-    protected GameModel gameModel;
-    protected Validator validator;
 
     public GameScreen(Main main) {
         super(main);
-
-        gameModel = new GameModel();
-        validator = new Validator();
-        gameController = new GameController(gameModel,validator);
-        gameModel.getBoard().setController(gameController);
-        board = gameModel.getBoard();
-
     }
 
     @Override
@@ -52,6 +39,9 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         super.show();
         clearScreen();
         boardTable = new Table();
+        board = new Board(main);
+        main.gamePlay.setBoard(board);
+        main.validator.setBoard(board);
         setBoardTableUI();
         setUI();
         setDragBoardListener();
@@ -70,7 +60,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
     private void setBoardTableUI() {
         boardTable.left();
         boardTable.setFillParent(true);
-        boardTable.setSize(Gdx.graphics.getWidth() * 0.7f, Gdx.graphics.getHeight());
+        boardTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         int row = board.getBoard().length;
         int col = board.getBoard()[0].length;

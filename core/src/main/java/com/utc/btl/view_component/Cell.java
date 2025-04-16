@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.utc.btl.controller.GameController;
+import com.utc.btl.Main;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,18 +16,18 @@ import lombok.Setter;
 @Getter
 public class Cell extends ImageButton {
 
+    private Main main;
     private Piece piece;
     private final ImageButtonStyle style;
     private int row;
     private int col;
-    private GameController controller;
 
 
-    public Cell(GameController controller, int row, int col) {
+    public Cell(Main main, int row, int col) {
         super(imageButtonStyle());
+        this.main = main;
         this.piece = Piece.EMPTY;
         this.style = new ImageButtonStyle(super.getStyle());
-        this.controller = controller;
         this.row = row;
         this.col = col;
         updateStyle();
@@ -57,7 +57,7 @@ public class Cell extends ImageButton {
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                controller.onCellClicked(Cell.this);
+                main.gamePlayController.move(Cell.this);
             }
         });
     }

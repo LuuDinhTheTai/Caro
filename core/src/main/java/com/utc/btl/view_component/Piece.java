@@ -10,10 +10,10 @@ public enum Piece {
 
     EMPTY(Status.EMPTY, new TextureRegion(lightEmptyCellTexture)),
     FOCUS(Status.FOCUS, new TextureRegion(lightFocusCellTexture)),
-    X_CELL(Status.EMPTY, new TextureRegion(lightXCellTexture)),
-    X_CELL_FOCUS(Status.X_FOCUS, new TextureRegion(lightXCellFocusTexture)),
-    O_CELL(Status.O, new TextureRegion(lightOCellTexture)),
-    O_CELL_FOCUS(Status.O_FOCUS, new TextureRegion(lightOCellFocusTexture)),
+    X(Status.X, new TextureRegion(lightXCellTexture)),
+    X_FOCUS(Status.X, new TextureRegion(lightXCellFocusTexture)),
+    O(Status.O, new TextureRegion(lightOCellTexture)),
+    O_FOCUS(Status.O, new TextureRegion(lightOCellFocusTexture)),
     ;
 
     private Status status;
@@ -28,8 +28,6 @@ public enum Piece {
         EMPTY,
         FOCUS,
         X,
-        X_FOCUS,
         O,
-        O_FOCUS,
     }
 }

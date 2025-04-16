@@ -56,6 +56,7 @@ public class Assets {
     public static BitmapFont WHITE_48;
     public static BitmapFont WHITE_64;
     public static BitmapFont BLACK_16;
+    public static BitmapFont BLACK_24;
     public static BitmapFont BLACK_32;
     public static BitmapFont BLACK_48;
     public static BitmapFont BLACK_64;
@@ -116,6 +117,7 @@ public class Assets {
             WHITE_48 = loadFont("font/VT323-Regular.ttf", 48, Color.WHITE);
             WHITE_64 = loadFont("font/VT323-Regular.ttf", 64, Color.WHITE);
             BLACK_16 = loadFont("font/VT323-Regular.ttf", 16, Color.BLACK);
+            BLACK_24 = loadFont("font/VT323-Regular.ttf", 24, Color.BLACK);
             BLACK_32 = loadFont("font/VT323-Regular.ttf", 32, Color.BLACK);
             BLACK_48 = loadFont("font/VT323-Regular.ttf", 48, Color.BLACK);
             BLACK_64 = loadFont("font/VT323-Regular.ttf", 64, Color.BLACK);
@@ -221,6 +223,7 @@ public class Assets {
         style.fontColor = Color.WHITE;
         return style;
     }
+
     private static ImageTextButton.ImageTextButtonStyle getLightImageTextButtonStyle() {
         ImageTextButton.ImageTextButtonStyle style = new ImageTextButton.ImageTextButtonStyle();
 
@@ -228,7 +231,7 @@ public class Assets {
         style.down = new TextureRegionDrawable(new TextureRegion(lightDownButtonTexture));
         style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
-        style.font = WHITE_24;
+        style.font = BLACK_24;
 
         return style;
     }
@@ -241,7 +244,7 @@ public class Assets {
         style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
         style.font = WHITE_24;
-        style.fontColor = Color.WHITE;
+//        style.fontColor = Color.WHITE;
 
         return style;
     }

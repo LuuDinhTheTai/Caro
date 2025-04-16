@@ -6,14 +6,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.utc.btl.controller.IGameModeController;
+import com.utc.btl.controller.IGamePlayController;
 import com.utc.btl.controller.impl.GameModeController;
+import com.utc.btl.controller.impl.GamePlayController;
 import com.utc.btl.entity.Account;
-import com.utc.btl.game_model.GameModel;
+import com.utc.btl.game_play.GamePlay;
 import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.controller.IAuthController;
 import com.utc.btl.controller.IScreenController;
 import com.utc.btl.controller.impl.AuthController;
 import com.utc.btl.controller.impl.ScreenController;
+import com.utc.btl.game_play.validator.Validator;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.IAccountDao;
@@ -68,9 +71,12 @@ public class Main extends Game {
     public IScreenController screenController;
     public IAuthController authController;
     public IGameModeController gameModeController;
+    public IGamePlayController gamePlayController;
 
     // GAME PLAY
     public IValidator validator;
+    public GamePlay gamePlay;
+
     // AUTH
     public Account loggedInAccount;
 
@@ -119,6 +125,11 @@ public class Main extends Game {
         screenController = new ScreenController(this);
         authController = new AuthController(this);
         gameModeController = new GameModeController(this);
+        gamePlayController = new GamePlayController(this);
+
+        // VALIDATOR
+        validator = new Validator(this);
+        gamePlay = new GamePlay(this);
 
         screenController.toMenuScreen();
     }
