@@ -11,9 +11,9 @@ public enum Piece {
     EMPTY(Status.EMPTY, new TextureRegion(lightEmptyCellTexture)),
     FOCUS(Status.FOCUS, new TextureRegion(lightFocusCellTexture)),
     X(Status.X, new TextureRegion(lightXCellTexture)),
-    X_FOCUS(Status.X, new TextureRegion(lightXCellFocusTexture)),
+    X_FOCUS(Status.X_FOCUS, new TextureRegion(lightXCellFocusTexture)),
     O(Status.O, new TextureRegion(lightOCellTexture)),
-    O_FOCUS(Status.O, new TextureRegion(lightOCellFocusTexture)),
+    O_FOCUS(Status.O_FOCUS, new TextureRegion(lightOCellFocusTexture)),
     ;
 
     private Status status;
@@ -24,10 +24,25 @@ public enum Piece {
         this.textureRegion = textureRegion;
     }
 
+    public boolean equals(Piece other) {
+        if (this.status == other.status) {
+            return true;
+        }
+        if (this.status == Status.X && other.status == Status.X_FOCUS) {
+            return true;
+        }
+        if (this.status == Status.O && other.status == Status.O_FOCUS) {
+            return true;
+        }
+        return false;
+    }
+
     enum Status {
         EMPTY,
         FOCUS,
         X,
+        X_FOCUS,
         O,
+        O_FOCUS,
     }
 }

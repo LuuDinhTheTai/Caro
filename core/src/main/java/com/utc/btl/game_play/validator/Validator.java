@@ -48,7 +48,7 @@ public class Validator implements IValidator {
         // Duyệt theo hướng thuận
         int row = cell.getRow() + deltaRow;
         int col = cell.getCol() + deltaCol;
-        while (isValid(row, col) && board.getBoard()[row][col].getPiece().getStatus() == target.getStatus()) {
+        while (isValid(row, col) && board.getBoard()[row][col].getPiece().equals(target)) {
             count++;
             row += deltaRow;
             col += deltaCol;
@@ -63,7 +63,7 @@ public class Validator implements IValidator {
         // Duyệt theo hướng nghịch
         row = cell.getRow() - deltaRow;
         col = cell.getCol() - deltaCol;
-        while (isValid(row, col) && board.getBoard()[row][col].getPiece().getStatus() == target.getStatus()) {
+        while (isValid(row, col) && board.getBoard()[row][col].getPiece().equals(target)) {
             count++;
             row -= deltaRow;
             col -= deltaCol;
