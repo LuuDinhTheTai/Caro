@@ -37,6 +37,28 @@ public enum Piece {
         return false;
     }
 
+    public boolean isX() {
+        if (this.status == Status.X || this.status == Status.X_FOCUS) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isO() {
+        if (this.status == Status.O || this.status == Status.O_FOCUS) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isEmpty() {
+        return this.status == Status.EMPTY;
+    }
+
+    public boolean isFocus() {
+        return this.status == Status.FOCUS;
+    }
+
     enum Status {
         EMPTY,
         FOCUS,

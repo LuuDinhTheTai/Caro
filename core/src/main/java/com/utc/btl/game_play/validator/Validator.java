@@ -6,8 +6,6 @@ import com.utc.btl.view_component.Cell;
 import com.utc.btl.view_component.Piece;
 import lombok.Setter;
 
-import static com.utc.btl.constant.Constants.DIALOG_INFO_TITLE;
-
 @Setter
 public class Validator implements IValidator {
 
@@ -24,6 +22,7 @@ public class Validator implements IValidator {
         checkDirection(cell, 1, 0);
         checkDirection(cell, 1, 1);
         checkDirection(cell, 1, -1);
+        checkDraw();
     }
 
     /*
@@ -51,12 +50,6 @@ public class Validator implements IValidator {
             col += deltaCol;
         }
 
-        if (count >= 5) {
-            main.screenController.toMenuScreen();
-            String msg = target + " WIN";
-            main.screenController.popUpDialog(DIALOG_INFO_TITLE, msg);
-        }
-
         // Duyệt theo hướng nghịch
         row = cell.getRow() - deltaRow;
         col = cell.getCol() - deltaCol;
@@ -67,9 +60,27 @@ public class Validator implements IValidator {
         }
 
         if (count >= 5) {
-            main.screenController.toMenuScreen();
-            String msg = target + " WIN";
-            main.screenController.popUpDialog(DIALOG_INFO_TITLE, msg);
+            main.gamePlayController.win(cell);
+        }
+    }
+
+    private void checkDraw() {
+        int count = 0;
+        Cell cell = null;
+        for (Cell[] row : board.getBoard()) {
+            for (Cell c : row) {
+                if (c.getPiece().isEmpty()
+                        || c.getPiece().isFocus()) {
+                    count++;
+                    cell = c;
+                    if (count > 0) {
+                        break;
+                    }
+                }
+            }
+        }
+        if (count == 0) {
+            main.gamePlayController.draw(cell);
         }
     }
 

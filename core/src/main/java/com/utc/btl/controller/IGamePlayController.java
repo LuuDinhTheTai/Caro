@@ -6,4 +6,6 @@ import com.utc.btl.view_component.Cell;
 public interface IGamePlayController extends IController {
 
     void move(Cell cell);
+    void win(Cell cell);
+    void draw(Cell cell);
 }

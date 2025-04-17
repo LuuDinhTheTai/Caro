@@ -21,8 +21,8 @@ public class DarkProfileScreen extends LightProfileScreen {
         table = new Table();
 
         titleLabel = new Label("Profile", darkTitleStyle);
-        xLabel = new Label("X: ", darkLabelStyle);
-        oLabel = new Label("O: ", darkLabelStyle);
+        xLabel = new Label("X Win: ", darkLabelStyle);
+        oLabel = new Label("O Win: ", darkLabelStyle);
         drawLabel = new Label("Draw: ", darkLabelStyle);
 
         xInf = new Label("", lightInfLabelStyle);

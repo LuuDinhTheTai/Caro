@@ -75,13 +75,14 @@ public class Main extends Game {
 
         try {
             Assets.load();
-            session = new Session(0, 0, 0);
             // UI MODE
             uiMode = LIGHT_MODE;
 
             // DAO
             sessionDao = new SessionDao();
             sessionService = new SessionService(sessionDao);
+            session = new Session(0, 0, 0);
+            sessionService.create(session);
 
             batch = new SpriteBatch();
 
@@ -127,11 +128,7 @@ public class Main extends Game {
     @Override
     public void dispose() {
         Gdx.app.log(INFO, "Game disposing...");
-        try {
-            sessionService.create(session);
-        } catch (Exception e) {
-            Gdx.app.error(ERROR, e.getMessage(), e);
-        }
+        sessionService.update(session);
         batch.dispose();
         gameScreen.dispose();
         menuScreen.dispose();

@@ -25,8 +25,8 @@ public class LightProfileScreen extends ProfileScreen {
         table = new Table();
 
         titleLabel = new Label("Profile", lightTitleStyle);
-        xLabel = new Label("X: ", lightLabelStyle);
-        oLabel = new Label("O: ", lightLabelStyle);
+        xLabel = new Label("X Win: ", lightLabelStyle);
+        oLabel = new Label("O Win: ", lightLabelStyle);
         drawLabel = new Label("Draw: ", lightLabelStyle);
 
         xInf = new Label("", lightInfLabelStyle);
@@ -47,11 +47,11 @@ public class LightProfileScreen extends ProfileScreen {
 
         table.add(titleLabel).padTop(5).row();
 
-        table.add(xLabel).width(table.getWidth()).padTop(10);
+        table.add(xLabel).padTop(10).row();
         table.add(xInf).row();
-        table.add(oLabel).width(table.getWidth()).padTop(10);
+        table.add(oLabel).padTop(10).row();
         table.add(oInf).row();
-        table.add(drawLabel).padTop(5).row();
+        table.add(drawLabel).padTop(10).row();
         table.add(drawInf).row();
 
         table.add(menuBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();

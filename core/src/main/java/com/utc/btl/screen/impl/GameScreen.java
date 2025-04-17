@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.utc.btl.Main;
+import com.utc.btl.game_play.GamePlay;
+import com.utc.btl.game_play.validator.Validator;
 import com.utc.btl.view_component.Board;
 import com.utc.btl.screen.IGameScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
@@ -40,6 +42,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         clearScreen();
         boardTable = new Table();
         board = new Board(main);
+        main.gamePlay = new GamePlay(main);
         main.gamePlay.setBoard(board);
         main.validator.setBoard(board);
         setBoardTableUI();
