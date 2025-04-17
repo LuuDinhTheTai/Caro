@@ -21,13 +21,13 @@ public class DarkProfileScreen extends LightProfileScreen {
         table = new Table();
 
         titleLabel = new Label("Profile", darkTitleStyle);
-        winLabel = new Label("Win: ", lightInfLabelStyle);
-        lossLabel = new Label("Loss: ", lightInfLabelStyle);
-        drawLabel = new Label("Draw: ", lightInfLabelStyle);
+        xLabel = new Label("X: ", darkLabelStyle);
+        oLabel = new Label("O: ", darkLabelStyle);
+        drawLabel = new Label("Draw: ", darkLabelStyle);
 
-        win = new Label("", lightInfLabelStyle);
-        loss = new Label("", lightInfLabelStyle);
-        draw = new Label("", lightInfLabelStyle);
+        xInf = new Label("", lightInfLabelStyle);
+        oInf = new Label("", lightInfLabelStyle);
+        drawInf = new Label("", lightInfLabelStyle);
 
         menuBtn = new TextButton("Menu", darkImageTextButtonStyle);
     }

@@ -1,13 +1,11 @@
 package com.utc.btl.game_play.validator;
 
-import com.badlogic.gdx.Gdx;
 import com.utc.btl.Main;
 import com.utc.btl.view_component.Board;
 import com.utc.btl.view_component.Cell;
 import com.utc.btl.view_component.Piece;
 import lombok.Setter;
 
-import static com.utc.btl.constant.Constants.DEBUG;
 import static com.utc.btl.constant.Constants.DIALOG_INFO_TITLE;
 
 @Setter
@@ -22,7 +20,6 @@ public class Validator implements IValidator {
 
     @Override
     public void validate(Cell cell) {
-        Gdx.app.debug(DEBUG, "validate move");
         checkDirection(cell, 0, 1);
         checkDirection(cell, 1, 0);
         checkDirection(cell, 1, 1);

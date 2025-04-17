@@ -9,7 +9,7 @@ import com.utc.btl.controller.IGameModeController;
 import com.utc.btl.controller.IGamePlayController;
 import com.utc.btl.controller.impl.GameModeController;
 import com.utc.btl.controller.impl.GamePlayController;
-import com.utc.btl.entity.Account;
+import com.utc.btl.entity.Session;
 import com.utc.btl.exception.GameException;
 import com.utc.btl.game_play.GamePlay;
 import com.utc.btl.game_play.validator.IValidator;
@@ -18,12 +18,12 @@ import com.utc.btl.controller.impl.ScreenController;
 import com.utc.btl.game_play.validator.Validator;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
-import com.utc.btl.dao.IAccountDao;
-import com.utc.btl.dao.impl.AccountDao;
+import com.utc.btl.dao.ISessionDao;
+import com.utc.btl.dao.impl.SessionDao;
 import com.utc.btl.screen.impl.dark_mode.*;
 import com.utc.btl.screen.impl.light_mode.*;
-import com.utc.btl.service.IAccountService;
-import com.utc.btl.service.impl.AccountService;
+import com.utc.btl.service.ISessionService;
+import com.utc.btl.service.impl.SessionService;
 
 import static com.utc.btl.constant.Constants.ERROR;
 import static com.utc.btl.constant.Constants.INFO;
@@ -37,10 +37,8 @@ public class Main extends Game {
     public int uiMode;
 
     // DAO
-    private IAccountDao accountDao;
-
-    // SERVICE
-    public IAccountService accountService;
+    private ISessionDao sessionDao;
+    public ISessionService sessionService;
 
     public SpriteBatch batch;
 
@@ -68,7 +66,7 @@ public class Main extends Game {
     public GamePlay gamePlay;
 
     // AUTH
-    public Account loggedInAccount;
+    public Session session;
 
     @Override
     public void create() {
@@ -77,15 +75,14 @@ public class Main extends Game {
 
         try {
             Assets.load();
-
+            session = new Session(0, 0, 0);
             // UI MODE
             uiMode = LIGHT_MODE;
 
             // DAO
-            accountDao = new AccountDao();
+            sessionDao = new SessionDao();
+            sessionService = new SessionService(sessionDao);
 
-            // SERVICE
-            accountService = new AccountService(accountDao);
             batch = new SpriteBatch();
 
             // SCREEN
@@ -130,6 +127,11 @@ public class Main extends Game {
     @Override
     public void dispose() {
         Gdx.app.log(INFO, "Game disposing...");
+        try {
+            sessionService.create(session);
+        } catch (Exception e) {
+            Gdx.app.error(ERROR, e.getMessage(), e);
+        }
         batch.dispose();
         gameScreen.dispose();
         menuScreen.dispose();

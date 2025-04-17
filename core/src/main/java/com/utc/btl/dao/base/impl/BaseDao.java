@@ -8,7 +8,6 @@ import com.utc.btl.dao.base.IDao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static com.utc.btl.constant.Constants.DEBUG;
 
@@ -49,7 +48,7 @@ public abstract class BaseDao<T, ID> implements IDao<T, ID> {
             return result;
 
         } catch (SQLException e) {
-            throw new GameException(ExceptionType.COULD_NOT_LIST_DATA_EXCEPTION);
+            throw new GameException(ExceptionType.LIST_ENTITY_EXCEPTION);
         }
     }
 
@@ -64,7 +63,7 @@ public abstract class BaseDao<T, ID> implements IDao<T, ID> {
             stmt.executeUpdate();
 
         } catch (SQLException e) {
-            throw new GameException(ExceptionType.COULD_NOT_DELETE_ENTITY_EXCEPTION);
+            throw new GameException(ExceptionType.DELETE_ENTITY_EXCEPTION);
         }
     }
 

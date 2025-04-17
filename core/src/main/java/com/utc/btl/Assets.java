@@ -139,7 +139,7 @@ public class Assets {
             darkImageTextButtonStyle = getDarkImageTextButtonStyle();
 
         } catch (Exception e) {
-            throw new GameException(ExceptionType.ASSETS_LOAD_FAILED_EXCEPTION);
+            throw new GameException(ExceptionType.LOAD_ASSETS_FAILED_EXCEPTION);
         }
     }
 

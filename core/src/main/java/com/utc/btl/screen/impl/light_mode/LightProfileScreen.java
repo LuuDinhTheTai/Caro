@@ -25,13 +25,13 @@ public class LightProfileScreen extends ProfileScreen {
         table = new Table();
 
         titleLabel = new Label("Profile", lightTitleStyle);
-        winLabel = new Label("Win: ", lightInfLabelStyle);
-        lossLabel = new Label("Loss: ", lightInfLabelStyle);
-        drawLabel = new Label("Draw: ", lightInfLabelStyle);
+        xLabel = new Label("X: ", lightLabelStyle);
+        oLabel = new Label("O: ", lightLabelStyle);
+        drawLabel = new Label("Draw: ", lightLabelStyle);
 
-        win = new Label("", lightInfLabelStyle);
-        loss = new Label("", lightInfLabelStyle);
-        draw = new Label("", lightInfLabelStyle);
+        xInf = new Label("", lightInfLabelStyle);
+        oInf = new Label("", lightInfLabelStyle);
+        drawInf = new Label("", lightInfLabelStyle);
 
         menuBtn = new TextButton("Menu", lightImageTextButtonStyle);
     }
@@ -47,17 +47,12 @@ public class LightProfileScreen extends ProfileScreen {
 
         table.add(titleLabel).padTop(5).row();
 
-        Table subTable = new Table();
-
-        subTable.add(winLabel).left();
-        subTable.add(win).right();
-        subTable.row();
-        subTable.add(lossLabel).left();
-        subTable.add(loss).right();
-        subTable.row();
-        subTable.add(drawLabel).left();
-        subTable.add(draw).right();
-        table.add(subTable).padTop(10).padBottom(10).row();
+        table.add(xLabel).width(table.getWidth()).padTop(10);
+        table.add(xInf).row();
+        table.add(oLabel).width(table.getWidth()).padTop(10);
+        table.add(oInf).row();
+        table.add(drawLabel).padTop(5).row();
+        table.add(drawInf).row();
 
         table.add(menuBtn).width(BIG_BUTTON_W).height(BIG_BUTTON_H).padTop(10).row();
 
