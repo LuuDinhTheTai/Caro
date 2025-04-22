@@ -2,8 +2,8 @@ package com.utc.btl.constant;
 
 public class Constants {
 
-    public static final int ROW_SIZE = 2;
-    public static final int COL_SIZE = 2;
+    public static final int ROW_SIZE = 20;
+    public static final int COL_SIZE = 20;
 
     // LOGGING
     public static final String INFO = "INFO";

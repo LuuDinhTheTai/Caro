@@ -8,10 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.exception.ExceptionType;
 import com.utc.btl.exception.GameException;
@@ -76,6 +73,10 @@ public class Assets {
     public static Label.LabelStyle lightInfLabelStyle;
     public static ImageTextButton.ImageTextButtonStyle lightImageTextButtonStyle;
     public static ImageTextButton.ImageTextButtonStyle darkImageTextButtonStyle;
+    public static Window.WindowStyle lightDialogStyle;
+    public static Window.WindowStyle darkDialogStyle;
+    public static Label.LabelStyle lightDialogTextStyle;
+    public static Label.LabelStyle darkDialogTextStyle;
 
     public static void load() {
         Gdx.app.log(INFO, "Assets loading...");
@@ -137,10 +138,47 @@ public class Assets {
             darkSettingLabelStyle = getDarkSettingLabelStyle();
             lightImageTextButtonStyle = getLightImageTextButtonStyle();
             darkImageTextButtonStyle = getDarkImageTextButtonStyle();
+            lightDialogStyle = getLightWindowStyle();
+            darkDialogStyle = getDarkWindowStyle();
+
+            lightDialogTextStyle = getLightDialogTextStyle();
+            darkDialogTextStyle = getDarkDialogTextStyle();
 
         } catch (Exception e) {
             throw new GameException(ExceptionType.LOAD_ASSETS_FAILED_EXCEPTION);
         }
+    }
+
+    private static Label.LabelStyle getLightDialogTextStyle() {
+        Label.LabelStyle style = new Label.LabelStyle();
+        style.font = WHITE_48;
+        style.fontColor = Color.WHITE;
+        return style;
+    }
+
+    private static Label.LabelStyle getDarkDialogTextStyle() {
+        Label.LabelStyle style = new Label.LabelStyle();
+        style.font = BLACK_48;
+        style.fontColor = Color.BLACK;
+        return style;
+    }
+
+    private static Window.WindowStyle getLightWindowStyle() {
+        Window.WindowStyle style = new Window.WindowStyle();
+        style.titleFont   = WHITE_24;
+        style.titleFontColor = Color.WHITE;
+
+        style.background = new TextureRegionDrawable(new TextureRegion(loadTexture("background/dm_background.png")));
+        return style;
+    }
+
+    private static Window.WindowStyle getDarkWindowStyle() {
+        Window.WindowStyle style = new Window.WindowStyle();
+        style.titleFont   = WHITE_24;
+        style.titleFontColor = Color.WHITE;
+
+        style.background = new TextureRegionDrawable(new TextureRegion(loadTexture("background/lm_background.png")));
+        return style;
     }
 
     private static Texture loadTexture(String file) {

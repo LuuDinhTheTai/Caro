@@ -1,13 +1,17 @@
 package com.utc.btl.controller.base.impl;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.utc.btl.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.controller.base.IController;
 
+import static com.utc.btl.Assets.*;
 import static com.utc.btl.constant.Constants.DEBUG;
 import static com.utc.btl.constant.Constants.INFO;
 
@@ -91,13 +95,25 @@ public abstract class BaseController implements IController {
         Stage stage = (Stage) Gdx.input.getInputProcessor();
 
         Dialog dialog = new Dialog(title, skin);
-        dialog.text(msg);
 
-        dialog.button("Ok");
+        if (main.uiMode == main.DEFAULT_UI) {
+            dialog.text(msg);
 
-        dialog.center();
-        dialog.setSize(250, 100);
+        } else if (main.uiMode == main.LIGHT_MODE) {
+            dialog.setStyle(lightDialogStyle);
+            dialog.text(msg, lightDialogTextStyle);
 
+        } else if (main.uiMode == main.DARK_MODE) {
+            dialog.setStyle(darkDialogStyle);
+            dialog.text(msg, darkDialogTextStyle);
+        }
+
+        dialog.button("OK");
         dialog.show(stage);
+        dialog.setSize(350, 200);
+        dialog.setPosition(
+            (stage.getViewport().getWorldWidth()  - dialog.getWidth())  / 2,
+            (stage.getViewport().getWorldHeight() - dialog.getHeight()) / 2
+        );
     }
 }

@@ -28,6 +28,6 @@ public class Session {
 //CREATE TABLE `caro`.`session` (
 //  `id` INT NOT NULL AUTO_INCREMENT,
 //  `xWin` INT NOT NULL DEFAULT 0,
-//  `yWin` INT NOT NULL DEFAULT 0,
+//  `oWin` INT NOT NULL DEFAULT 0,
 //  `draw` INT NOT NULL DEFAULT 0,
 //PRIMARY KEY (`id`));

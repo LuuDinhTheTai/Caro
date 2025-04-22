@@ -23,11 +23,11 @@ public class GamePlayController extends BaseController implements IGamePlayContr
     public void win(Cell cell) {
         if (cell.getPiece().isX()) {
             toMenuScreen();
-            popUpDialog(Constants.DIALOG_INFO_TITLE, "X WIN !");
+            popUpDialog("", "X WIN !");
             main.session.setXWin(main.session.getXWin() + 1);
         } else if (cell.getPiece().isO()) {
             toMenuScreen();
-            popUpDialog(Constants.DIALOG_INFO_TITLE, "O WIN !");
+            popUpDialog("", "O WIN !");
             main.session.setOWin(main.session.getOWin() + 1);
         }
         main.sessionService.update(main.session);
@@ -36,7 +36,7 @@ public class GamePlayController extends BaseController implements IGamePlayContr
     @Override
     public void draw(Cell cell) {
         toMenuScreen();
-        popUpDialog(Constants.DIALOG_INFO_TITLE, "DRAW !");
+        popUpDialog("", "DRAW !");
         main.session.setDraw(main.session.getDraw() + 1);
         main.sessionService.update(main.session);
     }
