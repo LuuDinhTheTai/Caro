@@ -33,7 +33,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
     public void init() {
         hudTable = new Table();
         boardTable = new Table();
-        pauseBtn = new TextButton("Pause", skin);
+        pauseBtn = new TextButton("Exit", skin);
     }
 
     @Override

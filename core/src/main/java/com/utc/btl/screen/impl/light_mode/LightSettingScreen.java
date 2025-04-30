@@ -52,20 +52,20 @@ public class LightSettingScreen extends SettingScreen {
         mainContainer.add(titleLabel).padBottom(20);
         mainContainer.row();
 
-        mainContainer.add(volumeLabel);
-        mainContainer.add().width(10);
-        mainContainer.add(volumeSlider);
-        mainContainer.row();
-
-        mainContainer.add(musicLabel);
-        mainContainer.add().width(10);
-        mainContainer.add(musicCheckBox);
-        mainContainer.row();
-
-        mainContainer.add(soundLabel);
-        mainContainer.add().width(10);
-        mainContainer.add(soundCheckBox);
-        mainContainer.row();
+//        mainContainer.add(volumeLabel);
+//        mainContainer.add().width(10);
+//        mainContainer.add(volumeSlider);
+//        mainContainer.row();
+//
+//        mainContainer.add(musicLabel);
+//        mainContainer.add().width(10);
+//        mainContainer.add(musicCheckBox);
+//        mainContainer.row();
+//
+//        mainContainer.add(soundLabel);
+//        mainContainer.add().width(10);
+//        mainContainer.add(soundCheckBox);
+//        mainContainer.row();
 
         mainContainer.add(themeLabel);
         mainContainer.row();

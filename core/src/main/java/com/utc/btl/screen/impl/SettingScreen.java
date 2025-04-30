@@ -99,20 +99,20 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
         mainContainer.add(titleLabel).colspan(4).center().padBottom(20);
         mainContainer.row();
 
-        // Dòng chỉnh âm lượng với nhãn và Slider
-        mainContainer.add(volumeLabel).left().padRight(10);
-        mainContainer.add(volumeSlider).colspan(3).expandX().fillX();
-        mainContainer.row().padBottom(15);
-
-        // Dòng chế độ âm nhạc: nhãn và checkbox
-        mainContainer.add(musicLabel).left().padRight(10);
-        mainContainer.add(musicCheckBox).colspan(3).left();
-        mainContainer.row().padBottom(15);
-
-        // Dòng chế độ âm thanh: nhãn và checkbox
-        mainContainer.add(soundLabel).left().padRight(10);
-        mainContainer.add(soundCheckBox).colspan(3).left();
-        mainContainer.row().padBottom(15);
+//        // Dòng chỉnh âm lượng với nhãn và Slider
+//        mainContainer.add(volumeLabel).left().padRight(10);
+//        mainContainer.add(volumeSlider).colspan(3).expandX().fillX();
+//        mainContainer.row().padBottom(15);
+//
+//        // Dòng chế độ âm nhạc: nhãn và checkbox
+//        mainContainer.add(musicLabel).left().padRight(10);
+//        mainContainer.add(musicCheckBox).colspan(3).left();
+//        mainContainer.row().padBottom(15);
+//
+//        // Dòng chế độ âm thanh: nhãn và checkbox
+//        mainContainer.add(soundLabel).left().padRight(10);
+//        mainContainer.add(soundCheckBox).colspan(3).left();
+//        mainContainer.row().padBottom(15);
 
         // Dòng chọn theme: nhãn và 3 button
         mainContainer.add(themeLabel).left().padRight(10);
@@ -154,6 +154,12 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
             }
         });
         backBtn.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                main.screenController.toMenuScreen();
+            }
+        });
+        applyBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toMenuScreen();
