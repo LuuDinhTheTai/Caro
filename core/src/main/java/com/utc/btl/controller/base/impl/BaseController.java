@@ -28,65 +28,25 @@ public abstract class BaseController implements IController {
     @Override
     public void toGameScreen() {
         Gdx.app.log(INFO, "Redirect to game screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.gameScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.gameScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.gameScreen);
-
-        }
+        main.setScreen(main.gameScreen);
     }
 
     @Override
     public void toMenuScreen() {
         Gdx.app.log(INFO, "Redirect to menu screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.menuScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.lightMenuScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.darkMenuScreen);
-
-        }
+        main.setScreen(main.menuScreen);
     }
 
     @Override
     public void toProfileScreen() {
         Gdx.app.log(INFO, "Redirect to profile screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.profileScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.lightProfileScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.darkProfileScreen);
-
-        }
+        main.setScreen(main.profileScreen);
     }
 
     @Override
     public void toSettingScreen() {
         Gdx.app.log(INFO, "Redirect to setting screen");
-
-        if (main.uiMode == main.DEFAULT_UI) {
-            main.setScreen(main.settingScreen);
-
-        } else if (main.uiMode == main.LIGHT_MODE) {
-            main.setScreen(main.lightSettingScreen);
-
-        } else if (main.uiMode == main.DARK_MODE) {
-            main.setScreen(main.darkSettingScreen);
-
-        }
+        main.setScreen(main.settingScreen);
     }
 
     @Override

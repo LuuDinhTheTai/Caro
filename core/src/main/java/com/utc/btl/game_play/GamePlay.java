@@ -6,11 +6,9 @@ import com.utc.btl.view_component.Cell;
 import com.utc.btl.view_component.Piece;
 import lombok.Setter;
 
-@Setter
-public class GamePlay {
+public class GamePlay implements IGamePlay {
 
     private Main main;
-    private Board board;
     private Cell focusedCell;
     private Cell lastPlayedCell;
     private Piece currentPlayer;
@@ -22,6 +20,7 @@ public class GamePlay {
         lastPlayedCell = null;
     }
 
+    @Override
     public void move(Cell cell) {
         if (cell.getPiece() == Piece.EMPTY) {
             toFocus(cell);

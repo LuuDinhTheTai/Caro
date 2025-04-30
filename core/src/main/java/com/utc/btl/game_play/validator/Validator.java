@@ -25,18 +25,6 @@ public class Validator implements IValidator {
         checkDraw();
     }
 
-    /*
-     * 1 . . . 0 . . . 3
-     * . 1 . . 0 . . 3 .
-     * . . 1 . 0 . 3 . .
-     * . . . 1 0 3 . . .
-     * 2 2 2 2 x 2 2 2 2
-     * . . . 3 0 1 . . .
-     * . . 3 . 0 . 1 . .
-     * . 3 . . 0 . . 1 .
-     * 3 . . . 0 . . . 1
-     * */
-
     private void checkDirection(Cell cell, int deltaRow, int deltaCol) {
         Piece target = cell.getPiece();
         int count = 1;

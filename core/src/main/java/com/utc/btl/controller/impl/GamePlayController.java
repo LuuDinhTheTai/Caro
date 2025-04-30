@@ -1,11 +1,9 @@
 package com.utc.btl.controller.impl;
 
 import com.utc.btl.Main;
-import com.utc.btl.constant.Constants;
 import com.utc.btl.controller.IGamePlayController;
 import com.utc.btl.controller.base.impl.BaseController;
 import com.utc.btl.view_component.Cell;
-import com.utc.btl.view_component.Piece;
 
 public class GamePlayController extends BaseController implements IGamePlayController {
 
@@ -25,6 +23,7 @@ public class GamePlayController extends BaseController implements IGamePlayContr
             toMenuScreen();
             popUpDialog("", "X WIN !");
             main.session.setXWin(main.session.getXWin() + 1);
+
         } else if (cell.getPiece().isO()) {
             toMenuScreen();
             popUpDialog("", "O WIN !");

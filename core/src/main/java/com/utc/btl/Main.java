@@ -5,13 +5,14 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.utc.btl.controller.IGameModeController;
+import com.utc.btl.controller.IUIModeController;
 import com.utc.btl.controller.IGamePlayController;
-import com.utc.btl.controller.impl.GameModeController;
+import com.utc.btl.controller.impl.UIModeController;
 import com.utc.btl.controller.impl.GamePlayController;
 import com.utc.btl.entity.Session;
 import com.utc.btl.exception.GameException;
 import com.utc.btl.game_play.GamePlay;
+import com.utc.btl.game_play.IGamePlay;
 import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.controller.IScreenController;
 import com.utc.btl.controller.impl.ScreenController;
@@ -25,8 +26,7 @@ import com.utc.btl.screen.impl.light_mode.*;
 import com.utc.btl.service.ISessionService;
 import com.utc.btl.service.impl.SessionService;
 
-import static com.utc.btl.constant.Constants.ERROR;
-import static com.utc.btl.constant.Constants.INFO;
+import static com.utc.btl.constant.Constants.*;
 
 public class Main extends Game {
 
@@ -48,22 +48,14 @@ public class Main extends Game {
     public IProfileScreen profileScreen;
     public ISettingScreen settingScreen;
 
-    public IMenuScreen lightMenuScreen;
-    public IProfileScreen lightProfileScreen;
-    public ISettingScreen lightSettingScreen;
-
-    public IMenuScreen darkMenuScreen;
-    public IProfileScreen darkProfileScreen;
-    public ISettingScreen darkSettingScreen;
-
     // CONTROLLER
     public IScreenController screenController;
-    public IGameModeController gameModeController;
+    public IUIModeController gameModeController;
     public IGamePlayController gamePlayController;
 
     // GAME PLAY
     public IValidator validator;
-    public GamePlay gamePlay;
+    public IGamePlay gamePlay;
 
     // AUTH
     public Session session;
@@ -76,7 +68,7 @@ public class Main extends Game {
         try {
             Assets.load();
             // UI MODE
-            uiMode = LIGHT_MODE;
+            uiMode = DARK_MODE;
 
             // DAO
             sessionDao = new SessionDao();
@@ -88,20 +80,12 @@ public class Main extends Game {
 
             // SCREEN
             gameScreen = new GameScreen(this);
-            menuScreen = new MenuScreen(this);
-            profileScreen = new ProfileScreen(this);
-            settingScreen = new SettingScreen(this);
-
-            lightMenuScreen = new LightMenuScreen(this);
-            lightProfileScreen = new LightProfileScreen(this);
-            lightSettingScreen = new LightSettingScreen(this);
-
-            darkMenuScreen = new DarkMenuScreen(this);
-            darkProfileScreen = new DarkProfileScreen(this);
-            darkSettingScreen = new DarkSettingScreen(this);
+            menuScreen = new DarkMenuScreen(this);
+            profileScreen = new DarkProfileScreen(this);
+            settingScreen = new DarkSettingScreen(this);
 
             // CONTROLLER
-            gameModeController = new GameModeController(this);
+            gameModeController = new UIModeController(this);
             gamePlayController = new GamePlayController(this);
             screenController = new ScreenController(this);
 
@@ -113,6 +97,8 @@ public class Main extends Game {
 
         } catch (GameException e) {
             Gdx.app.error(ERROR, e.getMessage(), e);
+            screenController.popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
+            Gdx.app.exit();
         }
     }
 
@@ -134,11 +120,5 @@ public class Main extends Game {
         menuScreen.dispose();
         profileScreen.dispose();
         settingScreen.dispose();
-        lightMenuScreen.dispose();
-        lightProfileScreen.dispose();
-        lightSettingScreen.dispose();
-        darkMenuScreen.dispose();
-        darkProfileScreen.dispose();
-        darkSettingScreen.dispose();
     }
 }

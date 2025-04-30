@@ -43,7 +43,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         boardTable = new Table();
         board = new Board(main);
         main.gamePlay = new GamePlay(main);
-        main.gamePlay.setBoard(board);
+//        main.gamePlay.setBoard(board);
         main.validator.setBoard(board);
         setBoardTableUI();
         setUI();

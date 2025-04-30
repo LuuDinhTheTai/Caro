@@ -42,18 +42,6 @@ public class Cell extends ImageButton {
     }
 
     private void setListeners() {
-        addListener(new InputListener() {
-            @Override
-            public void enter(InputEvent event, float x, float y, int pointer, Actor fromActor) {
-                Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Hand);
-            }
-
-            @Override
-            public void exit(InputEvent event, float x, float y, int pointer, Actor toActor) {
-                Gdx.graphics.setSystemCursor(Cursor.SystemCursor.Arrow);
-            }
-        });
-
         addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
@@ -61,7 +49,6 @@ public class Cell extends ImageButton {
             }
         });
     }
-
 
     public void setPiece(Piece piece) {
         this.piece = piece;
