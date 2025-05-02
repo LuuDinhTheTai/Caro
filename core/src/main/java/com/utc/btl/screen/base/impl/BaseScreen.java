@@ -4,8 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.utc.btl.Assets;
+import com.utc.btl.constant.Assets;
 import com.utc.btl.Main;
+import com.utc.btl.constant.Constants;
 import com.utc.btl.screen.base.IBaseScreen;
 
 public abstract class BaseScreen implements IBaseScreen {
@@ -49,6 +50,7 @@ public abstract class BaseScreen implements IBaseScreen {
     @Override
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
+        Constants.resize(width, height);
     }
 
     @Override

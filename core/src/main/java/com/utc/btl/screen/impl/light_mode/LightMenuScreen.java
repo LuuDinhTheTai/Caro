@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.MenuScreen;
 
-import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Assets.*;
 import static com.utc.btl.constant.Constants.*;
 
 public class LightMenuScreen extends MenuScreen {

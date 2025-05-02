@@ -5,6 +5,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.utc.btl.constant.Assets;
 import com.utc.btl.controller.IUIModeController;
 import com.utc.btl.controller.IGamePlayController;
 import com.utc.btl.controller.impl.UIModeController;
@@ -22,7 +23,6 @@ import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.ISessionDao;
 import com.utc.btl.dao.impl.SessionDao;
 import com.utc.btl.screen.impl.dark_mode.*;
-import com.utc.btl.screen.impl.light_mode.*;
 import com.utc.btl.service.ISessionService;
 import com.utc.btl.service.impl.SessionService;
 

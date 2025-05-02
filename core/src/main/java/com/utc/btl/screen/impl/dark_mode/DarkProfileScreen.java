@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.light_mode.LightProfileScreen;
 
-import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Assets.*;
 
 public class DarkProfileScreen extends LightProfileScreen {
 

@@ -1,9 +1,13 @@
 package com.utc.btl.controller.impl;
 
+import com.badlogic.gdx.Gdx;
 import com.utc.btl.Main;
 import com.utc.btl.controller.IGamePlayController;
 import com.utc.btl.controller.base.impl.BaseController;
+import com.utc.btl.exception.GameException;
 import com.utc.btl.view_component.Cell;
+
+import static com.utc.btl.constant.Constants.ERROR;
 
 public class GamePlayController extends BaseController implements IGamePlayController {
 
@@ -29,7 +33,19 @@ public class GamePlayController extends BaseController implements IGamePlayContr
             popUpDialog("", "O WIN !");
             main.session.setOWin(main.session.getOWin() + 1);
         }
-        main.sessionService.update(main.session);
+
+        try {
+            main.sessionService.update(main.session);
+
+        } catch (GameException e) {
+            Gdx.app.error(ERROR,e.getMessage(), e);
+            popUpDialog(ERROR, e.getMessage());
+
+        } catch (Exception e) {
+            Gdx.app.error(ERROR,e.getMessage(), e);
+            popUpDialog(ERROR, "System error");
+        }
+
     }
 
     @Override
@@ -37,6 +53,22 @@ public class GamePlayController extends BaseController implements IGamePlayContr
         toMenuScreen();
         popUpDialog("", "DRAW !");
         main.session.setDraw(main.session.getDraw() + 1);
-        main.sessionService.update(main.session);
+
+        try {
+            main.sessionService.update(main.session);
+
+        } catch (GameException e) {
+            Gdx.app.error(ERROR,e.getMessage(), e);
+            popUpDialog(ERROR, e.getMessage());
+
+        } catch (Exception e) {
+            Gdx.app.error(ERROR,e.getMessage(), e);
+            popUpDialog(ERROR, "System error");
+        }
+    }
+
+    @Override
+    public void exit() {
+        toMenuScreen();
     }
 }

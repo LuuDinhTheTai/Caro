@@ -1,6 +1,5 @@
-package com.utc.btl;
+package com.utc.btl.constant;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -13,7 +12,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.utc.btl.exception.ExceptionType;
 import com.utc.btl.exception.GameException;
 
-import static com.utc.btl.constant.Constants.ERROR;
 import static com.utc.btl.constant.Constants.INFO;
 
 public class Assets {

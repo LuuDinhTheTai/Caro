@@ -3,7 +3,7 @@ package com.utc.btl.view_component;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import lombok.Getter;
 
-import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Assets.*;
 
 @Getter
 public enum Piece {

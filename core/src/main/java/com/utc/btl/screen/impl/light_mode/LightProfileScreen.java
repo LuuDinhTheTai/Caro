@@ -6,11 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.utc.btl.Assets;
+import com.utc.btl.constant.Assets;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.ProfileScreen;
 
-import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Assets.*;
 import static com.utc.btl.constant.Constants.*;
 
 public class LightProfileScreen extends ProfileScreen {

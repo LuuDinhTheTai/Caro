@@ -82,7 +82,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         pauseBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                main.screenController.toMenuScreen();
+                main.gamePlayController.exit();
             }
         });
     }

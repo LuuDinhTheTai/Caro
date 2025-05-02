@@ -1,5 +1,7 @@
 package com.utc.btl.constant;
 
+import com.badlogic.gdx.Gdx;
+
 public class Constants {
 
     public static final int ROW_SIZE = 20;
@@ -18,18 +20,25 @@ public class Constants {
     public static final String DIALOG_WARNING_TITLE = "Warn";
 
     // SIZE
-    public static final int TABLE_W = 350;
-    public static final int TABLE_H = 450;
+    public static float WINDOW_W = Gdx.graphics.getWidth();
+    public static float WINDOW_H = Gdx.graphics.getHeight();
 
-    public static final int TEXTFIELD_W = 300;
-    public static final int TEXTFIELD_H = 30;
+    public static float TABLE_W = WINDOW_W / 3;
+    public static float TABLE_H = WINDOW_H / 3;
 
-    public static final int BASE_BUTTON_WIDTH = 1;
-    public static final int BASE_BUTTON_HEIGHT = 1;
-    public static final int TINY_BUTTON_W = BASE_BUTTON_WIDTH * 280;
-    public static final int TINY_BUTTON_H = BASE_BUTTON_HEIGHT * 64;
-    public static final int SMALL_BUTTON_W = BASE_BUTTON_WIDTH * 145;
-    public static final int SMALL_BUTTON_H = BASE_BUTTON_HEIGHT * 64;
-    public static final int BIG_BUTTON_W = BASE_BUTTON_WIDTH * 300;
-    public static final int BIG_BUTTON_H = BASE_BUTTON_HEIGHT * 64;
+    public static float SMALL_BUTTON_W = (TABLE_W - 10) / 2;
+    public static float SMALL_BUTTON_H = (TABLE_H - 0) / 4;
+    public static float BIG_BUTTON_W = (TABLE_W - 10);
+    public static float BIG_BUTTON_H = (TABLE_H - 0) / 4;
+
+    public static void resize(float w, float h) {
+        WINDOW_W = w;
+        WINDOW_H = h;
+        TABLE_W = WINDOW_W / 3;
+        TABLE_H = WINDOW_H / 3;
+        SMALL_BUTTON_W = (TABLE_W - 10) / 2;
+        SMALL_BUTTON_H = (TABLE_H - 0) / 4;
+        BIG_BUTTON_W = (TABLE_W - 10);
+        BIG_BUTTON_H = (TABLE_H - 0) / 4;
+    }
 }

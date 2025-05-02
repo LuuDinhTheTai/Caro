@@ -1,14 +1,12 @@
 package com.utc.btl.screen.impl.light_mode;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.*;
-import com.badlogic.gdx.utils.Align;
 import com.utc.btl.Main;
 import com.utc.btl.screen.impl.SettingScreen;
 
-import static com.utc.btl.Assets.*;
+import static com.utc.btl.constant.Assets.*;
 import static com.utc.btl.constant.Constants.*;
 
 public class LightSettingScreen extends SettingScreen {

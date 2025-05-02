@@ -8,4 +8,5 @@ public interface IGamePlayController extends IController {
     void move(Cell cell);
     void win(Cell cell);
     void draw(Cell cell);
+    void exit();
 }
