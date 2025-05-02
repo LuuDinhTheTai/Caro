@@ -46,7 +46,6 @@ public class LightSettingScreen extends SettingScreen {
         mainContainer.setFillParent(true);
         mainContainer.center();
 
-
         mainContainer.add(titleLabel).padBottom(20);
         mainContainer.row();
 

@@ -51,11 +51,13 @@ public class Assets {
     public static BitmapFont WHITE_32;
     public static BitmapFont WHITE_48;
     public static BitmapFont WHITE_64;
+    public static BitmapFont WHITE_128;
     public static BitmapFont BLACK_16;
     public static BitmapFont BLACK_24;
     public static BitmapFont BLACK_32;
     public static BitmapFont BLACK_48;
     public static BitmapFont BLACK_64;
+    public static BitmapFont BLACK_128;
     public static BitmapFont BLUE_16;
     public static BitmapFont BLUE_32;
     public static BitmapFont BLUE_48;
@@ -116,11 +118,13 @@ public class Assets {
             WHITE_32 = loadFont("font/VT323-Regular.ttf", 32, Color.WHITE);
             WHITE_48 = loadFont("font/VT323-Regular.ttf", 48, Color.WHITE);
             WHITE_64 = loadFont("font/VT323-Regular.ttf", 64, Color.WHITE);
+            WHITE_128 = loadFont("font/VT323-Regular.ttf", 128, Color.WHITE);
             BLACK_16 = loadFont("font/VT323-Regular.ttf", 16, Color.BLACK);
             BLACK_24 = loadFont("font/VT323-Regular.ttf", 24, Color.BLACK);
             BLACK_32 = loadFont("font/VT323-Regular.ttf", 32, Color.BLACK);
             BLACK_48 = loadFont("font/VT323-Regular.ttf", 48, Color.BLACK);
             BLACK_64 = loadFont("font/VT323-Regular.ttf", 64, Color.BLACK);
+            BLACK_128 = loadFont("font/VT323-Regular.ttf", 128, Color.BLACK);
             BLUE_16 = loadFont("font/VT323-Regular.ttf", 16, Color.BLUE);
             BLUE_32 = loadFont("font/VT323-Regular.ttf", 32, Color.BLUE);
             BLUE_48 = loadFont("font/VT323-Regular.ttf", 48, Color.BLUE);
@@ -208,48 +212,48 @@ public class Assets {
 
     private static Label.LabelStyle getLightTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_64;
+        style.font = WHITE_128;
         style.fontColor = Color.BLACK;
         return style;
     }
 
     private static Label.LabelStyle getDarkTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_64;
+        style.font = WHITE_128;
         style.fontColor = Color.WHITE;
         return style;
     }
 
     private static Label.LabelStyle getLightLabelStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_16;
+        style.font = WHITE_64;
         return style;
     }
 
     private static Label.LabelStyle getDarkLabelStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_16;
+        style.font = WHITE_64;
         style.fontColor = Color.WHITE;
         return style;
     }
 
     private static Label.LabelStyle getLightSettingLabelStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = BLACK_24;
+        style.font = BLACK_48;
         style.fontColor = Color.BLACK;
         return style;
     }
 
     private static Label.LabelStyle getDarkSettingLabelStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_24;
+        style.font = WHITE_48;
         style.fontColor = Color.WHITE;
         return style;
     }
 
     private static Label.LabelStyle getLightInfLabelStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
-        style.font = WHITE_24;
+        style.font = WHITE_64;
         style.fontColor = Color.WHITE;
         return style;
     }
@@ -261,7 +265,7 @@ public class Assets {
         style.down = new TextureRegionDrawable(new TextureRegion(lightDownButtonTexture));
         style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
-        style.font = BLACK_32;
+        style.font = BLACK_64;
 
         return style;
     }
@@ -273,8 +277,7 @@ public class Assets {
         style.down = new TextureRegionDrawable(new TextureRegion(darkDownButtonTexture));
         style.disabled = new TextureRegionDrawable(new TextureRegion(disableButtonTexture));
 
-        style.font = BLACK_32;
-//        style.fontColor = Color.WHITE;
+        style.font = BLACK_64;
 
         return style;
     }

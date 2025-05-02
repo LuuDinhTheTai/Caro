@@ -14,6 +14,9 @@ import com.utc.btl.Main;
 import com.utc.btl.screen.ISettingScreen;
 import com.utc.btl.screen.base.impl.BaseScreen;
 
+import static com.utc.btl.constant.Constants.SMALL_BUTTON_H;
+import static com.utc.btl.constant.Constants.SMALL_BUTTON_W;
+
 public class SettingScreen extends BaseScreen implements ISettingScreen{
 
     protected Table mainContainer;
@@ -116,9 +119,9 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
 
         // Dòng chọn theme: nhãn và 3 button
         mainContainer.add(themeLabel).left().padRight(10);
-        mainContainer.add(defaultThemeBtn).padRight(10);
-        mainContainer.add(lightThemButton).padRight(10);
-        mainContainer.add(darkThemeBtn).left();
+        mainContainer.add(defaultThemeBtn).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H).padRight(10);
+        mainContainer.add(lightThemButton).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H).padRight(10);
+        mainContainer.add(darkThemeBtn).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H).left();
         mainContainer.row();
 
         // Bảng bottom đặt các nút điều hướng: Back và OK

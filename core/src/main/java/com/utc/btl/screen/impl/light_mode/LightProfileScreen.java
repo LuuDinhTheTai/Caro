@@ -38,10 +38,8 @@ public class LightProfileScreen extends ProfileScreen {
 
     @Override
     public void setUI() {
-        table.setSize(TABLE_W, TABLE_H);
-
-        table.setPosition((Gdx.graphics.getWidth() - table.getWidth()) / 2,
-            (Gdx.graphics.getHeight() - table.getHeight()) / 2);
+        table.setFillParent(true);
+        table.center();
 
         table.setBackground(new TextureRegionDrawable(new TextureRegion(Assets.tableBackgroundTexture)));
 
