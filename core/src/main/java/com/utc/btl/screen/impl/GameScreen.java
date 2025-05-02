@@ -1,6 +1,7 @@
 package com.utc.btl.screen.impl;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
 import com.utc.btl.Main;
+import com.utc.btl.constant.Constants;
 import com.utc.btl.game_play.GamePlay;
 import com.utc.btl.game_play.validator.Validator;
 import com.utc.btl.view_component.Board;
@@ -62,8 +64,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
 
     private void setBoardTableUI() {
         boardTable.left();
-        boardTable.setFillParent(true);
-        boardTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        boardTable.setSize(Constants.COL_SIZE * 64, Constants.ROW_SIZE * 64);
 
         int row = board.getBoard().length;
         int col = board.getBoard()[0].length;
@@ -91,17 +92,26 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         boardTable.addListener(new DragListener() {
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
-                // Lưu lại offset giữa điểm chạm và vị trí gốc của boardTable
                 dragOffsetX = x;
                 dragOffsetY = y;
             }
 
             @Override
             public void drag(InputEvent event, float x, float y, int pointer) {
-                // Tính toán vị trí mới của boardTable dựa trên tọa độ stage
                 float newX = event.getStageX() - dragOffsetX;
                 float newY = event.getStageY() - dragOffsetY;
-                boardTable.setPosition(newX, newY);
+                float screenWidth = Gdx.graphics.getWidth();
+                float screenHeight = Gdx.graphics.getHeight();
+
+                float minX = screenWidth - boardTable.getWidth();
+                float maxX = 0;
+                float minY = screenHeight - boardTable.getHeight();
+                float maxY = 0;
+
+                boardTable.setPosition(
+                    MathUtils.clamp(newX, minX, maxX),
+                    MathUtils.clamp(newY, minY, maxY)
+                );
             }
         });
     }
