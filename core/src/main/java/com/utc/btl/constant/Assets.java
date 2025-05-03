@@ -214,7 +214,7 @@ public class Assets {
     private static Label.LabelStyle getLightTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
         style.font = WHITE_128;
-        style.fontColor = Color.WHITE;
+        style.fontColor = Color.BLACK;
         return style;
     }
 

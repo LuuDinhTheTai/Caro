@@ -39,7 +39,6 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
     protected Button darkThemeBtn;
 
     protected Button backBtn;
-    protected Button applyBtn;
 
 
     public SettingScreen(Main main) {
@@ -88,7 +87,6 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
         darkThemeBtn = new TextButton("Dark", skin);
 
         backBtn = new TextButton("Back", skin);
-        applyBtn = new TextButton("OK", skin);
     }
 
     @Override
@@ -128,7 +126,6 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
         bottomTable.setFillParent(true);
         bottomTable.bottom().right().pad(20);
         bottomTable.add(backBtn).padRight(10);
-        bottomTable.add(applyBtn);
 
         stage.addActor(mainContainer);
         stage.addActor(bottomTable);
@@ -157,12 +154,6 @@ public class SettingScreen extends BaseScreen implements ISettingScreen{
             }
         });
         backBtn.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                main.screenController.toMenuScreen();
-            }
-        });
-        applyBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.screenController.toMenuScreen();

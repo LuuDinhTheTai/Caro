@@ -49,7 +49,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         main.validator.setBoard(board);
         setBoardTableUI();
         setUI();
-        setDragBoardListener();
+//        setDragBoardListener();
     }
 
     @Override
@@ -90,23 +90,30 @@ public class GameScreen extends BaseScreen implements IGameScreen {
 
     private void setDragBoardListener() {
         boardTable.addListener(new DragListener() {
+            private float initialX, initialY, startStageX, startStageY;
+
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
-                dragOffsetX = x;
-                dragOffsetY = y;
+                initialX     = boardTable.getX();
+                initialY     = boardTable.getY();
+                startStageX  = event.getStageX();
+                startStageY  = event.getStageY();
             }
 
             @Override
             public void drag(InputEvent event, float x, float y, int pointer) {
-                float newX = event.getStageX() - dragOffsetX;
-                float newY = event.getStageY() - dragOffsetY;
-                float screenWidth = Gdx.graphics.getWidth();
-                float screenHeight = Gdx.graphics.getHeight();
+                float dx = event.getStageX() - startStageX;
+                float dy = event.getStageY() - startStageY;
 
-                float minX = screenWidth - boardTable.getWidth();
-                float maxX = 0;
-                float minY = screenHeight - boardTable.getHeight();
-                float maxY = 0;
+                float newX = initialX + dx;
+                float newY = initialY + dy;
+
+                float stageW = boardTable.getStage().getWidth();
+                float stageH = boardTable.getStage().getHeight();
+                float minX   = 0;
+                float maxX   = stageW - boardTable.getWidth();
+                float minY   = 0;
+                float maxY   = stageH - boardTable.getHeight();
 
                 boardTable.setPosition(
                     MathUtils.clamp(newX, minX, maxX),
@@ -115,7 +122,6 @@ public class GameScreen extends BaseScreen implements IGameScreen {
             }
         });
     }
-
 
     private void clearScreen() {
         stage.clear();

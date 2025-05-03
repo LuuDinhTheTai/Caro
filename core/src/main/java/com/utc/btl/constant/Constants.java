@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 
 public class Constants {
 
-    public static final int ROW_SIZE = 20;
-    public static final int COL_SIZE = 20;
+    public static final int ROW_SIZE = 50;
+    public static final int COL_SIZE = 50;
 
     // LOGGING
     public static final String INFO = "INFO";

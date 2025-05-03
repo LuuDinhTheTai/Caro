@@ -36,6 +36,5 @@ public class DarkSettingScreen extends LightSettingScreen {
         darkThemeBtn = new TextButton("Dark", darkImageTextButtonStyle);
 
         backBtn = new TextButton("Back", darkImageTextButtonStyle);
-        applyBtn = new TextButton("OK", darkImageTextButtonStyle);
     }
 }
