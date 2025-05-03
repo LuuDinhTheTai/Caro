@@ -49,7 +49,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         main.validator.setBoard(board);
         setBoardTableUI();
         setUI();
-//        setDragBoardListener();
+        setDragBoardListener();
     }
 
     @Override
@@ -94,10 +94,10 @@ public class GameScreen extends BaseScreen implements IGameScreen {
 
             @Override
             public void dragStart(InputEvent event, float x, float y, int pointer) {
-                initialX     = boardTable.getX();
-                initialY     = boardTable.getY();
-                startStageX  = event.getStageX();
-                startStageY  = event.getStageY();
+                initialX = boardTable.getX();
+                initialY = boardTable.getY();
+                startStageX = event.getStageX();
+                startStageY = event.getStageY();
             }
 
             @Override
@@ -110,10 +110,14 @@ public class GameScreen extends BaseScreen implements IGameScreen {
 
                 float stageW = boardTable.getStage().getWidth();
                 float stageH = boardTable.getStage().getHeight();
-                float minX   = 0;
-                float maxX   = stageW - boardTable.getWidth();
-                float minY   = 0;
-                float maxY   = stageH - boardTable.getHeight();
+                float boardWidth = boardTable.getWidth();
+                float boardHeight = boardTable.getHeight();
+
+                // Tính toán min và max cho X và Y
+                float minX = Math.min(0, stageW - boardWidth);
+                float maxX = Math.max(0, stageW - boardWidth);
+                float minY = Math.min(0, stageH - boardHeight);
+                float maxY = Math.max(0, stageH - boardHeight);
 
                 boardTable.setPosition(
                     MathUtils.clamp(newX, minX, maxX),
