@@ -81,6 +81,7 @@ public class Assets {
     public static void load() {
         Gdx.app.log(INFO, "Assets loading...");
 
+
         try {
             // SKIN
             skin = new Skin(Gdx.files.internal("uiskin.json"));
@@ -213,7 +214,7 @@ public class Assets {
     private static Label.LabelStyle getLightTitleStyle() {
         Label.LabelStyle style = new Label.LabelStyle();
         style.font = WHITE_128;
-        style.fontColor = Color.BLACK;
+        style.fontColor = Color.WHITE;
         return style;
     }
 

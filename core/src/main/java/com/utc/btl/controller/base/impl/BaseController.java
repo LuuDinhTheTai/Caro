@@ -9,8 +9,7 @@ import com.utc.btl.Main;
 import com.utc.btl.controller.base.IController;
 
 import static com.utc.btl.constant.Assets.*;
-import static com.utc.btl.constant.Constants.DEBUG;
-import static com.utc.btl.constant.Constants.INFO;
+import static com.utc.btl.constant.Constants.*;
 
 public abstract class BaseController implements IController {
 
@@ -41,6 +40,13 @@ public abstract class BaseController implements IController {
     }
 
     @Override
+    public void toResultScreen(String msg) {
+        Gdx.app.log(INFO, "Redirect to result screen");
+        main.resultScreen.setMessage(msg);
+        main.setScreen(main.resultScreen);
+    }
+
+    @Override
     public void toSettingScreen() {
         Gdx.app.log(INFO, "Redirect to setting screen");
         main.setScreen(main.settingScreen);
@@ -67,7 +73,7 @@ public abstract class BaseController implements IController {
 
         dialog.button("OK");
         dialog.show(stage);
-        dialog.setSize(350, 200);
+        dialog.setSize(TABLE_W, TABLE_H);
         dialog.setPosition(
             (stage.getViewport().getWorldWidth()  - dialog.getWidth())  / 2,
             (stage.getViewport().getWorldHeight() - dialog.getHeight()) / 2

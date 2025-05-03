@@ -57,7 +57,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         hudTable.top().right();
         hudTable.setFillParent(true);
 
-        hudTable.add(pauseBtn).width(100).height(100).pad(10).row();
+        hudTable.add(pauseBtn).width(150).height(100).pad(10).row();
 
         stage.addActor(hudTable);
     }
