@@ -1,10 +1,8 @@
 package com.utc.btl.game_play;
 
 import com.utc.btl.Main;
-import com.utc.btl.view_component.Board;
 import com.utc.btl.view_component.Cell;
 import com.utc.btl.view_component.Piece;
-import lombok.Setter;
 
 public class GamePlay implements IGamePlay {
 
@@ -54,6 +52,7 @@ public class GamePlay implements IGamePlay {
         // Xác định trạng thái mới của cell dựa trên người chơi hiện tại
         Piece newPiece = (currentPlayer == Piece.X) ? Piece.X_FOCUS : Piece.O_FOCUS;
         cell.setPiece(newPiece);
+        main.soundController.moveSound();
         lastPlayedCell = cell;
         focusedCell = null;
     }

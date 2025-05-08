@@ -16,7 +16,9 @@ import com.utc.btl.game_play.GamePlay;
 import com.utc.btl.game_play.IGamePlay;
 import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.controller.IScreenController;
+import com.utc.btl.controller.ISoundController;
 import com.utc.btl.controller.impl.ScreenController;
+import com.utc.btl.controller.impl.SoundController;
 import com.utc.btl.game_play.validator.Validator;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
@@ -52,6 +54,7 @@ public class Main extends Game {
     public IScreenController screenController;
     public IUIModeController gameModeController;
     public IGamePlayController gamePlayController;
+    public ISoundController soundController;
 
     // GAME PLAY
     public IValidator validator;
@@ -88,6 +91,7 @@ public class Main extends Game {
             gameModeController = new UIModeController(this);
             gamePlayController = new GamePlayController(this);
             screenController = new ScreenController(this);
+            soundController = new SoundController(this);
 
             // VALIDATOR
             validator = new Validator(this);
