@@ -4,15 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.utc.btl.Main;
 import com.utc.btl.controller.IUIModeController;
 import com.utc.btl.controller.base.impl.BaseController;
-import com.utc.btl.screen.impl.MenuScreen;
-import com.utc.btl.screen.impl.ProfileScreen;
-import com.utc.btl.screen.impl.SettingScreen;
-import com.utc.btl.screen.impl.dark_mode.DarkMenuScreen;
-import com.utc.btl.screen.impl.dark_mode.DarkProfileScreen;
-import com.utc.btl.screen.impl.dark_mode.DarkSettingScreen;
-import com.utc.btl.screen.impl.light_mode.LightMenuScreen;
-import com.utc.btl.screen.impl.light_mode.LightProfileScreen;
-import com.utc.btl.screen.impl.light_mode.LightSettingScreen;
+import com.utc.btl.screen.impl.*;
+import com.utc.btl.screen.impl.dark_mode.*;
+import com.utc.btl.screen.impl.light_mode.*;
 
 import static com.utc.btl.constant.Constants.INFO;
 
@@ -28,8 +22,10 @@ public class UIModeController extends BaseController implements IUIModeControlle
         if (main.uiMode != main.DEFAULT_UI) {
             main.uiMode = main.DEFAULT_UI;
 
+            main.gameScreen = new GameScreen(main);
             main.menuScreen = new MenuScreen(main);
             main.profileScreen = new ProfileScreen(main);
+            main.resultScreen = new ResultScreen(main);
             main.settingScreen = new SettingScreen(main);
         }
     }
@@ -39,8 +35,10 @@ public class UIModeController extends BaseController implements IUIModeControlle
         if (main.uiMode != main.LIGHT_MODE) {
             main.uiMode = main.LIGHT_MODE;
 
+            main.gameScreen = new LightGameScreen(main);
             main.menuScreen = new LightMenuScreen(main);
             main.profileScreen = new LightProfileScreen(main);
+            main.resultScreen = new LightResultScreen(main);
             main.settingScreen = new LightSettingScreen(main);
         }
     }
@@ -51,8 +49,10 @@ public class UIModeController extends BaseController implements IUIModeControlle
         if (main.uiMode != main.DARK_MODE) {
             main.uiMode = main.DARK_MODE;
 
+            main.gameScreen = new DarkGameScreen(main);
             main.menuScreen = new DarkMenuScreen(main);
             main.profileScreen = new DarkProfileScreen(main);
+            main.resultScreen = new DarkResultScreen(main);
             main.settingScreen = new DarkSettingScreen(main);
         }
     }

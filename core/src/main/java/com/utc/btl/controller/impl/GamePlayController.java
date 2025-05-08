@@ -18,53 +18,54 @@ public class GamePlayController extends BaseController implements IGamePlayContr
 
     @Override
     public void move(Cell cell) {
-        main.gamePlay.move(cell);
-        main.validator.validate(cell);
+        try {
+            main.gamePlay.move(cell);
+            main.validator.validate(cell);
+
+        } catch (Exception e) {
+            Gdx.app.error(ERROR, "Move error: " + e.getMessage(), e);
+            toResultScreen("Move error");
+        }
     }
 
     @Override
     public void win(Cell cell) {
-        if (cell.getPiece().isX()) {
-            toMenuScreen();
-            popUpDialog("", "X WIN !");
-            main.session.setXWin(main.session.getXWin() + 1);
-
-        } else if (cell.getPiece().isO()) {
-            toMenuScreen();
-            popUpDialog("", "O WIN !");
-            main.session.setOWin(main.session.getOWin() + 1);
-        }
-
         try {
+            if (cell.getPiece().isX()) {
+                main.session.setXWin(main.session.getXWin() + 1);
+                toResultScreen("X WIN");
+
+            } else if (cell.getPiece().isO()) {
+                main.session.setOWin(main.session.getOWin() + 1);
+                toResultScreen("O WIN");
+            }
+
             main.sessionService.update(main.session);
 
         } catch (GameException e) {
-            Gdx.app.error(ERROR,e.getMessage(), e);
-            popUpDialog(ERROR, e.getMessage());
+            Gdx.app.error(ERROR, e.getMessage(), e);
+            toResultScreen(e.getMessage());
 
         } catch (Exception e) {
-            Gdx.app.error(ERROR,e.getMessage(), e);
-            popUpDialog(ERROR, "System error");
+            Gdx.app.error(ERROR, e.getMessage(), e);
+            toResultScreen("System error");
         }
-
     }
 
     @Override
     public void draw(Cell cell) {
-        toMenuScreen();
-        popUpDialog("", "DRAW !");
-        main.session.setDraw(main.session.getDraw() + 1);
-
         try {
+            main.session.setDraw(main.session.getDraw() + 1);
             main.sessionService.update(main.session);
+            toResultScreen("DRAW");
 
         } catch (GameException e) {
-            Gdx.app.error(ERROR,e.getMessage(), e);
-            popUpDialog(ERROR, e.getMessage());
+            Gdx.app.error(ERROR, e.getMessage(), e);
+            toResultScreen(e.getMessage());
 
         } catch (Exception e) {
-            Gdx.app.error(ERROR,e.getMessage(), e);
-            popUpDialog(ERROR, "System error");
+            Gdx.app.error(ERROR, e.getMessage(), e);
+            toResultScreen("System error");
         }
     }
 

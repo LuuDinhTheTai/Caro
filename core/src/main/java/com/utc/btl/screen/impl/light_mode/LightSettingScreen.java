@@ -38,14 +38,12 @@ public class LightSettingScreen extends SettingScreen {
         darkThemeBtn = new TextButton("Dark", lightImageTextButtonStyle);
 
         backBtn = new TextButton("Back", lightImageTextButtonStyle);
-        applyBtn = new TextButton("OK", lightImageTextButtonStyle);
     }
 
     @Override
     public void setUI() {
         mainContainer.setFillParent(true);
         mainContainer.center();
-
 
         mainContainer.add(titleLabel).padBottom(20);
         mainContainer.row();
@@ -77,7 +75,6 @@ public class LightSettingScreen extends SettingScreen {
         bottomTable.setFillParent(true);
         bottomTable.bottom().right().pad(20);
         bottomTable.add(backBtn).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H).padRight(10);
-        bottomTable.add(applyBtn).width(SMALL_BUTTON_W).height(SMALL_BUTTON_H);
 
         stage.addActor(mainContainer);
         stage.addActor(bottomTable);

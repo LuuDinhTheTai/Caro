@@ -50,7 +50,7 @@ public abstract class BaseScreen implements IBaseScreen {
     @Override
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
-        Constants.resize(width, height);
+//        Constants.resize(width, height);
     }
 
     @Override

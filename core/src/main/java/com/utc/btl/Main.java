@@ -11,6 +11,7 @@ import com.utc.btl.controller.IGamePlayController;
 import com.utc.btl.controller.impl.UIModeController;
 import com.utc.btl.controller.impl.GamePlayController;
 import com.utc.btl.entity.Session;
+import com.utc.btl.exception.ExceptionType;
 import com.utc.btl.exception.GameException;
 import com.utc.btl.game_play.GamePlay;
 import com.utc.btl.game_play.IGamePlay;
@@ -48,6 +49,7 @@ public class Main extends Game {
     public IGameScreen gameScreen;
     public IMenuScreen menuScreen;
     public IProfileScreen profileScreen;
+    public IResultScreen resultScreen;
     public ISettingScreen settingScreen;
 
     // CONTROLLER
@@ -82,9 +84,10 @@ public class Main extends Game {
             batch = new SpriteBatch();
 
             // SCREEN
-            gameScreen = new GameScreen(this);
+            gameScreen = new DarkGameScreen(this);
             menuScreen = new DarkMenuScreen(this);
             profileScreen = new DarkProfileScreen(this);
+            resultScreen = new DarkResultScreen(this);
             settingScreen = new DarkSettingScreen(this);
 
             // CONTROLLER
@@ -101,7 +104,6 @@ public class Main extends Game {
 
         } catch (GameException e) {
             Gdx.app.error(ERROR, e.getMessage(), e);
-            screenController.popUpDialog(DIALOG_ERROR_TITLE, e.getMessage());
             Gdx.app.exit();
         }
     }
