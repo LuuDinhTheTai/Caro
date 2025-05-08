@@ -1,6 +1,8 @@
 package com.utc.btl.constant;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -78,6 +80,12 @@ public class Assets {
     public static Label.LabelStyle lightDialogTextStyle;
     public static Label.LabelStyle darkDialogTextStyle;
 
+
+    //SOUND
+    public static Music backgroundMusic;
+    public static Sound moveSound;
+    public static Sound winSound;
+
     public static void load() {
         Gdx.app.log(INFO, "Assets loading...");
 
@@ -146,6 +154,9 @@ public class Assets {
 
             lightDialogTextStyle = getLightDialogTextStyle();
             darkDialogTextStyle = getDarkDialogTextStyle();
+
+            backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("assets/sound/background_music.mp3"));
+            moveSound = Gdx.audio.newSound(Gdx.files.internal("assets/sound/move.wav"));
 
         } catch (Exception e) {
             throw new GameException(ExceptionType.LOAD_ASSETS_FAILED_EXCEPTION);
