@@ -19,6 +19,7 @@ import com.utc.btl.game_play.validator.IValidator;
 import com.utc.btl.controller.IScreenController;
 import com.utc.btl.controller.impl.ScreenController;
 import com.utc.btl.game_play.validator.Validator;
+import com.utc.btl.game_play.validator.Validator2;
 import com.utc.btl.screen.*;
 import com.utc.btl.screen.impl.*;
 import com.utc.btl.dao.ISessionDao;
