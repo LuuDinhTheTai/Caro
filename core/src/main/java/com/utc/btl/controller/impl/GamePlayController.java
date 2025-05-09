@@ -3,7 +3,6 @@ package com.utc.btl.controller.impl;
 import com.badlogic.gdx.Gdx;
 import com.utc.btl.Main;
 import com.utc.btl.controller.IGamePlayController;
-import com.utc.btl.controller.ISoundController;
 import com.utc.btl.controller.base.impl.BaseController;
 import com.utc.btl.exception.GameException;
 import com.utc.btl.view_component.Cell;
@@ -25,6 +24,33 @@ public class GamePlayController extends BaseController implements IGamePlayContr
         } catch (Exception e) {
             Gdx.app.error(ERROR, "Move error: " + e.getMessage(), e);
             toResultScreen("Move error");
+        }
+    }
+
+    @Override
+    public void undo() {
+        try {
+            main.gamePlay.undo();
+
+        } catch (GameException e) {
+            Gdx.app.error(ERROR, e.getMessage(), e);
+
+        } catch (Exception e) {
+            Gdx.app.error(ERROR, e.getMessage(), e);
+            toResultScreen("System error");
+        }
+    }
+
+    @Override
+    public void redo() {
+        try {
+            main.gamePlay.redo();
+        } catch (GameException e) {
+            Gdx.app.error(ERROR, e.getMessage(), e);
+
+        } catch (Exception e) {
+            Gdx.app.error(ERROR, e.getMessage(), e);
+            toResultScreen("System error");
         }
     }
 
