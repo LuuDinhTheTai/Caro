@@ -7,4 +7,5 @@ public interface IValidator {
 
     void validate(Cell cell);
     void setBoard(Board board);
+    Board getBoard();
 }

@@ -5,4 +5,5 @@ import com.utc.btl.view_component.Cell;
 public interface IGamePlay {
 
     void move(Cell cell);
+    void randomRow();
 }

@@ -73,4 +73,12 @@ public class GamePlayController extends BaseController implements IGamePlayContr
     public void exit() {
         toMenuScreen();
     }
+    @Override
+    public void randomRow() {
+        try {
+            main.gamePlay.randomRow();
+        } catch (Exception e) {
+            Gdx.app.error(ERROR, "RandomRow error: " + e.getMessage(), e);
+        }
+    }
 }

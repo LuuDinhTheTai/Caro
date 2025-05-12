@@ -17,6 +17,11 @@ public class Validator implements IValidator {
     }
 
     @Override
+    public Board getBoard() {
+        return board;
+    }
+
+    @Override
     public void validate(Cell cell) {
         checkDirection(cell, 0, 1);
         checkDirection(cell, 1, 0);

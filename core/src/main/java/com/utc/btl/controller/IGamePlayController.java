@@ -9,4 +9,5 @@ public interface IGamePlayController extends IController {
     void win(Cell cell);
     void draw(Cell cell);
     void exit();
+    void randomRow();
 }

@@ -1,6 +1,7 @@
 package com.utc.btl.screen.impl;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -50,6 +51,7 @@ public class GameScreen extends BaseScreen implements IGameScreen {
         setBoardTableUI();
         setUI();
         setDragBoardListener();
+        setListeners();
     }
 
     @Override
@@ -84,6 +86,16 @@ public class GameScreen extends BaseScreen implements IGameScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 main.gamePlayController.exit();
+            }
+        });
+        stage.addListener(new ClickListener() {
+            @Override
+            public boolean keyDown(InputEvent event, int keycode) {
+                if (keycode == Input.Keys.C) {
+                    main.gamePlayController.randomRow();
+                    return true;
+                }
+                return false;
             }
         });
     }

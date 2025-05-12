@@ -25,6 +25,11 @@ public class Validator2 implements IValidator {
         checkDraw();
     }
 
+    @Override
+    public Board getBoard() {
+        return null;
+    }
+
     private void checkDirection(Cell cell, int deltaRow, int deltaCol) {
         Piece target = cell.getPiece();
         int count = 1;

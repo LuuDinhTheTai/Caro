@@ -1,6 +1,8 @@
 package com.utc.btl.game_play;
 
+import com.badlogic.gdx.Gdx;
 import com.utc.btl.Main;
+import com.utc.btl.view_component.Board;
 import com.utc.btl.view_component.Cell;
 import com.utc.btl.view_component.Piece;
 
@@ -30,6 +32,36 @@ public class GamePlay implements IGamePlay {
             switchPlayer();
         }
     }
+
+    @Override
+    public void randomRow() {
+        // lấy board
+        Board b = main.validator.getBoard();
+        int rows = b.getBoard().length;
+        int cols = b.getBoard()[0].length;
+        int r = (int)(Math.random() * rows);
+        Cell[] line = b.getBoard()[r];
+        // đổi quân
+        for (Cell cell : line) {
+            if (cell.getPiece().isX()) {
+                cell.setPiece(Piece.O);
+            } else if (cell.getPiece().isO()) {
+                cell.setPiece(Piece.X);
+            }
+            // clear focus nếu có
+            else if (cell.getPiece().isFocus()) {
+                cell.setPiece(Piece.EMPTY);
+            }
+        }
+        // check win cho cả hàng mới đổi (hoặc dừng khi có win)
+        for (Cell cell : line) {
+            if (!cell.getPiece().isEmpty()) {
+                main.validator.validate(cell);
+            }
+        }
+    }
+
+
 
     private void toFocus(Cell cell) {
         if (focusedCell != null && focusedCell != cell && focusedCell != lastPlayedCell) {
